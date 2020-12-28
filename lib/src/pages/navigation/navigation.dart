@@ -11,10 +11,10 @@ class _NavigationState extends State<Navigation> {
   int currentPage = 0;
   var _pages = [
     HomePage(),
-    HomePage(),
-    HomePage(),
-    HomePage(),
-    HomePage(),
+    Container(),
+    Container(),
+    Container(),
+    Container(),
   ];
 
   @override

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:now/src/models/access.dart';
 import 'package:now/src/pages/home/widgets/build_list_product.dart';
 import 'package:now/src/pages/home/widgets/build_product_card.dart';
@@ -65,7 +64,7 @@ class _HomePageState extends State<HomePage>
               text: TextSpan(
                 children: [
                   TextSpan(
-                    text: 'Hi,\t',
+                    text: 'Hi, ',
                     style: TextStyle(
                       fontSize: _size.width / 16.0,
                       color: Colors.grey.shade800,
