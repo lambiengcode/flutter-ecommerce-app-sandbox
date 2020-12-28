@@ -1,14 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:now/src/models/access.dart';
+import 'package:now/src/pages/home/widgets/build_list_product.dart';
 
 class HomePage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage>
+    with SingleTickerProviderStateMixin {
+  TabController _tabController;
+  final dataKey = new GlobalKey();
+  final ScrollController scrollController = new ScrollController();
+
+  List<Widget> _pages;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = new TabController(
+      vsync: this,
+      length: 3,
+      initialIndex: 0,
+    );
+    _pages = [
+      BuildListProduct(
+        scrollKey: scrollController,
+      ),
+      Container(),
+      Container(),
+    ];
+  }
+
   @override
   Widget build(BuildContext context) {
     final Size _size = MediaQuery.of(context).size;
@@ -34,11 +58,12 @@ class _HomePageState extends State<HomePage> {
               text: TextSpan(
                 children: [
                   TextSpan(
-                    text: 'Hi, ',
+                    text: 'Hi,\t',
                     style: TextStyle(
-                      fontSize: _size.width / 20.0,
+                      fontSize: _size.width / 16.0,
                       color: Colors.grey.shade800,
-                      fontWeight: FontWeight.w600,
+                      fontWeight: FontWeight.w400,
+                      fontFamily: 'Lobster',
                     ),
                   ),
                   TextSpan(
@@ -68,6 +93,7 @@ class _HomePageState extends State<HomePage> {
       body: Container(
         color: Colors.white,
         child: SingleChildScrollView(
+          controller: scrollController,
           child: Column(
             children: [
               SizedBox(
@@ -261,25 +287,38 @@ class _HomePageState extends State<HomePage> {
                       height: 8.0,
                     ),
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 18.0),
+                      padding: EdgeInsets.symmetric(horizontal: 12.0),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Icon(
-                            Feather.tag,
-                            color: Colors.blueAccent.shade400,
-                            size: _size.width / 18.0,
-                          ),
-                          SizedBox(
-                            width: 8.0,
-                          ),
                           Text(
                             'Voucher',
                             style: TextStyle(
-                              fontSize: _size.width / 23.0,
-                              color: Colors.blueAccent.shade400,
+                              fontSize: _size.width / 22.5,
+                              color: Colors.black,
                               fontWeight: FontWeight.bold,
                             ),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Text(
+                                'See More',
+                                style: TextStyle(
+                                  fontSize: _size.width / 26.5,
+                                  color: Colors.blueAccent,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 4.0,
+                              ),
+                              Icon(
+                                Feather.arrow_right,
+                                color: Colors.blueAccent,
+                                size: _size.width / 20.0,
+                              ),
+                            ],
                           ),
                         ],
                       ),
@@ -355,25 +394,38 @@ class _HomePageState extends State<HomePage> {
                       height: 8.0,
                     ),
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 16.0),
+                      padding: EdgeInsets.symmetric(horizontal: 12.0),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Icon(
-                            FontAwesomeIcons.shippingFast,
-                            color: Colors.deepOrange,
-                            size: _size.width / 18.0,
-                          ),
-                          SizedBox(
-                            width: 16.0,
-                          ),
                           Text(
-                            'Extra Ship',
+                            'Free Ship',
                             style: TextStyle(
-                              fontSize: _size.width / 23.0,
-                              color: Colors.deepOrange,
+                              fontSize: _size.width / 22.5,
+                              color: Colors.black,
                               fontWeight: FontWeight.bold,
                             ),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Text(
+                                'See More',
+                                style: TextStyle(
+                                  fontSize: _size.width / 26.5,
+                                  color: Colors.blueAccent,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 4.0,
+                              ),
+                              Icon(
+                                Feather.arrow_right,
+                                color: Colors.blueAccent,
+                                size: _size.width / 20.0,
+                              ),
+                            ],
                           ),
                         ],
                       ),
@@ -381,14 +433,15 @@ class _HomePageState extends State<HomePage> {
                     Expanded(
                         child: ListView.builder(
                       padding: EdgeInsets.symmetric(
-                        vertical: 16.0,
+                        horizontal: 4.0,
+                        vertical: 12.0,
                       ),
                       scrollDirection: Axis.horizontal,
                       itemCount: 10,
                       itemBuilder: (context, index) {
                         return Container(
                           margin: EdgeInsets.only(
-                            left: 16.0,
+                            left: index != 0 ? 10.0 : 6.0,
                           ),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -398,6 +451,9 @@ class _HomePageState extends State<HomePage> {
                                 height: _size.width * .4,
                                 width: _size.width * .4,
                                 decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(
+                                    2.0,
+                                  ),
                                   image: DecorationImage(
                                     image: AssetImage('images/logo.png'),
                                     fit: BoxFit.cover,
@@ -427,7 +483,7 @@ class _HomePageState extends State<HomePage> {
                 height: 10.0,
               ),
               Container(
-                height: _size.height * .2,
+                height: _size.height * .235,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   boxShadow: [
@@ -438,6 +494,118 @@ class _HomePageState extends State<HomePage> {
                       offset: Offset(2.0, 4.5), // changes position of shadow
                     ),
                   ],
+                ),
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: 12.0,
+                    ),
+                    Container(
+                      padding: EdgeInsets.fromLTRB(2.0, 2.0, 2.0, 4.0),
+                      height: _size.width * .3,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: actions.length,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding:
+                                EdgeInsets.only(left: index == 0 ? 8.0 : 16.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                  height: _size.width * .2,
+                                  width: _size.width * .2,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: Colors.white,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Color(0xFFABBAD5),
+                                        spreadRadius: 1.15,
+                                        blurRadius: 1.25,
+                                        offset: Offset(.0,
+                                            3.5), // changes position of shadow
+                                      ),
+                                    ],
+                                  ),
+                                  child: Icon(
+                                    actions[index].icon,
+                                    size: _size.width / 16.0,
+                                    color: actions[index].color,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 12.0,
+                                ),
+                                Text(
+                                  actions[index].title,
+                                  style: TextStyle(
+                                    fontSize: _size.width / 28.0,
+                                    color: index == 0
+                                        ? Colors.blueAccent
+                                        : Colors.grey.shade800,
+                                    fontWeight: index == 0
+                                        ? FontWeight.bold
+                                        : FontWeight.w600,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                    Expanded(
+                        child: Container(
+                      alignment: Alignment.bottomCenter,
+                      child: Card(
+                        key: dataKey,
+                        elevation: .0,
+                        child: TabBar(
+                          onTap: (index) =>
+                              Scrollable.ensureVisible(dataKey.currentContext),
+                          controller: _tabController,
+                          labelColor: Colors.blueAccent,
+                          indicatorColor: Colors.blueAccent,
+                          unselectedLabelColor: Colors.grey.shade700,
+                          indicatorSize: TabBarIndicatorSize.label,
+                          indicatorWeight: 2.5,
+                          labelStyle: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: _size.width / 26.0,
+                            fontFamily: 'Raleway-Bold',
+                          ),
+                          unselectedLabelStyle: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: _size.width / 28.0,
+                            fontFamily: 'Raleway-Bold',
+                          ),
+                          tabs: [
+                            Tab(
+                              text: 'Near Me',
+                            ),
+                            Tab(
+                              text: 'Top Seller',
+                            ),
+                            Tab(
+                              text: 'Rating',
+                            ),
+                          ],
+                        ),
+                      ),
+                    )),
+                  ],
+                ),
+              ),
+              Container(
+                height: _size.height * .75,
+                child: TabBarView(
+                  controller: _tabController,
+                  children: _pages.map((Widget tab) {
+                    return tab;
+                  }).toList(),
                 ),
               ),
             ],
