@@ -53,19 +53,19 @@ class _BottomInfoState extends State<BottomInfo> {
                     ),
                   ),
                   SizedBox(
-                    width: 12.0,
+                    width: 16.0,
                   ),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         SizedBox(
-                          height: 6.0,
+                          height: 4.0,
                         ),
                         Text(
                           'Hồng Vinh',
                           style: TextStyle(
-                            fontSize: _size.width / 22.5,
+                            fontSize: _size.width / 20.0,
                             fontWeight: FontWeight.bold,
                             color: Colors.grey.shade800,
                           ),
@@ -276,9 +276,45 @@ class _BottomInfoState extends State<BottomInfo> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   Expanded(
+                    flex: 2,
+                    child: GestureDetector(
+                      onTap: () => Navigator.of(context).pop(context),
+                      child: Container(
+                        padding: EdgeInsets.symmetric(
+                          vertical: 16.0,
+                        ),
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(4.0)),
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Color(0xFFABBAD5),
+                              spreadRadius: .8,
+                              blurRadius: 2.0,
+                              offset:
+                                  Offset(0, 2.0), // changes position of shadow
+                            ),
+                          ],
+                        ),
+                        child: Text(
+                          'Edit',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: _size.width / 26.0,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 12.0,
+                  ),
+                  Expanded(
                     flex: 4,
                     child: GestureDetector(
-                      onTap: () async {},
+                      onTap: () => Navigator.of(context).pop(context),
                       child: Container(
                         padding: EdgeInsets.symmetric(
                           vertical: 16.0,
@@ -286,7 +322,7 @@ class _BottomInfoState extends State<BottomInfo> {
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
                           color: Colors.blueAccent,
-                          borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                          borderRadius: BorderRadius.all(Radius.circular(4.0)),
                           boxShadow: [
                             BoxShadow(
                               color: Colors.black26,
@@ -334,7 +370,7 @@ class _BottomInfoState extends State<BottomInfo> {
         ),
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(8.0)),
+          borderRadius: BorderRadius.all(Radius.circular(4.0)),
           color: Colors.white,
           boxShadow: [
             BoxShadow(

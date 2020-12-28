@@ -381,7 +381,7 @@ class _HomePageState extends State<HomePage>
                 height: 10.0,
               ),
               Container(
-                height: _size.height * .295,
+                height: _size.width * .67,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   boxShadow: [
@@ -460,7 +460,8 @@ class _HomePageState extends State<HomePage>
                                     2.0,
                                   ),
                                   image: DecorationImage(
-                                    image: AssetImage('images/logo.png'),
+                                    image: NetworkImage(
+                                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRcMynRQ0TtZ0YwF6jgzgqqiZ4ukK7s5Qjrg&usqp=CAU'),
                                     fit: BoxFit.cover,
                                   ),
                                 ),
@@ -468,12 +469,15 @@ class _HomePageState extends State<HomePage>
                               SizedBox(
                                 height: 6.0,
                               ),
-                              Text(
-                                actions[index].title,
-                                style: TextStyle(
-                                  fontSize: _size.width / 24.0,
-                                  color: Colors.grey.shade800,
-                                  fontWeight: FontWeight.w600,
+                              Container(
+                                width: _size.width * .4,
+                                child: Text(
+                                  'Free Ship Highland Coffee',
+                                  style: TextStyle(
+                                    fontSize: _size.width / 24.0,
+                                    color: Colors.grey.shade800,
+                                    fontWeight: FontWeight.w600,
+                                  ),
                                 ),
                               ),
                             ],
