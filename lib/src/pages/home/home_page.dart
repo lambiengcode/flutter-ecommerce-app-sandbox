@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:now/src/models/access.dart';
 import 'package:now/src/pages/home/widgets/build_list_product.dart';
+import 'package:now/src/pages/home/widgets/build_product_card.dart';
+import 'package:now/src/pages/home/widgets/carousel_widget.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -11,8 +14,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
   TabController _tabController;
+  ScrollController scrollController = new ScrollController();
   final dataKey = new GlobalKey();
-  final ScrollController scrollController = new ScrollController();
 
   List<Widget> _pages;
 
@@ -28,8 +31,12 @@ class _HomePageState extends State<HomePage>
       BuildListProduct(
         scrollKey: scrollController,
       ),
-      Container(),
-      Container(),
+      BuildListProduct(
+        scrollKey: scrollController,
+      ),
+      BuildListProduct(
+        scrollKey: scrollController,
+      ),
     ];
   }
 
@@ -181,13 +188,7 @@ class _HomePageState extends State<HomePage>
                 margin: EdgeInsets.symmetric(
                   horizontal: 16.0,
                 ),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10.0),
-                  image: DecorationImage(
-                    image: AssetImage('images/logo.png'),
-                    fit: BoxFit.cover,
-                  ),
-                ),
+                child: CarouselImage(),
               ),
               SizedBox(
                 height: 8.0,
@@ -557,6 +558,16 @@ class _HomePageState extends State<HomePage>
                         },
                       ),
                     ),
+                    SizedBox(
+                      height: 12.0,
+                    ),
+                    Divider(
+                      height: .25,
+                      thickness: .25,
+                      indent: 16.0,
+                      endIndent: 16.0,
+                      color: Colors.grey.shade200,
+                    ),
                     Expanded(
                         child: Container(
                       alignment: Alignment.bottomCenter,
@@ -599,15 +610,9 @@ class _HomePageState extends State<HomePage>
                   ],
                 ),
               ),
-              Container(
-                height: _size.height * .75,
-                child: TabBarView(
-                  controller: _tabController,
-                  children: _pages.map((Widget tab) {
-                    return tab;
-                  }).toList(),
-                ),
-              ),
+              ...actions.map((item) {
+                return BuildProductCard();
+              }).toList(),
             ],
           ),
         ),
