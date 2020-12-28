@@ -40,7 +40,8 @@ class _BuildProductCardState extends State<BuildProductCard> {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(2.0),
               image: DecorationImage(
-                image: AssetImage('images/logo.png'),
+                image: NetworkImage(
+                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRcMynRQ0TtZ0YwF6jgzgqqiZ4ukK7s5Qjrg&usqp=CAU'),
                 fit: BoxFit.cover,
               ),
             ),

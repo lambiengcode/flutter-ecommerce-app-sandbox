@@ -10,11 +10,11 @@ class CarouselImage extends StatefulWidget {
 class _CarouselImageState extends State<CarouselImage> {
   var _current = 0;
   List imgList = [
-    'https://images.unsplash.com/photo-1518843875459-f738682238a6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1926&q=80',
-    'https://images.unsplash.com/photo-1567174676466-f42097e4d5e6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1491&q=80',
-    'https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
-    'https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
-    'https://images.unsplash.com/photo-1558364015-0d5ba7a4ba86?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60'
+    'https://images.unsplash.com/photo-1540555700478-4be289fbecef?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Nnx8Y29zbWV0aWNzfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+    'https://images.unsplash.com/photo-1585519356004-2bd6527d9cbe?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MjF8fGNvc21ldGljc3xlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+    'https://images.unsplash.com/photo-1593487568720-92097fb460fb?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MjJ8fGNvc21ldGljc3xlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+    'https://images.unsplash.com/photo-1591375275714-8b2b55b0bf0d?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NDR8fGNvc21ldGljc3xlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+    'https://images.unsplash.com/photo-1594490556719-16dcd6b1eb3d?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NTB8fGNvc21ldGljc3xlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
   ];
 
   List<T> map<T>(List list, Function handler) {

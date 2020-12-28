@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:now/src/models/access.dart';
+import 'package:now/src/models/voucher.dart';
 import 'package:now/src/pages/home/widgets/build_list_product.dart';
 import 'package:now/src/pages/home/widgets/build_product_card.dart';
 import 'package:now/src/pages/home/widgets/carousel_widget.dart';
@@ -269,7 +270,7 @@ class _HomePageState extends State<HomePage>
                 height: 10.0,
               ),
               Container(
-                height: _size.height * .3,
+                height: _size.width * .7,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   boxShadow: [
@@ -330,7 +331,7 @@ class _HomePageState extends State<HomePage>
                         vertical: 12.0,
                       ),
                       scrollDirection: Axis.horizontal,
-                      itemCount: 10,
+                      itemCount: vouchers.length,
                       itemBuilder: (context, index) {
                         return Container(
                           margin: EdgeInsets.only(
@@ -348,7 +349,8 @@ class _HomePageState extends State<HomePage>
                                     2.0,
                                   ),
                                   image: DecorationImage(
-                                    image: AssetImage('images/logo.png'),
+                                    image: NetworkImage(
+                                        vouchers[index].urlToImage),
                                     fit: BoxFit.cover,
                                   ),
                                 ),
@@ -356,12 +358,15 @@ class _HomePageState extends State<HomePage>
                               SizedBox(
                                 height: 6.0,
                               ),
-                              Text(
-                                actions[index].title,
-                                style: TextStyle(
-                                  fontSize: _size.width / 24.0,
-                                  color: Colors.grey.shade800,
-                                  fontWeight: FontWeight.w600,
+                              Container(
+                                width: _size.width * .4,
+                                child: Text(
+                                  vouchers[index].title,
+                                  style: TextStyle(
+                                    fontSize: _size.width / 24.0,
+                                    color: Colors.grey.shade800,
+                                    fontWeight: FontWeight.w600,
+                                  ),
                                 ),
                               ),
                             ],

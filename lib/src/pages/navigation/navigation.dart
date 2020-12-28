@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:now/src/pages/home/home_page.dart';
+import 'package:now/src/pages/members/members_page.dart';
 
 class Navigation extends StatefulWidget {
   @override
@@ -13,8 +14,7 @@ class _NavigationState extends State<Navigation> {
     HomePage(),
     Container(),
     Container(),
-    Container(),
-    Container(),
+    MembersPage(),
   ];
 
   @override
@@ -42,16 +42,14 @@ class _NavigationState extends State<Navigation> {
             BottomNavigationBarItem(
                 icon: Icon(Feather.home), title: Text("Dashboard")),
             BottomNavigationBarItem(
-                icon: Icon(Feather.archive), title: Text("Feed")),
-            BottomNavigationBarItem(
-                icon: Icon(Feather.heart), title: Text("File")),
+                icon: Icon(Feather.clipboard), title: Text("Feed")),
             BottomNavigationBarItem(
                 icon: Icon(Feather.bell), title: Text("Profile")),
             BottomNavigationBarItem(
                 icon: Icon(Feather.user), title: Text("Profile")),
           ],
         ),
-        body: _pages[0],
+        body: _pages[currentPage],
       ),
     );
   }
