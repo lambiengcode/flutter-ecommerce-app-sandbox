@@ -32,6 +32,11 @@ dependencies:
   animated_theme_switcher: ^1.0.9
   provider:
   intl: ^0.16.1
+  firebase_auth:
+  firebase_storage:
+  firebase_messaging:
+  cloud_firestore:
+  cloud_functions:
   
   flutter_screenutil: ^4.0.2+1
   flutter_icons: ^1.1.0
