@@ -33,7 +33,7 @@ class _BottomInfoState extends State<BottomInfo> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             SizedBox(
-              height: 18.0,
+              height: 24.0,
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.0),
@@ -220,13 +220,6 @@ class _BottomInfoState extends State<BottomInfo> {
             SizedBox(
               height: 16.0,
             ),
-            Divider(
-              color: Colors.grey.shade400,
-              thickness: .25,
-              height: .25,
-              indent: 20.0,
-              endIndent: 20.0,
-            ),
             SizedBox(
               height: 10.0,
             ),
@@ -281,7 +274,7 @@ class _BottomInfoState extends State<BottomInfo> {
                       onTap: () => Navigator.of(context).pop(context),
                       child: Container(
                         padding: EdgeInsets.symmetric(
-                          vertical: 16.0,
+                          vertical: 15.0,
                         ),
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
@@ -317,7 +310,7 @@ class _BottomInfoState extends State<BottomInfo> {
                       onTap: () => Navigator.of(context).pop(context),
                       child: Container(
                         padding: EdgeInsets.symmetric(
-                          vertical: 16.0,
+                          vertical: 15.0,
                         ),
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
@@ -390,7 +383,7 @@ class _BottomInfoState extends State<BottomInfo> {
             Icon(
               icon,
               color: color,
-              size: _size.width / 16.0,
+              size: _size.width / 18.0,
             ),
             SizedBox(
               width: 16.0,
@@ -399,7 +392,7 @@ class _BottomInfoState extends State<BottomInfo> {
               title,
               style: TextStyle(
                 color: color,
-                fontSize: _size.width / 24.0,
+                fontSize: _size.width / 26.0,
                 fontWeight: FontWeight.w600,
               ),
             ),

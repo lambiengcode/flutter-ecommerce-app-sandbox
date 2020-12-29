@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:now/src/models/access.dart';
 import 'package:now/src/models/voucher.dart';
-import 'package:now/src/pages/home/widgets/build_list_product.dart';
 import 'package:now/src/pages/home/widgets/build_product_card.dart';
 import 'package:now/src/pages/home/widgets/carousel_widget.dart';
 
@@ -17,8 +16,6 @@ class _HomePageState extends State<HomePage>
   ScrollController scrollController = new ScrollController();
   final dataKey = new GlobalKey();
 
-  List<Widget> _pages;
-
   @override
   void initState() {
     super.initState();
@@ -27,17 +24,6 @@ class _HomePageState extends State<HomePage>
       length: 3,
       initialIndex: 0,
     );
-    _pages = [
-      BuildListProduct(
-        scrollKey: scrollController,
-      ),
-      BuildListProduct(
-        scrollKey: scrollController,
-      ),
-      BuildListProduct(
-        scrollKey: scrollController,
-      ),
-    ];
   }
 
   @override
@@ -137,9 +123,9 @@ class _HomePageState extends State<HomePage>
                 onTap: () {},
                 child: Container(
                   margin: EdgeInsets.symmetric(
-                    horizontal: 14.0,
+                    horizontal: 16.0,
                   ),
-                  height: 42.0,
+                  height: 44.0,
                   decoration: BoxDecoration(
                     color: Colors.grey.shade50,
                     borderRadius: BorderRadius.circular(
@@ -194,7 +180,7 @@ class _HomePageState extends State<HomePage>
                 height: 8.0,
               ),
               Container(
-                height: _size.height * .21,
+                height: _size.width * .455,
                 child: GridView.builder(
                   padding: EdgeInsets.symmetric(
                     horizontal: 8.0,
@@ -524,8 +510,8 @@ class _HomePageState extends State<HomePage>
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                  height: _size.width * .2,
-                                  width: _size.width * .2,
+                                  height: _size.width * .18,
+                                  width: _size.width * .18,
                                   decoration: BoxDecoration(
                                     shape: BoxShape.circle,
                                     color: Colors.white,
@@ -546,7 +532,7 @@ class _HomePageState extends State<HomePage>
                                   ),
                                 ),
                                 SizedBox(
-                                  height: 12.0,
+                                  height: 10.0,
                                 ),
                                 Text(
                                   actions[index].title,
@@ -565,16 +551,6 @@ class _HomePageState extends State<HomePage>
                           );
                         },
                       ),
-                    ),
-                    SizedBox(
-                      height: 12.0,
-                    ),
-                    Divider(
-                      height: .25,
-                      thickness: .25,
-                      indent: 16.0,
-                      endIndent: 16.0,
-                      color: Colors.grey.shade200,
                     ),
                     Expanded(
                         child: Container(
