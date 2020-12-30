@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:get/get.dart';
 import 'package:now/src/models/member.dart';
 import 'package:now/src/pages/members/widgets/bar_chart.dart';
 import 'package:now/src/pages/members/widgets/bottom_info.dart';
@@ -17,7 +18,7 @@ class _MembersPage extends State<MembersPage> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          onPressed: () => null,
+          onPressed: () => Get.back(),
           icon: Icon(
             Feather.arrow_left,
             size: _size.width / 15,
@@ -28,24 +29,13 @@ class _MembersPage extends State<MembersPage> {
         backgroundColor: Colors.white,
         centerTitle: true,
         title: Text(
-          'My Group',
+          'My Store',
           style: TextStyle(
             color: Colors.black,
-            fontSize: _size.width / 20.0,
+            fontSize: _size.width / 21.5,
             fontWeight: FontWeight.bold,
-            fontFamily: 'Raleway-Bold',
           ),
         ),
-        actions: [
-          IconButton(
-            onPressed: () => null,
-            icon: Icon(
-              Feather.more_vertical,
-              size: _size.width / 15,
-              color: Colors.black,
-            ),
-          ),
-        ],
       ),
       body: Container(
         child: Column(
@@ -93,7 +83,7 @@ class _MembersPage extends State<MembersPage> {
             Container(
               alignment: Alignment.bottomCenter,
               padding: EdgeInsets.fromLTRB(2.0, 2.0, 2.0, 4.0),
-              height: _size.height * .2,
+              height: _size.height * .15,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: members.length,
@@ -172,8 +162,8 @@ class _MembersPage extends State<MembersPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              height: _size.width * .185,
-              width: _size.width * .185,
+              height: _size.width * .175,
+              width: _size.width * .175,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 image: DecorationImage(
@@ -210,7 +200,7 @@ class _MembersPage extends State<MembersPage> {
             Text(
               member.username,
               style: TextStyle(
-                fontSize: _size.width / 32.5,
+                fontSize: _size.width / 34.0,
                 color: Colors.grey.shade700,
                 fontWeight: FontWeight.w600,
               ),

@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:get/get.dart';
 import 'package:now/src/models/access.dart';
 import 'package:now/src/models/voucher.dart';
 import 'package:now/src/pages/home/widgets/build_product_card.dart';
 import 'package:now/src/pages/home/widgets/carousel_widget.dart';
+
+import '../../models/access.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -106,11 +109,11 @@ class _HomePageState extends State<HomePage>
                       width: 10.0,
                     ),
                     Text(
-                      '1 Vo Van Ngan, Linh Chieu, Thu Duc, HCM',
+                      '1 Vo Van Ngan, Linh Chieu, Thu Duc,...',
                       style: TextStyle(
-                        fontSize: _size.width / 25.0,
+                        fontSize: _size.width / 23.5,
                         fontStyle: FontStyle.italic,
-                        color: Colors.grey.shade700,
+                        color: Colors.grey.shade800,
                       ),
                     ),
                   ],
@@ -125,7 +128,7 @@ class _HomePageState extends State<HomePage>
                   margin: EdgeInsets.symmetric(
                     horizontal: 16.0,
                   ),
-                  height: 44.0,
+                  height: 46.0,
                   decoration: BoxDecoration(
                     color: Colors.grey.shade50,
                     borderRadius: BorderRadius.circular(
@@ -180,7 +183,7 @@ class _HomePageState extends State<HomePage>
                 height: 8.0,
               ),
               Container(
-                height: _size.width * .455,
+                height: _size.width * .445,
                 child: GridView.builder(
                   padding: EdgeInsets.symmetric(
                     horizontal: 8.0,
@@ -193,47 +196,51 @@ class _HomePageState extends State<HomePage>
                   ),
                   itemCount: actions.length,
                   itemBuilder: (context, index) {
-                    return Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          child: Container(
-                            padding: EdgeInsets.symmetric(horizontal: 16.8),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(
-                                6.0,
-                              ),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Color(0xFFABBAD5),
-                                  spreadRadius: .4,
-                                  blurRadius: 1.0,
-                                  offset: Offset(
-                                      0, 1.0), // changes position of shadow
+                    return GestureDetector(
+                      onTap: () =>
+                          Get.toNamed('/categories/${actions[index].title}'),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Expanded(
+                            child: Container(
+                              padding: EdgeInsets.symmetric(horizontal: 18.5),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(
+                                  6.0,
                                 ),
-                              ],
-                            ),
-                            child: Icon(
-                              actions[index].icon,
-                              size: _size.width / 20.0,
-                              color: actions[index].color,
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Color(0xFFABBAD5),
+                                    spreadRadius: .4,
+                                    blurRadius: 1.0,
+                                    offset: Offset(
+                                        0, 1.0), // changes position of shadow
+                                  ),
+                                ],
+                              ),
+                              child: Icon(
+                                actions[index].icon,
+                                size: _size.width / 20.0,
+                                color: actions[index].color,
+                              ),
                             ),
                           ),
-                        ),
-                        SizedBox(
-                          height: 4.0,
-                        ),
-                        Text(
-                          actions[index].title,
-                          style: TextStyle(
-                            fontSize: _size.width / 30.0,
-                            color: Colors.grey.shade600,
-                            fontWeight: FontWeight.w600,
+                          SizedBox(
+                            height: 4.0,
                           ),
-                        )
-                      ],
+                          Text(
+                            actions[index].title,
+                            style: TextStyle(
+                              fontSize: _size.width / 30.0,
+                              color: Colors.grey.shade900,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          )
+                        ],
+                      ),
                     );
                   },
                 ),
@@ -286,26 +293,29 @@ class _HomePageState extends State<HomePage>
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Text(
-                                'See More',
-                                style: TextStyle(
-                                  fontSize: _size.width / 26.5,
-                                  color: Colors.blueAccent,
-                                  fontWeight: FontWeight.bold,
+                          GestureDetector(
+                            onTap: () => Get.toNamed('/voucher'),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'See More',
+                                  style: TextStyle(
+                                    fontSize: _size.width / 26.5,
+                                    color: Colors.blueAccent,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
-                              ),
-                              SizedBox(
-                                width: 4.0,
-                              ),
-                              Icon(
-                                Feather.arrow_right,
-                                color: Colors.blueAccent,
-                                size: _size.width / 20.0,
-                              ),
-                            ],
+                                SizedBox(
+                                  width: 4.0,
+                                ),
+                                Icon(
+                                  Feather.arrow_right,
+                                  color: Colors.blueAccent,
+                                  size: _size.width / 20.0,
+                                ),
+                              ],
+                            ),
                           ),
                         ],
                       ),
@@ -397,26 +407,29 @@ class _HomePageState extends State<HomePage>
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Text(
-                                'See More',
-                                style: TextStyle(
-                                  fontSize: _size.width / 26.5,
-                                  color: Colors.blueAccent,
-                                  fontWeight: FontWeight.bold,
+                          GestureDetector(
+                            onTap: () => Get.toNamed('/freeship'),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'See More',
+                                  style: TextStyle(
+                                    fontSize: _size.width / 26.5,
+                                    color: Colors.blueAccent,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
-                              ),
-                              SizedBox(
-                                width: 4.0,
-                              ),
-                              Icon(
-                                Feather.arrow_right,
-                                color: Colors.blueAccent,
-                                size: _size.width / 20.0,
-                              ),
-                            ],
+                                SizedBox(
+                                  width: 4.0,
+                                ),
+                                Icon(
+                                  Feather.arrow_right,
+                                  color: Colors.blueAccent,
+                                  size: _size.width / 20.0,
+                                ),
+                              ],
+                            ),
                           ),
                         ],
                       ),
@@ -579,13 +592,13 @@ class _HomePageState extends State<HomePage>
                           ),
                           tabs: [
                             Tab(
-                              text: 'Near Me',
+                              text: 'Nearby',
                             ),
                             Tab(
-                              text: 'Top Seller',
+                              text: 'Top Sales',
                             ),
                             Tab(
-                              text: 'Rating',
+                              text: 'Best Rated',
                             ),
                           ],
                         ),

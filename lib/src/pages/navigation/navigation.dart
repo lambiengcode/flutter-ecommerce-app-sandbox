@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:now/src/pages/home/home_page.dart';
-import 'package:now/src/pages/members/members_page.dart';
 import 'package:now/src/pages/notifications/notifications_page.dart';
 import 'package:now/src/pages/orders/orders_page.dart';
+import 'package:now/src/pages/profile/profile_page.dart';
 import 'package:now/src/pages/save/save_page.dart';
 
 class Navigation extends StatefulWidget {
@@ -18,7 +18,7 @@ class _NavigationState extends State<Navigation> {
     OrdersPage(),
     SavePage(),
     NotificationsPage(),
-    MembersPage(),
+    ProfilePage(),
   ];
 
   @override
