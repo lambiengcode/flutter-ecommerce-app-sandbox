@@ -2,22 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:get/get.dart';
 
-import 'build_product_card.dart';
-
-class VoucherListPage extends StatefulWidget {
+class VouchersPage extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => _VoucherListPageState();
+  State<StatefulWidget> createState() => _VouchersPageState();
 }
 
-class _VoucherListPageState extends State<VoucherListPage> {
+class _VouchersPageState extends State<VouchersPage> {
   @override
   Widget build(BuildContext context) {
     final _size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        brightness: Brightness.light,
+        elevation: .0,
         backgroundColor: Colors.white,
-        elevation: 2.5,
+        brightness: Brightness.light,
+        centerTitle: true,
         leading: IconButton(
           onPressed: () => Get.back(),
           icon: Icon(
@@ -27,21 +26,23 @@ class _VoucherListPageState extends State<VoucherListPage> {
           ),
         ),
         title: Text(
-          'Voucher',
+          'Vouchers',
           style: TextStyle(
             fontSize: _size.width / 21.5,
-            fontWeight: FontWeight.bold,
             color: Colors.black,
+            fontWeight: FontWeight.bold,
           ),
         ),
-      ),
-      body: Container(
-        child: ListView.builder(
-          itemCount: 10,
-          itemBuilder: (context, index) {
-            return BuildProductCard();
-          },
-        ),
+        actions: [
+          IconButton(
+            onPressed: () => null,
+            icon: Icon(
+              Feather.plus_square,
+              size: _size.width / 15.0,
+              color: Colors.black,
+            ),
+          ),
+        ],
       ),
     );
   }

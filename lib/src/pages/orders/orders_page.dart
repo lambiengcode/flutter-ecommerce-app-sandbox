@@ -32,7 +32,7 @@ class _OrdersPageState extends State<OrdersPage>
         child: Column(
           children: [
             SizedBox(
-              height: _size.height / 20.0,
+              height: _size.height / 18.0,
             ),
             Container(
               decoration: BoxDecoration(
@@ -42,7 +42,7 @@ class _OrdersPageState extends State<OrdersPage>
                     color: Color(0xFFABBAD5),
                     spreadRadius: .0,
                     blurRadius: .5,
-                    offset: Offset(2.0, 2.5), // changes position of shadow
+                    offset: Offset(.0, 2.5), // changes position of shadow
                   ),
                 ],
               ),
@@ -50,7 +50,7 @@ class _OrdersPageState extends State<OrdersPage>
                 controller: _tabController,
                 labelColor: Colors.blueAccent,
                 indicatorColor: Colors.blueAccent,
-                unselectedLabelColor: Colors.grey.shade700,
+                unselectedLabelColor: Colors.grey.shade900,
                 indicatorSize: TabBarIndicatorSize.tab,
                 indicatorWeight: 2.5,
                 labelStyle: TextStyle(

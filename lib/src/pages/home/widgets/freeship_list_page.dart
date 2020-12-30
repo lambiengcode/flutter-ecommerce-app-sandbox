@@ -29,7 +29,7 @@ class _FreeshipListPageState extends State<FreeshipListPage> {
         title: Text(
           'Freeship',
           style: TextStyle(
-            fontSize: _size.width / 20.0,
+            fontSize: _size.width / 21.5,
             fontWeight: FontWeight.bold,
             color: Colors.black,
           ),

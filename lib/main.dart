@@ -4,6 +4,9 @@ import 'package:now/src/app.dart';
 import 'package:now/src/pages/home/categories_page/categories_page.dart';
 import 'package:now/src/pages/home/widgets/freeship_list_page.dart';
 import 'package:now/src/pages/home/widgets/voucher_list_page.dart';
+import 'package:now/src/pages/members/pages/products_page.dart';
+import 'package:now/src/pages/members/pages/vouchers_page.dart';
+import 'package:now/src/pages/store/store_page.dart';
 
 import 'src/pages/members/members_page.dart';
 
@@ -44,6 +47,26 @@ void main() {
           title: Get.parameters['title'],
         ),
         transition: Transition.cupertinoDialog,
+        transitionDuration: Duration(milliseconds: 400),
+      ),
+      GetPage(
+        name: '/store/:id',
+        page: () => StorePage(
+          id: Get.parameters['id'],
+        ),
+        transition: Transition.zoom,
+        transitionDuration: Duration(milliseconds: 400),
+      ),
+      GetPage(
+        name: '/products',
+        page: () => ProductsPage(),
+        transition: Transition.zoom,
+        transitionDuration: Duration(milliseconds: 400),
+      ),
+      GetPage(
+        name: '/vouchers',
+        page: () => VouchersPage(),
+        transition: Transition.zoom,
         transitionDuration: Duration(milliseconds: 400),
       ),
     ],

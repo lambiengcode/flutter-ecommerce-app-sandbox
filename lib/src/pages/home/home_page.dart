@@ -5,6 +5,7 @@ import 'package:now/src/models/access.dart';
 import 'package:now/src/models/voucher.dart';
 import 'package:now/src/pages/home/widgets/build_product_card.dart';
 import 'package:now/src/pages/home/widgets/carousel_widget.dart';
+import 'package:now/src/widgets/voucher_card.dart';
 
 import '../../models/access.dart';
 
@@ -321,55 +322,20 @@ class _HomePageState extends State<HomePage>
                       ),
                     ),
                     Expanded(
-                        child: ListView.builder(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 4.0,
-                        vertical: 12.0,
+                      child: ListView.builder(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 4.0,
+                          vertical: 12.0,
+                        ),
+                        scrollDirection: Axis.horizontal,
+                        itemCount: vouchers.length,
+                        itemBuilder: (context, index) {
+                          return VoucherCard(
+                            index: index,
+                          );
+                        },
                       ),
-                      scrollDirection: Axis.horizontal,
-                      itemCount: vouchers.length,
-                      itemBuilder: (context, index) {
-                        return Container(
-                          margin: EdgeInsets.only(
-                            left: index != 0 ? 10.0 : 6.0,
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                height: _size.width * .4,
-                                width: _size.width * .4,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(
-                                    2.0,
-                                  ),
-                                  image: DecorationImage(
-                                    image: NetworkImage(
-                                        vouchers[index].urlToImage),
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                height: 6.0,
-                              ),
-                              Container(
-                                width: _size.width * .4,
-                                child: Text(
-                                  vouchers[index].title,
-                                  style: TextStyle(
-                                    fontSize: _size.width / 24.0,
-                                    color: Colors.grey.shade800,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        );
-                      },
-                    )),
+                    ),
                   ],
                 ),
               ),
