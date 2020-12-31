@@ -19,19 +19,12 @@ class BarChartOnline extends StatelessWidget {
     final _size = MediaQuery.of(context).size;
 
     return Container(
-      height: _size.height * .3,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(20.0),
-          topRight: Radius.circular(20.0),
-        ),
-      ),
       child: Column(
         children: <Widget>[
           Container(
-            height: _size.height * .44,
-            width: _size.width * .88,
+            height: _size.height * .4,
+            width: _size.width,
+            padding: EdgeInsets.symmetric(horizontal: _size.width * .06),
             child: BarChart(
               BarChartData(
                 alignment: BarChartAlignment.spaceAround,

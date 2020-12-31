@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:get/get.dart';
-import 'package:now/src/widgets/product_vertical_card.dart';
+import 'package:now/src/pages/members/widgets/manage_product_vertical_card.dart';
 
 class ManageProductsPage extends StatefulWidget {
   @override
@@ -36,7 +36,7 @@ class _ManageProductsPageState extends State<ManageProductsPage> {
         ),
         actions: [
           IconButton(
-            onPressed: () => null,
+            onPressed: () => Get.toNamed('/addproduct'),
             icon: Icon(
               Feather.plus_square,
               size: _size.width / 15.0,
@@ -49,7 +49,7 @@ class _ManageProductsPageState extends State<ManageProductsPage> {
         child: ListView.builder(
           itemCount: 10,
           itemBuilder: (context, index) {
-            return ProductVerticalCard();
+            return ManageProductVerticalCard();
           },
         ),
       ),

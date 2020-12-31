@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:get/get.dart';
 import 'package:now/src/models/voucher.dart';
-import 'package:now/src/widgets/voucher_verical_card.dart';
+import 'package:now/src/pages/members/widgets/manage_voucher_vertical_card.dart';
 
 class ManageVouchersPage extends StatefulWidget {
   @override
@@ -37,7 +37,7 @@ class _ManageVouchersPageState extends State<ManageVouchersPage> {
         ),
         actions: [
           IconButton(
-            onPressed: () => null,
+            onPressed: () => Get.toNamed('/addvoucher'),
             icon: Icon(
               Feather.plus_square,
               size: _size.width / 15.0,
@@ -50,7 +50,7 @@ class _ManageVouchersPageState extends State<ManageVouchersPage> {
         child: ListView.builder(
           itemCount: vouchers.length,
           itemBuilder: (context, index) {
-            return VoucherVerticalCard(
+            return ManageVoucherVerticalCard(
               title: vouchers[index].title,
               urlToImage: vouchers[index].urlToImage,
             );

@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:get/get.dart';
 import 'package:now/src/models/member.dart';
+import 'package:now/src/models/voucher.dart';
 import 'package:now/src/pages/members/widgets/bar_chart.dart';
 import 'package:now/src/pages/members/widgets/bottom_info.dart';
+import 'package:now/src/pages/members/widgets/manage_product_horizontal_card.dart';
+import 'package:now/src/pages/members/widgets/manage_voucher_horizontal_card.dart';
 import 'package:now/src/widgets/product_horizontal_card.dart';
 import 'package:now/src/widgets/voucher_horizontal_card.dart';
 
@@ -89,7 +92,7 @@ class _MembersPage extends State<MembersPage> {
                   scrollDirection: Axis.horizontal,
                   itemCount: 10,
                   itemBuilder: (context, index) {
-                    return ProductHorizontalCard(
+                    return ManageProductHorizontalCard(
                       index: index,
                     );
                   },
@@ -107,7 +110,10 @@ class _MembersPage extends State<MembersPage> {
                   scrollDirection: Axis.horizontal,
                   itemCount: 3,
                   itemBuilder: (context, index) {
-                    return _buildVoucherItem(context, index);
+                    return ManageVoucherHorizontalCard(
+                      title: vouchers[index].title,
+                      urlToImage: vouchers[index].urlToImage,
+                    );
                   },
                 ),
               ),
@@ -242,12 +248,6 @@ class _MembersPage extends State<MembersPage> {
           ],
         ),
       ),
-    );
-  }
-
-  Widget _buildVoucherItem(context, index) {
-    return VoucherCard(
-      index: index,
     );
   }
 

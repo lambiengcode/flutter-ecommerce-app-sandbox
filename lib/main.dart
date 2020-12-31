@@ -4,8 +4,13 @@ import 'package:now/src/app.dart';
 import 'package:now/src/pages/home/categories_page/categories_page.dart';
 import 'package:now/src/pages/home/widgets/freeship_list_page.dart';
 import 'package:now/src/pages/home/widgets/voucher_list_page.dart';
-import 'package:now/src/pages/members/pages/products_page.dart';
-import 'package:now/src/pages/members/pages/vouchers_page.dart';
+import 'package:now/src/pages/members/pages/add_product_page.dart';
+import 'package:now/src/pages/members/pages/add_voucher_page.dart';
+import 'package:now/src/pages/members/pages/edit_product_page.dart';
+import 'package:now/src/pages/members/pages/edit_voucher_page.dart';
+import 'package:now/src/pages/members/pages/manage_orders_page.dart';
+import 'package:now/src/pages/members/pages/manage_products_page.dart';
+import 'package:now/src/pages/members/pages/manage_vouchers_page.dart';
 import 'package:now/src/pages/profile/pages/my_points_page.dart';
 import 'package:now/src/pages/profile/pages/my_voucher_page.dart';
 import 'package:now/src/pages/store/pages/list_product_page.dart';
@@ -61,22 +66,70 @@ void main() {
         transition: Transition.zoom,
         transitionDuration: Duration(milliseconds: 400),
       ),
+
+      // For owner shop
+
+      GetPage(
+        name: '/orders',
+        page: () => ManageOrdersPage(),
+        transition: Transition.zoom,
+        transitionDuration: Duration(milliseconds: 400),
+      ),
       GetPage(
         name: '/products',
-        page: () => ProductsPage(),
+        page: () => ManageProductsPage(),
         transition: Transition.zoom,
         transitionDuration: Duration(milliseconds: 400),
       ),
       GetPage(
         name: '/vouchers',
-        page: () => VouchersPage(),
+        page: () => ManageVouchersPage(),
         transition: Transition.zoom,
         transitionDuration: Duration(milliseconds: 400),
       ),
       GetPage(
+        name: '/addproduct',
+        page: () => AddProductPage(),
+        transition: Transition.cupertinoDialog,
+        transitionDuration: Duration(milliseconds: 400),
+      ),
+      GetPage(
+        name: '/editproduct/:title/:sizeS/:sizeM/:sizeL',
+        page: () {
+          print(Get.arguments);
+          return EditProductPage(
+            urlToImage: Get.arguments,
+            title: Get.parameters['title'],
+            sizeS: Get.parameters['sizeS'],
+            sizeM: Get.parameters['sizeM'],
+            sizeL: Get.parameters['sizeL'],
+          );
+        },
+        transition: Transition.cupertinoDialog,
+        transitionDuration: Duration(milliseconds: 400),
+      ),
+      GetPage(
+        name: '/addvoucher',
+        page: () => AddVoucherPage(),
+        transition: Transition.cupertinoDialog,
+        transitionDuration: Duration(milliseconds: 400),
+      ),
+      GetPage(
+        name: '/editvoucher/:title/:discount/:percent',
+        page: () => EditVoucherPage(
+          title: Get.parameters['title'],
+          discount: Get.parameters['discount'],
+          percent: Get.parameters['percent'] == 'true' ? true : false,
+          urlToImage: Get.arguments,
+        ),
+        transition: Transition.cupertinoDialog,
+        transitionDuration: Duration(milliseconds: 400),
+      ),
+
+      GetPage(
         name: '/product',
         page: () => ProductPage(),
-        transition: Transition.size,
+        transition: Transition.cupertinoDialog,
         transitionDuration: Duration(milliseconds: 400),
       ),
       GetPage(
@@ -84,19 +137,19 @@ void main() {
         page: () => ListProductPage(
           title: Get.parameters['title'],
         ),
-        transition: Transition.size,
+        transition: Transition.cupertinoDialog,
         transitionDuration: Duration(milliseconds: 400),
       ),
       GetPage(
         name: '/myvoucher',
         page: () => MyVoucherPage(),
-        transition: Transition.size,
+        transition: Transition.cupertinoDialog,
         transitionDuration: Duration(milliseconds: 400),
       ),
       GetPage(
         name: '/mypoints',
         page: () => MyPointsPage(),
-        transition: Transition.size,
+        transition: Transition.cupertinoDialog,
         transitionDuration: Duration(milliseconds: 400),
       ),
     ],
