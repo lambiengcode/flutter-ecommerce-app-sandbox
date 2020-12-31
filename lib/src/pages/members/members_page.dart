@@ -4,7 +4,8 @@ import 'package:get/get.dart';
 import 'package:now/src/models/member.dart';
 import 'package:now/src/pages/members/widgets/bar_chart.dart';
 import 'package:now/src/pages/members/widgets/bottom_info.dart';
-import 'package:now/src/widgets/voucher_card.dart';
+import 'package:now/src/widgets/product_horizontal_card.dart';
+import 'package:now/src/widgets/voucher_horizontal_card.dart';
 
 class MembersPage extends StatefulWidget {
   @override
@@ -58,6 +59,24 @@ class _MembersPage extends State<MembersPage> {
               SizedBox(
                 height: 20.0,
               ),
+              _buildTitle(context, 'Orders'),
+              SizedBox(
+                height: 12.0,
+              ),
+              Container(
+                alignment: Alignment.bottomCenter,
+                padding: EdgeInsets.fromLTRB(2.0, 2.0, 2.0, 4.0),
+                height: _size.width * .6,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 10,
+                  itemBuilder: (context, index) {
+                    return ProductHorizontalCard(
+                      index: index,
+                    );
+                  },
+                ),
+              ),
               _buildTitle(context, 'Products'),
               SizedBox(
                 height: 12.0,
@@ -68,9 +87,11 @@ class _MembersPage extends State<MembersPage> {
                 height: _size.width * .6,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: 3,
+                  itemCount: 10,
                   itemBuilder: (context, index) {
-                    return _buildVoucherItem(context, index);
+                    return ProductHorizontalCard(
+                      index: index,
+                    );
                   },
                 ),
               ),

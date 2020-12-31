@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../home/widgets/build_product_card.dart';
+
 class SavePage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _SavePageState();
@@ -24,7 +26,14 @@ class _SavePageState extends State<SavePage> {
           ),
         ),
       ),
-      body: Container(),
+      body: Container(
+        child: ListView.builder(
+          itemCount: 10,
+          itemBuilder: (context, index) {
+            return BuildProductCard();
+          },
+        ),
+      ),
     );
   }
 }

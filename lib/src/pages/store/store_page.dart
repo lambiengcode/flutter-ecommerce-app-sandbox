@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:now/src/pages/store/widgets/carousel_banner.dart';
+import 'package:now/src/widgets/product_horizontal_card.dart';
+import 'package:now/src/widgets/product_vertical_card.dart';
+
+import '../../models/access.dart';
 
 class StorePage extends StatefulWidget {
   final String id;
@@ -29,7 +34,8 @@ class _StorePageState extends State<StorePage> {
                 width: _size.width,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('images/avt.jpg'),
+                    image: NetworkImage(
+                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZtBOhWrJ-JNJ3hpZEuS6T_G5A14e3GbWXMA&usqp=CAU'),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -147,6 +153,65 @@ class _StorePageState extends State<StorePage> {
                 height: 20.0,
               ),
               _buildHorizontalGroup(context, 'On Sale'),
+              SizedBox(
+                height: 20.0,
+              ),
+              Container(
+                height: _size.height * .15,
+                margin: EdgeInsets.symmetric(
+                  horizontal: 10.0,
+                ),
+                child: CarouselBanner(),
+              ),
+              SizedBox(
+                height: 24.0,
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 12.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'All Product',
+                      style: TextStyle(
+                        fontSize: _size.width / 22.5,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () => Get.toNamed('/productlist/All Product'),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Text(
+                            'See More',
+                            style: TextStyle(
+                              fontSize: _size.width / 26.5,
+                              color: Colors.blueAccent,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 4.0,
+                          ),
+                          Icon(
+                            Feather.arrow_right,
+                            color: Colors.blueAccent,
+                            size: _size.width / 20.0,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 12.0,
+              ),
+              ...actions.map((item) {
+                return ProductVerticalCard();
+              }).toList(),
             ],
           ),
         ),
@@ -157,7 +222,7 @@ class _StorePageState extends State<StorePage> {
   Widget _buildHorizontalGroup(context, title) {
     final _size = MediaQuery.of(context).size;
     return Container(
-      height: _size.width * .67,
+      height: _size.width * .675,
       decoration: BoxDecoration(
         color: Colors.white,
         boxShadow: [
@@ -188,7 +253,7 @@ class _StorePageState extends State<StorePage> {
                   ),
                 ),
                 GestureDetector(
-                  onTap: () => Get.toNamed('/freeship'),
+                  onTap: () => Get.toNamed('/productlist/$title'),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -223,55 +288,13 @@ class _StorePageState extends State<StorePage> {
             scrollDirection: Axis.horizontal,
             itemCount: 10,
             itemBuilder: (context, index) {
-              return Container(
-                margin: EdgeInsets.only(
-                  left: index != 0 ? 10.0 : 6.0,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Container(
-                      height: _size.width * .4,
-                      width: _size.width * .4,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(
-                          2.0,
-                        ),
-                        image: DecorationImage(
-                          image: NetworkImage(
-                              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRcMynRQ0TtZ0YwF6jgzgqqiZ4ukK7s5Qjrg&usqp=CAU'),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 6.0,
-                    ),
-                    Container(
-                      width: _size.width * .4,
-                      child: Text(
-                        'Free Ship Highland Coffee',
-                        style: TextStyle(
-                          fontSize: _size.width / 24.0,
-                          color: Colors.grey.shade800,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+              return ProductHorizontalCard(
+                index: index,
               );
             },
           )),
         ],
       ),
-    );
-  }
-
-  Widget _buildVerticalGroup(context) {
-    return Container(
-      height: 200.0,
     );
   }
 }

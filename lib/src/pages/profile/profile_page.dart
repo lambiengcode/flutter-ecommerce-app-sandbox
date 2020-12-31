@@ -213,6 +213,12 @@ class _ProfilePageState extends State<ProfilePage> {
     return GestureDetector(
       onTap: () {
         switch (title) {
+          case 'My Voucher':
+            Get.toNamed('/myvoucher');
+            break;
+          case 'My Points':
+            Get.toNamed('/mypoints');
+            break;
           case 'For Shop Owner':
             Get.toNamed('/owner');
             break;

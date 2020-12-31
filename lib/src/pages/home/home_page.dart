@@ -5,7 +5,7 @@ import 'package:now/src/models/access.dart';
 import 'package:now/src/models/voucher.dart';
 import 'package:now/src/pages/home/widgets/build_product_card.dart';
 import 'package:now/src/pages/home/widgets/carousel_widget.dart';
-import 'package:now/src/widgets/voucher_card.dart';
+import 'package:now/src/widgets/voucher_horizontal_card.dart';
 
 import '../../models/access.dart';
 

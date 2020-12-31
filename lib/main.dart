@@ -6,6 +6,10 @@ import 'package:now/src/pages/home/widgets/freeship_list_page.dart';
 import 'package:now/src/pages/home/widgets/voucher_list_page.dart';
 import 'package:now/src/pages/members/pages/products_page.dart';
 import 'package:now/src/pages/members/pages/vouchers_page.dart';
+import 'package:now/src/pages/profile/pages/my_points_page.dart';
+import 'package:now/src/pages/profile/pages/my_voucher_page.dart';
+import 'package:now/src/pages/store/pages/list_product_page.dart';
+import 'package:now/src/pages/store/pages/product_page.dart';
 import 'package:now/src/pages/store/store_page.dart';
 
 import 'src/pages/members/members_page.dart';
@@ -67,6 +71,32 @@ void main() {
         name: '/vouchers',
         page: () => VouchersPage(),
         transition: Transition.zoom,
+        transitionDuration: Duration(milliseconds: 400),
+      ),
+      GetPage(
+        name: '/product',
+        page: () => ProductPage(),
+        transition: Transition.size,
+        transitionDuration: Duration(milliseconds: 400),
+      ),
+      GetPage(
+        name: '/productlist/:title',
+        page: () => ListProductPage(
+          title: Get.parameters['title'],
+        ),
+        transition: Transition.size,
+        transitionDuration: Duration(milliseconds: 400),
+      ),
+      GetPage(
+        name: '/myvoucher',
+        page: () => MyVoucherPage(),
+        transition: Transition.size,
+        transitionDuration: Duration(milliseconds: 400),
+      ),
+      GetPage(
+        name: '/mypoints',
+        page: () => MyPointsPage(),
+        transition: Transition.size,
         transitionDuration: Duration(milliseconds: 400),
       ),
     ],

@@ -29,6 +29,7 @@ class _OrdersPageState extends State<OrdersPage>
     final _size = MediaQuery.of(context).size;
     return Scaffold(
       body: Container(
+        color: Colors.white,
         child: Column(
           children: [
             SizedBox(

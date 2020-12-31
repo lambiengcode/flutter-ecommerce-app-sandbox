@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:get/get.dart';
+import 'package:now/src/models/voucher.dart';
+import 'package:now/src/widgets/voucher_verical_card.dart';
 
-class VouchersPage extends StatefulWidget {
+class ManageVouchersPage extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => _VouchersPageState();
+  State<StatefulWidget> createState() => _ManageVouchersPageState();
 }
 
-class _VouchersPageState extends State<VouchersPage> {
+class _ManageVouchersPageState extends State<ManageVouchersPage> {
   @override
   Widget build(BuildContext context) {
     final _size = MediaQuery.of(context).size;
@@ -43,6 +45,17 @@ class _VouchersPageState extends State<VouchersPage> {
             ),
           ),
         ],
+      ),
+      body: Container(
+        child: ListView.builder(
+          itemCount: vouchers.length,
+          itemBuilder: (context, index) {
+            return VoucherVerticalCard(
+              title: vouchers[index].title,
+              urlToImage: vouchers[index].urlToImage,
+            );
+          },
+        ),
       ),
     );
   }
