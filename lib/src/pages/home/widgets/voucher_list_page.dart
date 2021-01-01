@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:get/get.dart';
-
-import 'build_product_card.dart';
+import 'package:now/src/models/voucher.dart';
+import 'package:now/src/widgets/voucher_verical_card.dart';
 
 class VoucherListPage extends StatefulWidget {
   @override
@@ -37,9 +37,12 @@ class _VoucherListPageState extends State<VoucherListPage> {
       ),
       body: Container(
         child: ListView.builder(
-          itemCount: 10,
+          itemCount: vouchers.length,
           itemBuilder: (context, index) {
-            return BuildProductCard();
+            return VoucherVerticalCard(
+              title: vouchers[index].title,
+              urlToImage: vouchers[index].urlToImage,
+            );
           },
         ),
       ),

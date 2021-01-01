@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:now/src/pages/members/widgets/bottom_delete.dart';
 
-class ManageProductHorizontalCard extends StatefulWidget {
+class ManageOrdersHorizontalCard extends StatefulWidget {
   final int index;
-  ManageProductHorizontalCard({this.index});
+  ManageOrdersHorizontalCard({this.index});
   @override
-  State<StatefulWidget> createState() => _ManageProductHorizontalCardState();
+  State<StatefulWidget> createState() => _ManageOrdersHorizontalCardState();
 }
 
-class _ManageProductHorizontalCardState
-    extends State<ManageProductHorizontalCard> {
+class _ManageOrdersHorizontalCardState
+    extends State<ManageOrdersHorizontalCard> {
   String urlToImage =
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRcMynRQ0TtZ0YwF6jgzgqqiZ4ukK7s5Qjrg&usqp=CAU';
 
@@ -33,8 +33,7 @@ class _ManageProductHorizontalCardState
   Widget build(BuildContext context) {
     final _size = MediaQuery.of(context).size;
     return GestureDetector(
-      onTap: () => Get.toNamed('/editproduct/Coffee Sofresh/39000/49000/59000',
-          arguments: urlToImage),
+      onTap: () => Get.toNamed('/detailsorder'),
       onLongPress: () => showDeleteBottomSheet(),
       child: Container(
         margin: EdgeInsets.only(
@@ -48,12 +47,9 @@ class _ManageProductHorizontalCardState
               height: _size.width * .4,
               width: _size.width * .4,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(
-                  2.0,
-                ),
+                color: Colors.white,
                 image: DecorationImage(
-                  image: NetworkImage(
-                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRcMynRQ0TtZ0YwF6jgzgqqiZ4ukK7s5Qjrg&usqp=CAU'),
+                  image: NetworkImage(urlToImage),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -64,7 +60,7 @@ class _ManageProductHorizontalCardState
             Container(
               width: _size.width * .4,
               child: Text(
-                'Coffee Sofresh',
+                'Hồng Vinh | 7 Items',
                 style: TextStyle(
                   fontSize: _size.width / 24.0,
                   color: Colors.grey.shade800,
@@ -78,7 +74,7 @@ class _ManageProductHorizontalCardState
             Container(
               width: _size.width * .4,
               child: Text(
-                '39,000đ',
+                '139,000đ',
                 style: TextStyle(
                   fontSize: _size.width / 26.0,
                   color: Colors.grey.shade900,

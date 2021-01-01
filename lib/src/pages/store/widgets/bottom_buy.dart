@@ -63,7 +63,7 @@ class _BottomBuyState extends State<BottomBuy> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             SizedBox(
-              height: 10.0,
+              height: 4.0,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -89,9 +89,6 @@ class _BottomBuyState extends State<BottomBuy> {
                 Container(),
                 Container(),
               ],
-            ),
-            SizedBox(
-              height: 6.0,
             ),
             Divider(
               height: .25,
@@ -389,7 +386,7 @@ class _BottomBuyState extends State<BottomBuy> {
               ),
             ),
             SizedBox(
-              height: 24.0,
+              height: 12.0,
             ),
           ],
         ),

@@ -86,53 +86,52 @@ class _AddProductPageState extends State<AddProductPage> {
                   ),
                 ],
               ),
-              SizedBox(
-                height: 4.0,
-              ),
               Container(
-                padding: EdgeInsets.symmetric(vertical: 16.0, horizontal: 24.0),
+                height: 52.0,
+                margin: EdgeInsets.all(24.0),
+                padding: EdgeInsets.fromLTRB(16.0, 2.0, 16.0, 0.0),
                 decoration: BoxDecoration(
-                    border:
-                        Border(bottom: BorderSide(color: Colors.grey[200]))),
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(
+                    6.0,
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Color(0xFFABBAD5),
+                      spreadRadius: 1.85,
+                      blurRadius: 1.85,
+                      offset: Offset(2.0, 2.5), // changes position of shadow
+                    ),
+                  ],
+                ),
                 child: TextFormField(
+                  keyboardType: TextInputType.text,
                   style: TextStyle(
                     color: Colors.black87,
-                    fontSize: _size.width / 24,
-                    fontWeight: FontWeight.w400,
+                    fontSize: _size.width / 26,
+                    fontWeight: FontWeight.w600,
                   ),
-                  validator: (val) =>
-                      val.length == 0 ? 'Enter your Email' : null,
+                  textAlign: TextAlign.start,
+                  validator: (val) => val.length == 0 ? 'Enter Title' : null,
                   onChanged: (val) => _title = val.trim(),
                   decoration: InputDecoration(
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(
-                        8.0,
-                      ),
-                      borderSide: BorderSide(
-                        color: Colors.grey.shade400,
-                        width: 2.5,
-                      ),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(
-                        8.0,
-                      ),
-                      borderSide: BorderSide(
-                        color: Colors.blueAccent,
-                        width: 2.5,
-                      ),
-                    ),
+                    border: InputBorder.none,
                     hintText: "Title",
                     hintStyle: TextStyle(
                       color: Colors.grey,
-                      fontSize: _size.width / 24,
-                      fontWeight: FontWeight.w400,
+                      fontSize: _size.width / 28,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
                 ),
               ),
+              Divider(
+                height: .25,
+                thickness: .25,
+                color: Colors.grey.shade400,
+              ),
               SizedBox(
-                height: 12.0,
+                height: 16.0,
               ),
               Padding(
                 padding: EdgeInsets.symmetric(
@@ -411,7 +410,7 @@ class _AddProductPageState extends State<AddProductPage> {
               ),
             ),
             SizedBox(
-              height: 36.0,
+              height: 24.0,
             ),
           ],
         ),

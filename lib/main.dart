@@ -6,8 +6,11 @@ import 'package:now/src/pages/home/widgets/freeship_list_page.dart';
 import 'package:now/src/pages/home/widgets/voucher_list_page.dart';
 import 'package:now/src/pages/members/pages/add_product_page.dart';
 import 'package:now/src/pages/members/pages/add_voucher_page.dart';
+import 'package:now/src/pages/members/pages/details_order_page.dart';
 import 'package:now/src/pages/members/pages/edit_product_page.dart';
+import 'package:now/src/pages/members/pages/edit_store_page.dart';
 import 'package:now/src/pages/members/pages/edit_voucher_page.dart';
+import 'package:now/src/pages/members/pages/manage_members_page.dart';
 import 'package:now/src/pages/members/pages/manage_orders_page.dart';
 import 'package:now/src/pages/members/pages/manage_products_page.dart';
 import 'package:now/src/pages/members/pages/manage_vouchers_page.dart';
@@ -68,7 +71,15 @@ void main() {
       ),
 
       // For owner shop
-
+      GetPage(
+        name: '/editstore/:title',
+        page: () => EditStorePage(
+          title: Get.parameters['title'],
+          urlToImage: Get.arguments,
+        ),
+        transition: Transition.zoom,
+        transitionDuration: Duration(milliseconds: 400),
+      ),
       GetPage(
         name: '/orders',
         page: () => ManageOrdersPage(),
@@ -84,6 +95,12 @@ void main() {
       GetPage(
         name: '/vouchers',
         page: () => ManageVouchersPage(),
+        transition: Transition.zoom,
+        transitionDuration: Duration(milliseconds: 400),
+      ),
+      GetPage(
+        name: '/members',
+        page: () => ManageMembersPage(),
         transition: Transition.zoom,
         transitionDuration: Duration(milliseconds: 400),
       ),
@@ -122,6 +139,12 @@ void main() {
           percent: Get.parameters['percent'] == 'true' ? true : false,
           urlToImage: Get.arguments,
         ),
+        transition: Transition.cupertinoDialog,
+        transitionDuration: Duration(milliseconds: 400),
+      ),
+      GetPage(
+        name: '/detailsorder',
+        page: () => DetailsOrderPage(),
         transition: Transition.cupertinoDialog,
         transitionDuration: Duration(milliseconds: 400),
       ),

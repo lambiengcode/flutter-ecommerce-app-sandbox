@@ -46,6 +46,9 @@ dependencies:
   image_picker: ^0.6.4
   emoji_picker: ^0.1.0
 
+  location: ^3.2.1
+  geocoder: ^0.2.1
+
   fl_chart: ^0.9.4
   bubble_tab_indicator: ^0.1.4
   file_picker: ^1.4.0

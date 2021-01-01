@@ -1,25 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:get/get.dart';
+import 'package:now/src/models/member.dart';
+import 'package:now/src/pages/members/widgets/manage_member_vertical_card.dart';
 
-import '../widgets/build_product_card.dart';
-
-class CategoriesPage extends StatefulWidget {
-  final String title;
-  CategoriesPage({this.title});
+class ManageMembersPage extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => _CategoriesPageState();
+  State<StatefulWidget> createState() => _ManageMembersPageState();
 }
 
-class _CategoriesPageState extends State<CategoriesPage> {
+class _ManageMembersPageState extends State<ManageMembersPage> {
   @override
   Widget build(BuildContext context) {
     final _size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        brightness: Brightness.light,
+        elevation: .0,
         backgroundColor: Colors.white,
-        elevation: 2.5,
+        brightness: Brightness.light,
         centerTitle: true,
         leading: IconButton(
           onPressed: () => Get.back(),
@@ -30,19 +28,23 @@ class _CategoriesPageState extends State<CategoriesPage> {
           ),
         ),
         title: Text(
-          widget.title,
+          'Members',
           style: TextStyle(
             fontSize: _size.width / 21.5,
-            fontWeight: FontWeight.bold,
             color: Colors.black,
+            fontWeight: FontWeight.bold,
           ),
         ),
       ),
       body: Container(
         child: ListView.builder(
-          itemCount: 10,
+          itemCount: members.length,
           itemBuilder: (context, index) {
-            return BuildProductCard();
+            return ManageMemberVerticalCard(
+              urlToImage: members[index].urlToImage,
+              username: members[index].username,
+              online: index % 2 == 0,
+            );
           },
         ),
       ),

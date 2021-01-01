@@ -145,8 +145,47 @@ class _StorePageState extends State<StorePage> {
                   ],
                 ),
               ),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  vertical: 6.0,
+                  horizontal: 14.0,
+                ),
+                child: RichText(
+                  text: TextSpan(
+                    children: [
+                      TextSpan(
+                        text: 'Open: ',
+                        style: TextStyle(
+                          fontSize: _size.width / 24.0,
+                          color: Colors.grey.shade800,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      TextSpan(
+                        text: '6:00 - 22:00',
+                        style: TextStyle(
+                          fontSize: _size.width / 26.0,
+                          color: Colors.blueAccent.shade700,
+                          fontWeight: FontWeight.w600,
+                          fontStyle: FontStyle.italic,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
               SizedBox(
-                height: 20.0,
+                height: 12.0,
+              ),
+              Divider(
+                thickness: .4,
+                height: .4,
+                color: Colors.grey.shade400,
+                indent: 12.0,
+                endIndent: 12.0,
+              ),
+              SizedBox(
+                height: 8.0,
               ),
               _buildHorizontalGroup(context, 'Popular Items'),
               SizedBox(

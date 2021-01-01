@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:now/src/widgets/top_snackbar.dart';
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -210,6 +211,11 @@ class _ProfilePageState extends State<ProfilePage> {
 
   Widget _buildAction(context, title, icon) {
     final _size = MediaQuery.of(context).size;
+    GetSnackBar getSnackBar = GetSnackBar(
+      title: 'Comming Soon!',
+      subTitle: 'This feature will available in next update',
+      size: _size,
+    );
     return GestureDetector(
       onTap: () {
         switch (title) {
@@ -218,6 +224,15 @@ class _ProfilePageState extends State<ProfilePage> {
             break;
           case 'My Points':
             Get.toNamed('/mypoints');
+            break;
+          case 'Payment':
+            getSnackBar.show();
+            break;
+          case 'Term & Policy':
+            getSnackBar.show();
+            break;
+          case 'About App':
+            getSnackBar.show();
             break;
           case 'For Shop Owner':
             Get.toNamed('/owner');

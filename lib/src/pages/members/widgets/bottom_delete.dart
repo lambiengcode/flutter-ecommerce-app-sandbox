@@ -114,7 +114,7 @@ class _BottomDeleteState extends State<BottomDelete> {
               ),
             ),
             SizedBox(
-              height: 36.0,
+              height: 24.0,
             ),
           ],
         ),

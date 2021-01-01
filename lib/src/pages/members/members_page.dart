@@ -5,10 +5,9 @@ import 'package:now/src/models/member.dart';
 import 'package:now/src/models/voucher.dart';
 import 'package:now/src/pages/members/widgets/bar_chart.dart';
 import 'package:now/src/pages/members/widgets/bottom_info.dart';
+import 'package:now/src/pages/members/widgets/manage_orders_horizontal_card.dart';
 import 'package:now/src/pages/members/widgets/manage_product_horizontal_card.dart';
 import 'package:now/src/pages/members/widgets/manage_voucher_horizontal_card.dart';
-import 'package:now/src/widgets/product_horizontal_card.dart';
-import 'package:now/src/widgets/voucher_horizontal_card.dart';
 
 class MembersPage extends StatefulWidget {
   @override
@@ -43,7 +42,11 @@ class _MembersPage extends State<MembersPage> {
         ),
         actions: [
           IconButton(
-            onPressed: () => null,
+            onPressed: () => Get.toNamed(
+              '/editstore/Highlands Coffee',
+              arguments:
+                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZtBOhWrJ-JNJ3hpZEuS6T_G5A14e3GbWXMA&usqp=CAU',
+            ),
             icon: Icon(
               Feather.sliders,
               size: _size.width / 18.0,
@@ -74,9 +77,7 @@ class _MembersPage extends State<MembersPage> {
                   scrollDirection: Axis.horizontal,
                   itemCount: 10,
                   itemBuilder: (context, index) {
-                    return ProductHorizontalCard(
-                      index: index,
-                    );
+                    return ManageOrdersHorizontalCard();
                   },
                 ),
               ),
@@ -213,20 +214,20 @@ class _MembersPage extends State<MembersPage> {
               ),
               alignment: Alignment.bottomRight,
               padding: EdgeInsets.only(
-                right: 6.0,
+                right: 4.0,
                 bottom: 2.0,
               ),
               child: Container(
-                height: 16.0,
-                width: 16.0,
+                height: 20.0,
+                width: 20.0,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: Colors.white,
                 ),
                 alignment: Alignment.center,
                 child: Container(
-                  height: 12.0,
-                  width: 12.0,
+                  height: 14.0,
+                  width: 14.0,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: index % 2 == 0 ? Color(0xFF00D300) : Colors.grey,
@@ -274,7 +275,7 @@ class _MembersPage extends State<MembersPage> {
                 Text(
                   'See All',
                   style: TextStyle(
-                    fontSize: _size.width / 26.5,
+                    fontSize: _size.width / 23.5,
                     color: Colors.blueAccent,
                     fontWeight: FontWeight.bold,
                   ),

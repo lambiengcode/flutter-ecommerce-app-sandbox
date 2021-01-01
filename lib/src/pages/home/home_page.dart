@@ -6,6 +6,9 @@ import 'package:now/src/models/voucher.dart';
 import 'package:now/src/pages/home/widgets/build_product_card.dart';
 import 'package:now/src/pages/home/widgets/carousel_widget.dart';
 import 'package:now/src/widgets/voucher_horizontal_card.dart';
+import 'package:location/location.dart';
+import 'package:geocoder/geocoder.dart';
+import 'package:flutter/services.dart';
 
 import '../../models/access.dart';
 
@@ -19,6 +22,38 @@ class _HomePageState extends State<HomePage>
   TabController _tabController;
   ScrollController scrollController = new ScrollController();
   final dataKey = new GlobalKey();
+  LocationData currentLocation;
+  Future<dynamic> _myLocation;
+
+  getUserLocation() async {
+    //call this async method from whereever you need
+
+    LocationData myLocation;
+    String error;
+    Location location = new Location();
+    try {
+      myLocation = await location.getLocation();
+    } on PlatformException catch (e) {
+      if (e.code == 'PERMISSION_DENIED') {
+        error = 'please grant permission';
+        print(error);
+      }
+      if (e.code == 'PERMISSION_DENIED_NEVER_ASK') {
+        error = 'permission denied- please enable it from app settings';
+        print(error);
+      }
+      myLocation = null;
+    }
+    currentLocation = myLocation;
+    final coordinates =
+        new Coordinates(myLocation.latitude, myLocation.longitude);
+    var addresses =
+        await Geocoder.local.findAddressesFromCoordinates(coordinates);
+    var first = addresses.first;
+    String result = '${first.addressLine}';
+    print(result);
+    return result;
+  }
 
   @override
   void initState() {
@@ -28,6 +63,7 @@ class _HomePageState extends State<HomePage>
       length: 3,
       initialIndex: 0,
     );
+    _myLocation = getUserLocation();
   }
 
   @override
@@ -109,12 +145,44 @@ class _HomePageState extends State<HomePage>
                     SizedBox(
                       width: 10.0,
                     ),
-                    Text(
-                      '1 Vo Van Ngan, Linh Chieu, Thu Duc,...',
-                      style: TextStyle(
-                        fontSize: _size.width / 23.5,
-                        fontStyle: FontStyle.italic,
-                        color: Colors.grey.shade800,
+                    Expanded(
+                      child: FutureBuilder(
+                        future: _myLocation,
+                        builder: (context, snapshot) {
+                          switch (snapshot.connectionState) {
+                            case ConnectionState.waiting:
+                              return Text(
+                                'Thành Phố Hồ Chí Minh',
+                                style: TextStyle(
+                                  color: Colors.grey.shade800,
+                                  fontSize: _size.width / 26.0,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              );
+                            default:
+                              if (snapshot.hasError) {
+                                return Text(
+                                  'Thành Phố Hồ Chí Minh',
+                                  style: TextStyle(
+                                    color: Colors.grey.shade800,
+                                    fontSize: _size.width / 26.0,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                );
+                              }
+
+                              return Text(
+                                snapshot.data.toString().substring(0,
+                                        snapshot.data.toString().length - 22) +
+                                    '...',
+                                style: TextStyle(
+                                  color: Colors.grey.shade800,
+                                  fontSize: _size.width / 26.0,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              );
+                          }
+                        },
                       ),
                     ),
                   ],
@@ -184,7 +252,7 @@ class _HomePageState extends State<HomePage>
                 height: 8.0,
               ),
               Container(
-                height: _size.width * .445,
+                height: 190.0,
                 child: GridView.builder(
                   padding: EdgeInsets.symmetric(
                     horizontal: 8.0,
@@ -235,7 +303,7 @@ class _HomePageState extends State<HomePage>
                           Text(
                             actions[index].title,
                             style: TextStyle(
-                              fontSize: _size.width / 30.0,
+                              fontSize: _size.width / 32.0,
                               color: Colors.grey.shade900,
                               fontWeight: FontWeight.w500,
                             ),

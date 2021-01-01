@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:get/get.dart';
+import 'package:now/src/pages/members/widgets/manage_orders_vertical_card.dart';
 
 class ManageOrdersPage extends StatefulWidget {
   @override
@@ -11,9 +12,39 @@ class _ManageOrdersPageState extends State<ManageOrdersPage>
     with SingleTickerProviderStateMixin {
   TabController _tabController;
   List<Widget> _pages = [
-    Container(),
-    Container(),
-    Container(),
+    Container(
+      child: ListView.builder(
+        padding: EdgeInsets.only(top: .0),
+        itemCount: 10,
+        itemBuilder: (context, index) {
+          return ManageOrdersVerticalCard(
+            state: 'Pending',
+          );
+        },
+      ),
+    ),
+    Container(
+      child: ListView.builder(
+        padding: EdgeInsets.only(top: .0),
+        itemCount: 10,
+        itemBuilder: (context, index) {
+          return ManageOrdersVerticalCard(
+            state: 'Ongoing',
+          );
+        },
+      ),
+    ),
+    Container(
+      child: ListView.builder(
+        padding: EdgeInsets.only(top: .0),
+        itemCount: 10,
+        itemBuilder: (context, index) {
+          return ManageOrdersVerticalCard(
+            state: 'History',
+          );
+        },
+      ),
+    ),
   ];
 
   @override
@@ -33,13 +64,13 @@ class _ManageOrdersPageState extends State<ManageOrdersPage>
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.blueAccent,
         child: Icon(
-          Feather.arrow_left,
+          Feather.check_circle,
           color: Colors.white,
           size: _size.width / 18.0,
         ),
         onPressed: () => Get.back(),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.startDocked,
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
       body: Container(
         color: Colors.white,

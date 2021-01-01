@@ -2,37 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:now/src/pages/members/widgets/bottom_delete.dart';
 
-class ManageProductVerticalCard extends StatefulWidget {
+class ProductDetailsCard extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => _ManageProductVerticalCardState();
+  State<StatefulWidget> createState() => _ProductDetailsCardState();
 }
 
-class _ManageProductVerticalCardState extends State<ManageProductVerticalCard> {
-  String urlToImage =
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRcMynRQ0TtZ0YwF6jgzgqqiZ4ukK7s5Qjrg&usqp=CAU';
-
-  void showDeleteBottomSheet() {
-    showModalBottomSheet(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(
-          Radius.circular(4.0),
-        ),
-      ),
-      isScrollControlled: true,
-      context: context,
-      builder: (context) {
-        return BottomDelete();
-      },
-    );
-  }
-
+class _ProductDetailsCardState extends State<ProductDetailsCard> {
   @override
   Widget build(BuildContext context) {
     final _size = MediaQuery.of(context).size;
     return GestureDetector(
-      onTap: () => Get.toNamed('/editproduct/Coffee Sofresh/39000/49000/59000',
-          arguments: urlToImage),
-      onLongPress: () => showDeleteBottomSheet(),
       child: Container(
         margin: EdgeInsets.only(
           bottom: 4.0,
@@ -91,20 +70,34 @@ class _ManageProductVerticalCardState extends State<ManageProductVerticalCard> {
                           ),
                         ),
                         SizedBox(
-                          height: 4.0,
+                          height: 4.5,
                         ),
-                        Text(
-                          '500 Sold | 1 like',
-                          style: TextStyle(
-                            color: Colors.grey.shade800,
-                            fontSize: _size.width / 28.0,
-                            fontWeight: FontWeight.w400,
+                        RichText(
+                          text: TextSpan(
+                            children: [
+                              TextSpan(
+                                text: 'Quantity: ',
+                                style: TextStyle(
+                                  fontSize: _size.width / 26.0,
+                                  color: Colors.grey.shade800,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                              TextSpan(
+                                text: '12',
+                                style: TextStyle(
+                                  fontSize: _size.width / 24.0,
+                                  color: Colors.blueAccent.shade700,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ],
                     ),
                     Text(
-                      '39,000đ',
+                      '239,000đ',
                       style: TextStyle(
                         fontSize: _size.width / 24.0,
                         color: Colors.grey.shade900,

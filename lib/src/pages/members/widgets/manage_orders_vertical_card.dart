@@ -1,45 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:now/src/pages/members/widgets/bottom_delete.dart';
 
-class ManageProductVerticalCard extends StatefulWidget {
+class ManageOrdersVerticalCard extends StatefulWidget {
+  final String state;
+  ManageOrdersVerticalCard({this.state});
   @override
-  State<StatefulWidget> createState() => _ManageProductVerticalCardState();
+  State<StatefulWidget> createState() => _ManageOrdersVerticalCardState();
 }
 
-class _ManageProductVerticalCardState extends State<ManageProductVerticalCard> {
+class _ManageOrdersVerticalCardState extends State<ManageOrdersVerticalCard> {
   String urlToImage =
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRcMynRQ0TtZ0YwF6jgzgqqiZ4ukK7s5Qjrg&usqp=CAU';
-
-  void showDeleteBottomSheet() {
-    showModalBottomSheet(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(
-          Radius.circular(4.0),
-        ),
-      ),
-      isScrollControlled: true,
-      context: context,
-      builder: (context) {
-        return BottomDelete();
-      },
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
     final _size = MediaQuery.of(context).size;
     return GestureDetector(
-      onTap: () => Get.toNamed('/editproduct/Coffee Sofresh/39000/49000/59000',
-          arguments: urlToImage),
-      onLongPress: () => showDeleteBottomSheet(),
+      onTap: () => Get.toNamed('/detailsorder'),
       child: Container(
         margin: EdgeInsets.only(
           bottom: 4.0,
         ),
         padding: EdgeInsets.symmetric(
-          horizontal: 4.0,
-          vertical: 8.0,
+          horizontal: 8.0,
+          vertical: 12.0,
         ),
         decoration: BoxDecoration(
           color: Colors.white,
@@ -57,23 +41,22 @@ class _ManageProductVerticalCardState extends State<ManageProductVerticalCard> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Container(
-              height: _size.width * .25,
-              width: _size.width * .25,
+              height: _size.width * .225,
+              width: _size.width * .225,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(2.0),
+                color: Colors.white,
                 image: DecorationImage(
-                  image: NetworkImage(
-                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRcMynRQ0TtZ0YwF6jgzgqqiZ4ukK7s5Qjrg&usqp=CAU'),
+                  image: NetworkImage(urlToImage),
                   fit: BoxFit.cover,
                 ),
               ),
             ),
             SizedBox(
-              width: 10.0,
+              width: 16.0,
             ),
             Expanded(
               child: Container(
-                height: _size.width * .25,
+                height: _size.width * .225,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -83,7 +66,7 @@ class _ManageProductVerticalCardState extends State<ManageProductVerticalCard> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Text(
-                          'Highlands Coffee',
+                          'Hồng Vinh | 7 Items',
                           style: TextStyle(
                             color: Colors.grey.shade800,
                             fontSize: _size.width / 22.5,
@@ -94,7 +77,7 @@ class _ManageProductVerticalCardState extends State<ManageProductVerticalCard> {
                           height: 4.0,
                         ),
                         Text(
-                          '500 Sold | 1 like',
+                          '02/01/2021',
                           style: TextStyle(
                             color: Colors.grey.shade800,
                             fontSize: _size.width / 28.0,
@@ -103,13 +86,39 @@ class _ManageProductVerticalCardState extends State<ManageProductVerticalCard> {
                         ),
                       ],
                     ),
-                    Text(
-                      '39,000đ',
-                      style: TextStyle(
-                        fontSize: _size.width / 24.0,
-                        color: Colors.grey.shade900,
-                        fontWeight: FontWeight.bold,
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        GestureDetector(
+                          onTap: () => null,
+                          child: Text(
+                            widget.state == 'Pending'
+                                ? 'ACCEPT'
+                                : widget.state == 'Ongoing'
+                                    ? 'DONE'
+                                    : 'VIEW DETAILS',
+                            style: TextStyle(
+                              fontSize: _size.width / 28.0,
+                              color: Colors.blueAccent.shade400,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 16.0,
+                        ),
+                        GestureDetector(
+                          onTap: () => null,
+                          child: Text(
+                            widget.state == 'Pending' ? 'CANCEL' : '',
+                            style: TextStyle(
+                              fontSize: _size.width / 28.0,
+                              color: Colors.grey.shade700,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
