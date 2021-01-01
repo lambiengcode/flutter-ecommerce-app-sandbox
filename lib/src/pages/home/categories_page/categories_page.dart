@@ -32,7 +32,7 @@ class _CategoriesPageState extends State<CategoriesPage> {
         title: Text(
           widget.title,
           style: TextStyle(
-            fontSize: _size.width / 21.5,
+            fontSize: _size.width / 20.0,
             fontWeight: FontWeight.bold,
             color: Colors.black,
           ),

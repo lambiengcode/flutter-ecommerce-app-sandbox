@@ -16,14 +16,14 @@ class _ManageOrdersVerticalCardState extends State<ManageOrdersVerticalCard> {
   Widget build(BuildContext context) {
     final _size = MediaQuery.of(context).size;
     return GestureDetector(
-      onTap: () => Get.toNamed('/detailsorder'),
+      onTap: () => Get.toNamed('/detailsorder/${widget.state}'),
       child: Container(
         margin: EdgeInsets.only(
           bottom: 4.0,
         ),
         padding: EdgeInsets.symmetric(
-          horizontal: 8.0,
-          vertical: 12.0,
+          horizontal: 4.0,
+          vertical: 6.0,
         ),
         decoration: BoxDecoration(
           color: Colors.white,
@@ -41,8 +41,8 @@ class _ManageOrdersVerticalCardState extends State<ManageOrdersVerticalCard> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Container(
-              height: _size.width * .225,
-              width: _size.width * .225,
+              height: _size.width * .25,
+              width: _size.width * .25,
               decoration: BoxDecoration(
                 color: Colors.white,
                 image: DecorationImage(
@@ -52,7 +52,7 @@ class _ManageOrdersVerticalCardState extends State<ManageOrdersVerticalCard> {
               ),
             ),
             SizedBox(
-              width: 16.0,
+              width: 12.0,
             ),
             Expanded(
               child: Container(

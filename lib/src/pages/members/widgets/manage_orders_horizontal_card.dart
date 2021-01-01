@@ -4,7 +4,8 @@ import 'package:now/src/pages/members/widgets/bottom_delete.dart';
 
 class ManageOrdersHorizontalCard extends StatefulWidget {
   final int index;
-  ManageOrdersHorizontalCard({this.index});
+  final String state;
+  ManageOrdersHorizontalCard({this.index, this.state});
   @override
   State<StatefulWidget> createState() => _ManageOrdersHorizontalCardState();
 }
@@ -12,7 +13,7 @@ class ManageOrdersHorizontalCard extends StatefulWidget {
 class _ManageOrdersHorizontalCardState
     extends State<ManageOrdersHorizontalCard> {
   String urlToImage =
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRcMynRQ0TtZ0YwF6jgzgqqiZ4ukK7s5Qjrg&usqp=CAU';
+      'https://images.unsplash.com/photo-1462917882517-e150004895fa?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mjd8fGNvZmZlZXxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60';
 
   void showDeleteBottomSheet() {
     showModalBottomSheet(
@@ -33,11 +34,11 @@ class _ManageOrdersHorizontalCardState
   Widget build(BuildContext context) {
     final _size = MediaQuery.of(context).size;
     return GestureDetector(
-      onTap: () => Get.toNamed('/detailsorder'),
+      onTap: () => Get.toNamed('/detailsorder/${widget.state}'),
       onLongPress: () => showDeleteBottomSheet(),
       child: Container(
         margin: EdgeInsets.only(
-          left: widget.index != 0 ? 10.0 : 6.0,
+          left: 6.0,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

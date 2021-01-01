@@ -110,7 +110,8 @@ class _BottomBuyState extends State<BottomBuy> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12.0),
                       image: DecorationImage(
-                        image: AssetImage('images/avt.jpg'),
+                        image: NetworkImage(
+                            'https://www.highlandscoffee.com.vn/vnt_upload/product/03_2018/thumbs/270_crop_LATTE.png'),
                         fit: BoxFit.cover,
                       ),
                     ),

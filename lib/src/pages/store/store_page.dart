@@ -16,243 +16,269 @@ class StorePage extends StatefulWidget {
 }
 
 class _StorePageState extends State<StorePage> {
+  ScrollController _scrollController = new ScrollController();
+  bool _showAppBar = true;
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final _size = MediaQuery.of(context).size;
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        elevation: .0,
+        backgroundColor: _showAppBar ? Colors.transparent : Colors.white,
+        leading: IconButton(
+          onPressed: () => Get.back(),
+          icon: Icon(
+            Feather.arrow_left,
+            color: Colors.black,
+            size: _size.width / 15.0,
+          ),
+        ),
+        actions: [
+          IconButton(
+            onPressed: () => Get.back(),
+            icon: Icon(
+              Feather.search,
+              color: Colors.black,
+              size: _size.width / 15.0,
+            ),
+          ),
+          IconButton(
+            onPressed: () => Get.back(),
+            icon: Icon(
+              Feather.heart,
+              color: Colors.black,
+              size: _size.width / 15.0,
+            ),
+          ),
+          IconButton(
+            onPressed: () => Get.back(),
+            icon: Icon(
+              Feather.shopping_cart,
+              color: Colors.black,
+              size: _size.width / 15.0,
+            ),
+          ),
+          SizedBox(
+            width: 4.0,
+          ),
+        ],
+      ),
       body: Container(
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Container(
-                padding: EdgeInsets.only(
-                  top: _size.height / 22.0,
-                ),
-                height: _size.height * .25,
-                width: _size.width,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: NetworkImage(
-                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZtBOhWrJ-JNJ3hpZEuS6T_G5A14e3GbWXMA&usqp=CAU'),
-                    fit: BoxFit.cover,
+        child: NotificationListener(
+          child: SingleChildScrollView(
+            controller: _scrollController,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Container(
+                  padding: EdgeInsets.only(
+                    top: _size.height / 25.0,
+                  ),
+                  height: _size.height * .25,
+                  width: _size.width,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: NetworkImage(
+                          'https://www.highlandscoffee.com.vn/vnt_upload/weblink/PDHT-DEC-WEB-FINAL.jpg'),
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    IconButton(
-                      onPressed: () => Get.back(),
-                      icon: Icon(
-                        Feather.arrow_left,
-                        color: Colors.white,
-                        size: _size.width / 15.0,
-                      ),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        IconButton(
-                          onPressed: () => Get.back(),
-                          icon: Icon(
-                            Feather.search,
-                            color: Colors.white,
-                            size: _size.width / 15.0,
-                          ),
-                        ),
-                        IconButton(
-                          onPressed: () => Get.back(),
-                          icon: Icon(
-                            Feather.heart,
-                            color: Colors.white,
-                            size: _size.width / 15.0,
-                          ),
-                        ),
-                        SizedBox(
-                          width: 4.0,
-                        ),
-                      ],
-                    ),
-                  ],
+                SizedBox(
+                  height: 16.0,
                 ),
-              ),
-              SizedBox(
-                height: 16.0,
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 12.0,
-                ),
-                child: Text(
-                  widget.id,
-                  style: TextStyle(
-                    fontSize: _size.width / 20.0,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 12.0,
+                  ),
+                  child: Text(
+                    widget.id,
+                    style: TextStyle(
+                      fontSize: _size.width / 20.0,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(
-                  vertical: 4.0,
-                  horizontal: 12.0,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Icon(
-                          FontAwesomeIcons.solidStar,
-                          color: Colors.amber.shade600,
-                          size: _size.width / 22.5,
-                        ),
-                        SizedBox(
-                          width: 8.0,
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(top: 4.0),
-                          child: Text(
-                            '4.6',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: _size.width / 26.5,
-                              fontWeight: FontWeight.w400,
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    vertical: 4.0,
+                    horizontal: 12.0,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Icon(
+                            FontAwesomeIcons.solidStar,
+                            color: Colors.amber.shade600,
+                            size: _size.width / 22.5,
+                          ),
+                          SizedBox(
+                            width: 8.0,
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(top: 4.0),
+                            child: Text(
+                              '4.6',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: _size.width / 26.5,
+                                fontWeight: FontWeight.w400,
+                              ),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      width: 16.0,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                        top: 4.0,
+                        ],
                       ),
-                      child: Text(
-                        '9.2 km',
-                        style: TextStyle(
-                          color: Colors.grey.shade700,
-                          fontSize: _size.width / 26.5,
-                          fontWeight: FontWeight.w400,
-                        ),
+                      SizedBox(
+                        width: 16.0,
                       ),
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(
-                  vertical: 6.0,
-                  horizontal: 14.0,
-                ),
-                child: RichText(
-                  text: TextSpan(
-                    children: [
-                      TextSpan(
-                        text: 'Open: ',
-                        style: TextStyle(
-                          fontSize: _size.width / 24.0,
-                          color: Colors.grey.shade800,
-                          fontWeight: FontWeight.w600,
+                      Padding(
+                        padding: EdgeInsets.only(
+                          top: 4.0,
                         ),
-                      ),
-                      TextSpan(
-                        text: '6:00 - 22:00',
-                        style: TextStyle(
-                          fontSize: _size.width / 26.0,
-                          color: Colors.blueAccent.shade700,
-                          fontWeight: FontWeight.w600,
-                          fontStyle: FontStyle.italic,
+                        child: Text(
+                          '9.2 km',
+                          style: TextStyle(
+                            color: Colors.grey.shade700,
+                            fontSize: _size.width / 26.5,
+                            fontWeight: FontWeight.w400,
+                          ),
                         ),
                       ),
                     ],
                   ),
                 ),
-              ),
-              SizedBox(
-                height: 12.0,
-              ),
-              Divider(
-                thickness: .4,
-                height: .4,
-                color: Colors.grey.shade400,
-                indent: 12.0,
-                endIndent: 12.0,
-              ),
-              SizedBox(
-                height: 8.0,
-              ),
-              _buildHorizontalGroup(context, 'Popular Items'),
-              SizedBox(
-                height: 20.0,
-              ),
-              _buildHorizontalGroup(context, 'On Sale'),
-              SizedBox(
-                height: 20.0,
-              ),
-              Container(
-                height: _size.height * .15,
-                margin: EdgeInsets.symmetric(
-                  horizontal: 10.0,
-                ),
-                child: CarouselBanner(),
-              ),
-              SizedBox(
-                height: 24.0,
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 12.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'All Product',
-                      style: TextStyle(
-                        fontSize: _size.width / 22.5,
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                      ),
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    vertical: 6.0,
+                    horizontal: 14.0,
+                  ),
+                  child: RichText(
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                          text: 'Open: ',
+                          style: TextStyle(
+                            fontSize: _size.width / 24.0,
+                            color: Colors.grey.shade800,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        TextSpan(
+                          text: '6:00 - 22:00',
+                          style: TextStyle(
+                            fontSize: _size.width / 26.0,
+                            color: Colors.blueAccent.shade700,
+                            fontWeight: FontWeight.w600,
+                            fontStyle: FontStyle.italic,
+                          ),
+                        ),
+                      ],
                     ),
-                    GestureDetector(
-                      onTap: () => Get.toNamed('/productlist/All Product'),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Text(
-                            'See More',
-                            style: TextStyle(
-                              fontSize: _size.width / 26.5,
-                              color: Colors.blueAccent,
-                              fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(
+                  height: 12.0,
+                ),
+                Divider(
+                  thickness: .4,
+                  height: .4,
+                  color: Colors.grey.shade400,
+                  indent: 12.0,
+                  endIndent: 12.0,
+                ),
+                SizedBox(
+                  height: 8.0,
+                ),
+                _buildHorizontalGroup(context, 'Popular Items'),
+                SizedBox(
+                  height: 20.0,
+                ),
+                _buildHorizontalGroup(context, 'On Sale'),
+                SizedBox(
+                  height: 20.0,
+                ),
+                Container(
+                  height: _size.height * .15,
+                  margin: EdgeInsets.symmetric(
+                    horizontal: 10.0,
+                  ),
+                  child: CarouselBanner(),
+                ),
+                SizedBox(
+                  height: 24.0,
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 12.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'All Product',
+                        style: TextStyle(
+                          fontSize: _size.width / 22.5,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () => Get.toNamed('/productlist/All Product'),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text(
+                              'See More',
+                              style: TextStyle(
+                                fontSize: _size.width / 26.5,
+                                color: Colors.blueAccent,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          ),
-                          SizedBox(
-                            width: 4.0,
-                          ),
-                          Icon(
-                            Feather.arrow_right,
-                            color: Colors.blueAccent,
-                            size: _size.width / 20.0,
-                          ),
-                        ],
+                            SizedBox(
+                              width: 4.0,
+                            ),
+                            Icon(
+                              Feather.arrow_right,
+                              color: Colors.blueAccent,
+                              size: _size.width / 20.0,
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-              SizedBox(
-                height: 12.0,
-              ),
-              ...actions.map((item) {
-                return ProductVerticalCard();
-              }).toList(),
-            ],
+                SizedBox(
+                  height: 12.0,
+                ),
+                ...actions.map((item) {
+                  return ProductVerticalCard();
+                }).toList(),
+              ],
+            ),
           ),
+          onNotification: (t) {
+            if (_scrollController.position.pixels > _size.height * .225) {
+              setState(() {
+                _showAppBar = false;
+              });
+            } else {
+              setState(() {
+                _showAppBar = true;
+              });
+            }
+          },
         ),
       ),
     );

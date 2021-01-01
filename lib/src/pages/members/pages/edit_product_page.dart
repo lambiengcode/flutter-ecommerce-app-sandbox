@@ -124,7 +124,7 @@ class _EditProductPageState extends State<EditProductPage> {
                           onPressed: () => Get.back(),
                           icon: Icon(
                             Feather.arrow_left,
-                            color: Colors.white.withOpacity(.85),
+                            color: Colors.black,
                             size: _size.width / 15.0,
                           ),
                         ),
@@ -132,7 +132,7 @@ class _EditProductPageState extends State<EditProductPage> {
                           onPressed: () => showDeleteBottomSheet(),
                           icon: Icon(
                             Feather.trash,
-                            color: Colors.white.withOpacity(.85),
+                            color: Colors.black,
                             size: _size.width / 16.5,
                           ),
                         ),

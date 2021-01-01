@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:now/src/pages/members/widgets/bottom_delete.dart';
+import 'package:now/src/widgets/bottom_get_voucher.dart';
 
-class ManageProductVerticalCard extends StatefulWidget {
+class MyVoucherCard extends StatefulWidget {
+  final String title;
+  final String urlToImage;
+  MyVoucherCard({this.title, this.urlToImage});
   @override
-  State<StatefulWidget> createState() => _ManageProductVerticalCardState();
+  State<StatefulWidget> createState() => _MyVoucherCardState();
 }
 
-class _ManageProductVerticalCardState extends State<ManageProductVerticalCard> {
-  String urlToImage =
-      'https://images.unsplash.com/photo-1462917882517-e150004895fa?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mjd8fGNvZmZlZXxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60';
-
+class _MyVoucherCardState extends State<MyVoucherCard> {
   void showDeleteBottomSheet() {
     showModalBottomSheet(
       shape: RoundedRectangleBorder(
@@ -30,10 +30,7 @@ class _ManageProductVerticalCardState extends State<ManageProductVerticalCard> {
   Widget build(BuildContext context) {
     final _size = MediaQuery.of(context).size;
     return GestureDetector(
-      onTap: () => Get.toNamed('/editproduct/Coffee Sofresh/39000/49000/59000',
-          arguments:
-              'https://www.highlandscoffee.com.vn/vnt_upload/weblink/HCO-7548-PHIN-SUA-DA-2019-TALENT-WEB_1.jpg'),
-      onLongPress: () => showDeleteBottomSheet(),
+      onTap: () => showDeleteBottomSheet(),
       child: Container(
         margin: EdgeInsets.only(
           bottom: 4.0,
@@ -63,7 +60,7 @@ class _ManageProductVerticalCardState extends State<ManageProductVerticalCard> {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(2.0),
                 image: DecorationImage(
-                  image: NetworkImage(urlToImage),
+                  image: NetworkImage(widget.urlToImage),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -83,10 +80,10 @@ class _ManageProductVerticalCardState extends State<ManageProductVerticalCard> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Text(
-                          'CARAMEL FREEZE',
+                          widget.title,
                           style: TextStyle(
                             color: Colors.grey.shade800,
-                            fontSize: _size.width / 23.5,
+                            fontSize: _size.width / 22.5,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -94,9 +91,9 @@ class _ManageProductVerticalCardState extends State<ManageProductVerticalCard> {
                           height: 4.0,
                         ),
                         Text(
-                          '500 Sold | 1 like',
+                          '20 Voucher Left',
                           style: TextStyle(
-                            color: Colors.grey.shade600,
+                            color: Colors.grey.shade800,
                             fontSize: _size.width / 28.0,
                             fontWeight: FontWeight.w400,
                           ),
@@ -104,11 +101,11 @@ class _ManageProductVerticalCardState extends State<ManageProductVerticalCard> {
                       ],
                     ),
                     Text(
-                      '39,000đ',
+                      'DELETE',
                       style: TextStyle(
-                        fontSize: _size.width / 24.0,
-                        color: Colors.grey.shade900,
-                        fontWeight: FontWeight.bold,
+                        fontSize: _size.width / 25.0,
+                        color: Colors.blueAccent,
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
                   ],

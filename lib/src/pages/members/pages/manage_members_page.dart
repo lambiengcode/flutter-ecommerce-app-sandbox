@@ -30,7 +30,7 @@ class _ManageMembersPageState extends State<ManageMembersPage> {
         title: Text(
           'Members',
           style: TextStyle(
-            fontSize: _size.width / 21.5,
+            fontSize: _size.width / 20.0,
             color: Colors.black,
             fontWeight: FontWeight.bold,
           ),

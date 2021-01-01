@@ -143,8 +143,10 @@ void main() {
         transitionDuration: Duration(milliseconds: 400),
       ),
       GetPage(
-        name: '/detailsorder',
-        page: () => DetailsOrderPage(),
+        name: '/detailsorder/:state',
+        page: () => DetailsOrderPage(
+          state: Get.parameters['state'],
+        ),
         transition: Transition.cupertinoDialog,
         transitionDuration: Duration(milliseconds: 400),
       ),

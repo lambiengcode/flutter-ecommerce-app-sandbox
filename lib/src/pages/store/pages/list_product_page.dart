@@ -31,7 +31,7 @@ class _ListProductPageState extends State<ListProductPage> {
         title: Text(
           widget.title,
           style: TextStyle(
-            fontSize: _size.width / 21.5,
+            fontSize: _size.width / 20.0,
             color: Colors.black,
             fontWeight: FontWeight.bold,
           ),

@@ -61,6 +61,41 @@ class _ManageOrdersPageState extends State<ManageOrdersPage>
   Widget build(BuildContext context) {
     final _size = MediaQuery.of(context).size;
     return Scaffold(
+      extendBody: true,
+      appBar: AppBar(
+        toolbarHeight: 52.0,
+        backgroundColor: Colors.white,
+        elevation: 3.5,
+        bottom: TabBar(
+          controller: _tabController,
+          labelColor: Colors.blueAccent,
+          indicatorColor: Colors.blueAccent,
+          unselectedLabelColor: Colors.grey.shade900,
+          indicatorSize: TabBarIndicatorSize.tab,
+          indicatorWeight: 2.5,
+          labelStyle: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: _size.width / 23.5,
+            fontFamily: 'Raleway-Bold',
+          ),
+          unselectedLabelStyle: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: _size.width / 25.0,
+            fontFamily: 'Raleway-Bold',
+          ),
+          tabs: [
+            Tab(
+              text: 'Pending',
+            ),
+            Tab(
+              text: 'Ongoing',
+            ),
+            Tab(
+              text: 'History',
+            ),
+          ],
+        ),
+      ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.blueAccent,
         child: Icon(
@@ -77,49 +112,7 @@ class _ManageOrdersPageState extends State<ManageOrdersPage>
         child: Column(
           children: [
             SizedBox(
-              height: _size.height / 18.0,
-            ),
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                    color: Color(0xFFABBAD5),
-                    spreadRadius: .0,
-                    blurRadius: .5,
-                    offset: Offset(.0, 2.5), // changes position of shadow
-                  ),
-                ],
-              ),
-              child: TabBar(
-                controller: _tabController,
-                labelColor: Colors.blueAccent,
-                indicatorColor: Colors.blueAccent,
-                unselectedLabelColor: Colors.grey.shade900,
-                indicatorSize: TabBarIndicatorSize.tab,
-                indicatorWeight: 2.5,
-                labelStyle: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: _size.width / 23.5,
-                  fontFamily: 'Raleway-Bold',
-                ),
-                unselectedLabelStyle: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: _size.width / 25.0,
-                  fontFamily: 'Raleway-Bold',
-                ),
-                tabs: [
-                  Tab(
-                    text: 'Pending',
-                  ),
-                  Tab(
-                    text: 'Ongoing',
-                  ),
-                  Tab(
-                    text: 'History',
-                  ),
-                ],
-              ),
+              height: 6.0,
             ),
             Expanded(
               child: TabBarView(

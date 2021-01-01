@@ -15,6 +15,7 @@ class _FreeshipListPageState extends State<FreeshipListPage> {
     final _size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         brightness: Brightness.light,
         backgroundColor: Colors.white,
         elevation: 2.5,
@@ -29,7 +30,7 @@ class _FreeshipListPageState extends State<FreeshipListPage> {
         title: Text(
           'Freeship',
           style: TextStyle(
-            fontSize: _size.width / 21.5,
+            fontSize: _size.width / 20.0,
             fontWeight: FontWeight.bold,
             color: Colors.black,
           ),

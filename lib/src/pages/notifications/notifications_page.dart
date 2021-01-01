@@ -19,9 +19,9 @@ class _NotificationsPageState extends State<NotificationsPage> {
         title: Text(
           'Notifications',
           style: TextStyle(
-            fontSize: _size.width / 21.5,
+            fontSize: _size.width / 20.0,
             fontWeight: FontWeight.bold,
-            color: Colors.black,
+            color: Colors.grey.shade800,
           ),
         ),
         actions: [
@@ -29,7 +29,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
             onPressed: () => null,
             icon: Icon(
               Feather.settings,
-              color: Colors.black,
+              color: Colors.grey.shade800,
               size: _size.width / 16.0,
             ),
           ),

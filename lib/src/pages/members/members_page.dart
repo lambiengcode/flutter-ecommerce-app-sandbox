@@ -26,17 +26,17 @@ class _MembersPage extends State<MembersPage> {
           icon: Icon(
             Feather.arrow_left,
             size: _size.width / 15.0,
-            color: Colors.black,
+            color: Colors.grey.shade800,
           ),
         ),
-        elevation: 2.5,
+        elevation: 1.0,
         backgroundColor: Colors.white,
         centerTitle: true,
         title: Text(
           'My Store',
           style: TextStyle(
-            color: Colors.black,
-            fontSize: _size.width / 21.5,
+            color: Colors.grey.shade800,
+            fontSize: _size.width / 20.0,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -45,12 +45,12 @@ class _MembersPage extends State<MembersPage> {
             onPressed: () => Get.toNamed(
               '/editstore/Highlands Coffee',
               arguments:
-                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZtBOhWrJ-JNJ3hpZEuS6T_G5A14e3GbWXMA&usqp=CAU',
+                  'https://www.highlandscoffee.com.vn/vnt_upload/weblink/PDHT-DEC-WEB-FINAL.jpg',
             ),
             icon: Icon(
               Feather.sliders,
-              size: _size.width / 18.0,
-              color: Colors.black,
+              size: _size.width / 16.5,
+              color: Colors.grey.shade800,
             ),
           ),
           SizedBox(
@@ -59,11 +59,12 @@ class _MembersPage extends State<MembersPage> {
         ],
       ),
       body: Container(
+        color: Colors.white,
         child: SingleChildScrollView(
           child: Column(
             children: [
               SizedBox(
-                height: 20.0,
+                height: 16.0,
               ),
               _buildTitle(context, 'Orders'),
               SizedBox(
@@ -77,9 +78,22 @@ class _MembersPage extends State<MembersPage> {
                   scrollDirection: Axis.horizontal,
                   itemCount: 10,
                   itemBuilder: (context, index) {
-                    return ManageOrdersHorizontalCard();
+                    return ManageOrdersHorizontalCard(
+                      index: index,
+                      state: 'Pending',
+                    );
                   },
                 ),
+              ),
+              Divider(
+                height: .35,
+                thickness: .35,
+                color: Colors.grey.shade400,
+                indent: 6.0,
+                endIndent: 6.0,
+              ),
+              SizedBox(
+                height: 16.0,
               ),
               _buildTitle(context, 'Products'),
               SizedBox(
@@ -98,6 +112,16 @@ class _MembersPage extends State<MembersPage> {
                     );
                   },
                 ),
+              ),
+              Divider(
+                height: .35,
+                thickness: .35,
+                color: Colors.grey.shade400,
+                indent: 6.0,
+                endIndent: 6.0,
+              ),
+              SizedBox(
+                height: 16.0,
               ),
               _buildTitle(context, 'Vouchers'),
               SizedBox(
@@ -121,8 +145,8 @@ class _MembersPage extends State<MembersPage> {
               Divider(
                 height: .35,
                 thickness: .35,
-                indent: 24.0,
-                endIndent: 24.0,
+                indent: 6.0,
+                endIndent: 6.0,
                 color: Colors.grey.shade400,
               ),
               SizedBox(
@@ -255,7 +279,10 @@ class _MembersPage extends State<MembersPage> {
   Widget _buildTitle(context, title) {
     final _size = MediaQuery.of(context).size;
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16.0),
+      padding: EdgeInsets.only(
+        left: 10.0,
+        right: 8.0,
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

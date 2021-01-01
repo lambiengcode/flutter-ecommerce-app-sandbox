@@ -19,7 +19,7 @@ class _ProfilePageState extends State<ProfilePage> {
       appBar: AppBar(
         elevation: .0,
         brightness: Brightness.light,
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.transparent,
         centerTitle: true,
         title: Text(
           'Me',
@@ -61,7 +61,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       Text(
                         'lambiengcode',
                         style: TextStyle(
-                          fontSize: _size.width / 21.5,
+                          fontSize: _size.width / 20.0,
                           color: Colors.blueGrey.shade700,
                           fontWeight: FontWeight.bold,
                         ),

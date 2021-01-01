@@ -29,7 +29,7 @@ class _ManageProductsPageState extends State<ManageProductsPage> {
         title: Text(
           'Products',
           style: TextStyle(
-            fontSize: _size.width / 21.5,
+            fontSize: _size.width / 20.0,
             color: Colors.black,
             fontWeight: FontWeight.bold,
           ),
@@ -38,9 +38,9 @@ class _ManageProductsPageState extends State<ManageProductsPage> {
           IconButton(
             onPressed: () => Get.toNamed('/addproduct'),
             icon: Icon(
-              Feather.plus_square,
-              size: _size.width / 15.0,
-              color: Colors.black,
+              Feather.plus,
+              size: _size.width / 14.0,
+              color: Colors.blueAccent.shade400,
             ),
           ),
         ],

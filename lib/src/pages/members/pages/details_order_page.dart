@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:now/src/pages/members/widgets/product_details_card.dart';
 
 class DetailsOrderPage extends StatefulWidget {
+  final String state;
+  DetailsOrderPage({this.state});
   @override
   State<StatefulWidget> createState() => _DetailsOrderPageState();
 }
@@ -29,28 +31,33 @@ class _DetailsOrderPageState extends State<DetailsOrderPage> {
         title: Text(
           'Details',
           style: TextStyle(
-            fontSize: _size.width / 21.5,
+            fontSize: _size.width / 20.0,
             color: Colors.black,
             fontWeight: FontWeight.bold,
           ),
         ),
         actions: [
-          GestureDetector(
-            onTap: () => Get.back(),
-            child: Padding(
-              padding: EdgeInsets.only(
-                right: 6.0,
-                top: 22.0,
-              ),
-              child: Text(
-                'CANCEL',
-                style: TextStyle(
-                  fontSize: _size.width / 28.0,
-                  color: Colors.grey.shade600,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ),
+          widget.state == 'Pending'
+              ? GestureDetector(
+                  onTap: () => Get.back(),
+                  child: Padding(
+                    padding: EdgeInsets.only(
+                      right: 6.0,
+                      top: 22.0,
+                    ),
+                    child: Text(
+                      'CANCEL',
+                      style: TextStyle(
+                        fontSize: _size.width / 26.0,
+                        color: Colors.grey.shade600,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                )
+              : Container(),
+          SizedBox(
+            width: 2.0,
           ),
         ],
       ),

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
-
-import '../home/widgets/build_product_card.dart';
+import 'package:now/src/pages/save/widgets/save_card.dart';
 
 class SavePage extends StatefulWidget {
   @override
@@ -21,9 +19,9 @@ class _SavePageState extends State<SavePage> {
         title: Text(
           'Saved',
           style: TextStyle(
-            fontSize: _size.width / 21.5,
+            fontSize: _size.width / 20.0,
             fontWeight: FontWeight.bold,
-            color: Colors.black,
+            color: Colors.grey.shade800,
           ),
         ),
       ),
@@ -31,7 +29,7 @@ class _SavePageState extends State<SavePage> {
         child: ListView.builder(
           itemCount: 10,
           itemBuilder: (context, index) {
-            return BuildProductCard();
+            return SaveCard();
           },
         ),
       ),

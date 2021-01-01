@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:now/src/widgets/bottom_get_voucher.dart';
 
 class VoucherVerticalCard extends StatefulWidget {
   final String title;
@@ -9,11 +10,26 @@ class VoucherVerticalCard extends StatefulWidget {
 }
 
 class _VoucherVerticalCardState extends State<VoucherVerticalCard> {
+  void showVoucherBottomSheet() {
+    showModalBottomSheet(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(
+          Radius.circular(4.0),
+        ),
+      ),
+      isScrollControlled: true,
+      context: context,
+      builder: (context) {
+        return BottomGetVoucher();
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final _size = MediaQuery.of(context).size;
     return GestureDetector(
-      onTap: () => null,
+      onTap: () => showVoucherBottomSheet(),
       child: Container(
         margin: EdgeInsets.only(
           bottom: 4.0,

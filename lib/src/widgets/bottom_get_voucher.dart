@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class BottomDelete extends StatefulWidget {
+class BottomGetVoucher extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => _BottomDeleteState();
+  State<StatefulWidget> createState() => _BottomGetVoucherState();
 }
 
-class _BottomDeleteState extends State<BottomDelete> {
+class _BottomGetVoucherState extends State<BottomGetVoucher> {
   int count = 0;
 
   @override
@@ -64,7 +64,7 @@ class _BottomDeleteState extends State<BottomDelete> {
                           ],
                         ),
                         child: Text(
-                          'Cancel',
+                          'Close',
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: _size.width / 26.0,
@@ -100,7 +100,7 @@ class _BottomDeleteState extends State<BottomDelete> {
                           ],
                         ),
                         child: Text(
-                          'Delete',
+                          'Get',
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: _size.width / 26.0,

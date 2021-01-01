@@ -152,7 +152,7 @@ class _HomePageState extends State<HomePage>
                           switch (snapshot.connectionState) {
                             case ConnectionState.waiting:
                               return Text(
-                                'Thành Phố Hồ Chí Minh',
+                                'Thành Phố Hồ Chí Minh, Việt Nam',
                                 style: TextStyle(
                                   color: Colors.grey.shade800,
                                   fontSize: _size.width / 26.0,
@@ -162,7 +162,7 @@ class _HomePageState extends State<HomePage>
                             default:
                               if (snapshot.hasError) {
                                 return Text(
-                                  'Thành Phố Hồ Chí Minh',
+                                  'Thành Phố Hồ Chí Minh, Việt Nam',
                                   style: TextStyle(
                                     color: Colors.grey.shade800,
                                     fontSize: _size.width / 26.0,
@@ -252,7 +252,7 @@ class _HomePageState extends State<HomePage>
                 height: 8.0,
               ),
               Container(
-                height: 190.0,
+                height: _size.width * .435,
                 child: GridView.builder(
                   padding: EdgeInsets.symmetric(
                     horizontal: 8.0,
@@ -261,7 +261,7 @@ class _HomePageState extends State<HomePage>
                   scrollDirection: Axis.horizontal,
                   gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
-                    crossAxisSpacing: 10.0,
+                    crossAxisSpacing: 5.0,
                   ),
                   itemCount: actions.length,
                   itemBuilder: (context, index) {
@@ -272,33 +272,32 @@ class _HomePageState extends State<HomePage>
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Expanded(
-                            child: Container(
-                              padding: EdgeInsets.symmetric(horizontal: 18.5),
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                  6.0,
+                          Container(
+                            height: 48.0,
+                            width: 48.0,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(
+                                4.0,
+                              ),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Color(0xFFABBAD5),
+                                  spreadRadius: .4,
+                                  blurRadius: 1.0,
+                                  offset: Offset(
+                                      0, 1.0), // changes position of shadow
                                 ),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Color(0xFFABBAD5),
-                                    spreadRadius: .4,
-                                    blurRadius: 1.0,
-                                    offset: Offset(
-                                        0, 1.0), // changes position of shadow
-                                  ),
-                                ],
-                              ),
-                              child: Icon(
-                                actions[index].icon,
-                                size: _size.width / 20.0,
-                                color: actions[index].color,
-                              ),
+                              ],
+                            ),
+                            child: Icon(
+                              actions[index].icon,
+                              size: _size.width / 20.0,
+                              color: actions[index].color,
                             ),
                           ),
                           SizedBox(
-                            height: 4.0,
+                            height: 6.0,
                           ),
                           Text(
                             actions[index].title,
