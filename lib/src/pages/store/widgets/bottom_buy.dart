@@ -11,10 +11,28 @@ class BottomBuy extends StatefulWidget {
 
 class _BottomBuyState extends State<BottomBuy> {
   int count = 1;
+  int total = 39000;
+  String size = 'S';
 
   TextEditingController _sizeSController = new TextEditingController();
   TextEditingController _sizeMController = new TextEditingController();
   TextEditingController _sizeLController = new TextEditingController();
+
+  countTotal(currentSize, currentCount) {
+    switch (currentSize) {
+      case 'S':
+        total = 39000 * currentCount;
+        break;
+      case 'M':
+        total = 49000 * currentCount;
+        break;
+      case 'L':
+        total = 59000 * currentCount;
+        break;
+      default:
+        break;
+    }
+  }
 
   moneyToString(String money) {
     String result = '';
@@ -201,6 +219,7 @@ class _BottomBuyState extends State<BottomBuy> {
                       if (count != 1) {
                         count--;
                       }
+                      countTotal(size, count);
                     });
                   },
                   child: Container(
@@ -256,6 +275,7 @@ class _BottomBuyState extends State<BottomBuy> {
                     setState(() {
                       count++;
                     });
+                    countTotal(size, count);
                   },
                   child: Container(
                     padding: EdgeInsets.all(
@@ -337,9 +357,9 @@ class _BottomBuyState extends State<BottomBuy> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   Expanded(
-                    flex: 5,
+                    flex: 6,
                     child: Text(
-                      'Total: 39,000đ',
+                      'Total: ${moneyToString(total.toString())}đ',
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: _size.width / 26.0,
@@ -356,7 +376,7 @@ class _BottomBuyState extends State<BottomBuy> {
                       onTap: () => Navigator.of(context).pop(context),
                       child: Container(
                         padding: EdgeInsets.symmetric(
-                          vertical: 15.0,
+                          vertical: 14.5,
                         ),
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
@@ -376,7 +396,7 @@ class _BottomBuyState extends State<BottomBuy> {
                           'Add to Cart',
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: _size.width / 26.0,
+                            fontSize: _size.width / 30.0,
                             fontWeight: FontWeight.w600,
                           ),
                         ),
@@ -397,47 +417,28 @@ class _BottomBuyState extends State<BottomBuy> {
 
   Widget _buildPriceSize(context, title) {
     final _size = MediaQuery.of(context).size;
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        SizedBox(
-          width: 24.0,
-        ),
-        Container(
-          height: 50.0,
-          width: 50.0,
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(
-              6.0,
-            ),
-            boxShadow: [
-              BoxShadow(
-                color: Color(0xFFABBAD5),
-                spreadRadius: 1.85,
-                blurRadius: 1.85,
-                offset: Offset(2.0, 2.5), // changes position of shadow
-              ),
-            ],
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          size = title;
+        });
+        countTotal(size, count);
+      },
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          SizedBox(
+            width: 24.0,
           ),
-          child: Text(
-            title,
-            style: TextStyle(
-              fontSize: 16.0,
-              fontWeight: FontWeight.bold,
-              color: Colors.grey.shade800,
-            ),
-          ),
-        ),
-        SizedBox(
-          width: 16.0,
-        ),
-        Expanded(
-          child: Container(
-            height: 52.0,
-            padding: EdgeInsets.fromLTRB(24.0, 2.0, 16.0, 0.0),
+          Container(
+            height: 50.0,
+            width: 50.0,
+            alignment: Alignment.center,
             decoration: BoxDecoration(
+              border: Border.all(
+                color: size == title ? Colors.blueAccent : Colors.transparent,
+                width: 2.0,
+              ),
               color: Colors.white,
               borderRadius: BorderRadius.circular(
                 6.0,
@@ -451,64 +452,99 @@ class _BottomBuyState extends State<BottomBuy> {
                 ),
               ],
             ),
-            child: TextFormField(
-              enabled: false,
-              inputFormatters: [
-                FilteringTextInputFormatter.digitsOnly,
-                TextInputFormatter.withFunction((oldValue, newValue) {
-                  if (newValue.text.isEmpty) {
-                    return newValue.copyWith(text: '');
-                  } else if (newValue.text.compareTo(oldValue.text) != 0) {
-                    final int selectionIndexFromTheRight =
-                        newValue.text.length - newValue.selection.end;
-                    final f = NumberFormat("#,###");
-                    final number = int.parse(
-                        newValue.text.replaceAll(f.symbols.GROUP_SEP, ''));
-                    final newString = f.format(number);
-                    return TextEditingValue(
-                      text: newString,
-                      selection: TextSelection.collapsed(
-                          offset:
-                              newString.length - selectionIndexFromTheRight),
-                    );
-                  } else {
-                    return newValue;
-                  }
-                })
-              ],
-              controller: title == 'S'
-                  ? _sizeSController
-                  : title == 'L'
-                      ? _sizeLController
-                      : _sizeMController,
+            child: Text(
+              title,
               style: TextStyle(
-                color: Colors.black87,
-                fontSize: _size.width / 26,
-                fontWeight: FontWeight.w600,
+                fontSize: 16.0,
+                fontWeight: FontWeight.bold,
+                color: Colors.grey.shade800,
               ),
-              textAlign: TextAlign.end,
-              validator: (val) => val.length == 0 ? 'Enter your Email' : null,
-              decoration: InputDecoration(
-                suffixText: ' đ',
-                suffixStyle: TextStyle(
-                  color: Colors.grey.shade800,
-                  fontWeight: FontWeight.bold,
+            ),
+          ),
+          SizedBox(
+            width: 16.0,
+          ),
+          Expanded(
+            child: Container(
+              height: 52.0,
+              padding: EdgeInsets.fromLTRB(24.0, 2.0, 16.0, 0.0),
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: size == title ? Colors.blueAccent : Colors.transparent,
+                  width: 2.0,
                 ),
-                border: InputBorder.none,
-                hintText: "0",
-                hintStyle: TextStyle(
-                  color: Colors.grey,
-                  fontSize: _size.width / 28,
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(
+                  6.0,
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: Color(0xFFABBAD5),
+                    spreadRadius: 1.85,
+                    blurRadius: 1.85,
+                    offset: Offset(2.0, 2.5), // changes position of shadow
+                  ),
+                ],
+              ),
+              child: TextFormField(
+                enabled: false,
+                inputFormatters: [
+                  FilteringTextInputFormatter.digitsOnly,
+                  TextInputFormatter.withFunction((oldValue, newValue) {
+                    if (newValue.text.isEmpty) {
+                      return newValue.copyWith(text: '');
+                    } else if (newValue.text.compareTo(oldValue.text) != 0) {
+                      final int selectionIndexFromTheRight =
+                          newValue.text.length - newValue.selection.end;
+                      final f = NumberFormat("#,###");
+                      final number = int.parse(
+                          newValue.text.replaceAll(f.symbols.GROUP_SEP, ''));
+                      final newString = f.format(number);
+                      return TextEditingValue(
+                        text: newString,
+                        selection: TextSelection.collapsed(
+                            offset:
+                                newString.length - selectionIndexFromTheRight),
+                      );
+                    } else {
+                      return newValue;
+                    }
+                  })
+                ],
+                controller: title == 'S'
+                    ? _sizeSController
+                    : title == 'L'
+                        ? _sizeLController
+                        : _sizeMController,
+                style: TextStyle(
+                  color: Colors.black87,
+                  fontSize: _size.width / 26,
                   fontWeight: FontWeight.w600,
+                ),
+                textAlign: TextAlign.end,
+                validator: (val) => val.length == 0 ? 'Enter your Email' : null,
+                decoration: InputDecoration(
+                  suffixText: ' đ',
+                  suffixStyle: TextStyle(
+                    color: Colors.grey.shade800,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  border: InputBorder.none,
+                  hintText: "0",
+                  hintStyle: TextStyle(
+                    color: Colors.grey,
+                    fontSize: _size.width / 28,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
               ),
             ),
           ),
-        ),
-        SizedBox(
-          width: 24.0,
-        ),
-      ],
+          SizedBox(
+            width: 24.0,
+          ),
+        ],
+      ),
     );
   }
 }

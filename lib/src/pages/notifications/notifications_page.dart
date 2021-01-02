@@ -28,13 +28,10 @@ class _NotificationsPageState extends State<NotificationsPage> {
           IconButton(
             onPressed: () => null,
             icon: Icon(
-              Feather.bell,
+              Feather.align_center,
               color: Colors.grey.shade800,
               size: _size.width / 16.5,
             ),
-          ),
-          SizedBox(
-            width: 2.0,
           ),
         ],
       ),
