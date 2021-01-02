@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_icons/flutter_icons.dart';
 import 'package:get/get.dart';
 import 'package:now/src/pages/members/widgets/bottom_delete.dart';
 
@@ -90,16 +91,26 @@ class _ManageProductVerticalCardState extends State<ManageProductVerticalCard> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        SizedBox(
-                          height: 4.0,
-                        ),
-                        Text(
-                          '500 Sold | 1 like',
-                          style: TextStyle(
-                            color: Colors.grey.shade600,
-                            fontSize: _size.width / 28.0,
-                            fontWeight: FontWeight.w400,
-                          ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              '500 Sold | 1 like',
+                              style: TextStyle(
+                                color: Colors.grey.shade600,
+                                fontSize: _size.width / 28.0,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                            IconButton(
+                              onPressed: () => showDeleteBottomSheet(),
+                              icon: Icon(
+                                Feather.trash_2,
+                                color: Colors.blueAccent,
+                                size: _size.width / 16.0,
+                              ),
+                            ),
+                          ],
                         ),
                       ],
                     ),

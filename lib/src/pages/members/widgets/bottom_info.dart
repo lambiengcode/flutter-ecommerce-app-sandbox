@@ -65,7 +65,7 @@ class _BottomInfoState extends State<BottomInfo> {
                         Text(
                           'Hồng Vinh',
                           style: TextStyle(
-                            fontSize: _size.width / 20.0,
+                            fontSize: _size.width / 20.5,
                             fontWeight: FontWeight.bold,
                             color: Colors.grey.shade800,
                           ),

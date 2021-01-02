@@ -19,7 +19,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
         title: Text(
           'Notifications',
           style: TextStyle(
-            fontSize: _size.width / 20.0,
+            fontSize: _size.width / 20.5,
             fontWeight: FontWeight.bold,
             color: Colors.grey.shade800,
           ),
@@ -28,9 +28,9 @@ class _NotificationsPageState extends State<NotificationsPage> {
           IconButton(
             onPressed: () => null,
             icon: Icon(
-              Feather.settings,
+              Feather.bell,
               color: Colors.grey.shade800,
-              size: _size.width / 16.0,
+              size: _size.width / 16.5,
             ),
           ),
           SizedBox(

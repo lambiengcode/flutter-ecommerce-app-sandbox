@@ -13,7 +13,7 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
    <application
-        android:label="Cloud School"
+        android:label="Now"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

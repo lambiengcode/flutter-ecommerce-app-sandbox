@@ -37,12 +37,12 @@ class _ProductPageState extends State<ProductPage> {
                 padding: EdgeInsets.only(
                   top: _size.height / 22.0,
                 ),
-                height: _size.height * .4,
+                height: _size.height * .25,
                 width: _size.width,
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: NetworkImage(
-                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRcMynRQ0TtZ0YwF6jgzgqqiZ4ukK7s5Qjrg&usqp=CAU'),
+                        'https://www.highlandscoffee.com.vn/vnt_upload/weblink/HCO-7548-PHIN-SUA-DA-2019-TALENT-WEB_1.jpg'),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -74,7 +74,7 @@ class _ProductPageState extends State<ProductPage> {
                     Text(
                       'Coffee Sofresh',
                       style: TextStyle(
-                        fontSize: _size.width / 20.0,
+                        fontSize: _size.width / 20.5,
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
                       ),
@@ -86,10 +86,10 @@ class _ProductPageState extends State<ProductPage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          '2 sold',
+                          '2021 sold | 225 like',
                           style: TextStyle(
                             fontSize: _size.width / 26.0,
-                            color: Colors.black,
+                            color: Colors.grey.shade800,
                             fontWeight: FontWeight.w400,
                           ),
                         ),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 
 class AddProductPage extends StatefulWidget {
@@ -43,29 +44,41 @@ class _AddProductPageState extends State<AddProductPage> {
             children: [
               Stack(
                 children: [
-                  _image == null
-                      ? GestureDetector(
-                          onTap: () => showImageBottomSheet(),
-                          child: Container(
+                  GestureDetector(
+                    onTap: () => showImageBottomSheet(),
+                    child: _image == null
+                        ? Container(
                             color: Colors.grey.shade300,
                             padding: EdgeInsets.only(
                               top: _size.height / 22.0,
                             ),
-                            height: _size.height * .35,
+                            height: _size.height * .25,
                             width: _size.width,
                             child: Icon(
                               Feather.image,
                               color: Colors.grey.shade800,
                               size: _size.width / 6.0,
                             ),
+                          )
+                        : Container(
+                            padding: EdgeInsets.only(
+                              top: _size.height / 22.0,
+                            ),
+                            height: _size.height * .25,
+                            width: _size.width,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: FileImage(_image),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
                           ),
-                        )
-                      : Container(),
+                  ),
                   Container(
                     padding: EdgeInsets.only(
                       top: _size.height / 22.0,
                     ),
-                    height: _size.height * .35,
+                    height: _size.height * .25,
                     width: _size.width,
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -319,6 +332,15 @@ class _AddProductPageState extends State<AddProductPage> {
 
   Widget _chooseImage(context) {
     final _size = MediaQuery.of(context).size;
+
+    Future<void> _pickImage(ImageSource source) async {
+      File selected = await ImagePicker.pickImage(source: source);
+      setState(() {
+        _image = selected;
+      });
+      Get.back();
+    }
+
     return Container(
       decoration: BoxDecoration(
         color: Colors.grey.shade100,
@@ -346,7 +368,7 @@ class _AddProductPageState extends State<AddProductPage> {
                   Expanded(
                     flex: 2,
                     child: GestureDetector(
-                      onTap: () => Navigator.of(context).pop(context),
+                      onTap: () => _pickImage(ImageSource.gallery),
                       child: Container(
                         padding: EdgeInsets.symmetric(
                           vertical: 15.0,
@@ -379,7 +401,7 @@ class _AddProductPageState extends State<AddProductPage> {
                   Expanded(
                     flex: 4,
                     child: GestureDetector(
-                      onTap: () => Navigator.of(context).pop(context),
+                      onTap: () => _pickImage(ImageSource.camera),
                       child: Container(
                         padding: EdgeInsets.symmetric(
                           vertical: 15.0,

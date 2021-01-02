@@ -12,7 +12,7 @@ class ManageProductHorizontalCard extends StatefulWidget {
 class _ManageProductHorizontalCardState
     extends State<ManageProductHorizontalCard> {
   String urlToImage =
-      'https://images.unsplash.com/photo-1462917882517-e150004895fa?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mjd8fGNvZmZlZXxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60';
+      'https://images.unsplash.com/photo-1546379753-abb7fd8cfb93?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mjk5fHxjb2ZmZWV8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60';
 
   void showDeleteBottomSheet() {
     showModalBottomSheet(

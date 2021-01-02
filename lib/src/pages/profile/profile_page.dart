@@ -24,7 +24,7 @@ class _ProfilePageState extends State<ProfilePage> {
         title: Text(
           'Me',
           style: TextStyle(
-            fontSize: _size.width / 20.0,
+            fontSize: _size.width / 20.5,
             fontWeight: FontWeight.bold,
             color: Colors.blueGrey.shade700,
           ),
@@ -61,7 +61,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       Text(
                         'lambiengcode',
                         style: TextStyle(
-                          fontSize: _size.width / 20.0,
+                          fontSize: _size.width / 20.5,
                           color: Colors.blueGrey.shade700,
                           fontWeight: FontWeight.bold,
                         ),

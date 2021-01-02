@@ -24,15 +24,15 @@ class _VoucherListPageState extends State<VoucherListPage> {
           icon: Icon(
             Feather.arrow_left,
             size: _size.width / 15.0,
-            color: Colors.black,
+            color: Colors.grey.shade800,
           ),
         ),
         title: Text(
           'Voucher',
           style: TextStyle(
-            fontSize: _size.width / 20.0,
+            fontSize: _size.width / 20.5,
             fontWeight: FontWeight.bold,
-            color: Colors.black,
+            color: Colors.grey.shade800,
           ),
         ),
       ),

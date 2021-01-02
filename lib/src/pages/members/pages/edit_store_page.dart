@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:now/src/pages/members/widgets/bottom_delete.dart';
 
 class EditStorePage extends StatefulWidget {
@@ -20,9 +21,8 @@ class _EditStorePageState extends State<EditStorePage> {
   String _close = '10:00 PM';
 
   TextEditingController _titleController = new TextEditingController();
-  TextEditingController _discountController = new TextEditingController();
 
-  void showDeleteBottomSheet() {
+  void showImageBottomSheet() {
     showModalBottomSheet(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.all(
@@ -32,7 +32,7 @@ class _EditStorePageState extends State<EditStorePage> {
       isScrollControlled: true,
       context: context,
       builder: (context) {
-        return BottomDelete();
+        return _chooseImage(context);
       },
     );
   }
@@ -74,23 +74,38 @@ class _EditStorePageState extends State<EditStorePage> {
             children: [
               Stack(
                 children: [
-                  _image == null
-                      ? Container(
-                          padding: EdgeInsets.only(
-                            top: _size.height / 22.0,
-                          ),
-                          height: _size.height * .25,
-                          width: _size.width,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: NetworkImage(
-                                widget.urlToImage,
+                  GestureDetector(
+                    onTap: () => showImageBottomSheet(),
+                    child: _image == null
+                        ? Container(
+                            padding: EdgeInsets.only(
+                              top: _size.height / 22.0,
+                            ),
+                            height: _size.height * .25,
+                            width: _size.width,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: NetworkImage(
+                                  widget.urlToImage,
+                                ),
+                                fit: BoxFit.cover,
                               ),
-                              fit: BoxFit.cover,
+                            ),
+                          )
+                        : Container(
+                            padding: EdgeInsets.only(
+                              top: _size.height / 22.0,
+                            ),
+                            height: _size.height * .25,
+                            width: _size.width,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: FileImage(_image),
+                                fit: BoxFit.cover,
+                              ),
                             ),
                           ),
-                        )
-                      : Container(),
+                  ),
                   Container(
                     padding: EdgeInsets.only(
                       top: _size.height / 22.0,
@@ -307,6 +322,116 @@ class _EditStorePageState extends State<EditStorePage> {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _chooseImage(context) {
+    final _size = MediaQuery.of(context).size;
+
+    Future<void> _pickImage(ImageSource source) async {
+      File selected = await ImagePicker.pickImage(source: source);
+      setState(() {
+        _image = selected;
+      });
+      Get.back();
+    }
+
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.grey.shade100,
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(
+            4.0,
+          ),
+        ),
+      ),
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            SizedBox(
+              height: 24.0,
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: 16.0,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  Expanded(
+                    flex: 2,
+                    child: GestureDetector(
+                      onTap: () => _pickImage(ImageSource.gallery),
+                      child: Container(
+                        padding: EdgeInsets.symmetric(
+                          vertical: 15.0,
+                        ),
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(4.0)),
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Color(0xFFABBAD5),
+                              spreadRadius: .8,
+                              blurRadius: 2.0,
+                              offset:
+                                  Offset(0, 2.0), // changes position of shadow
+                            ),
+                          ],
+                        ),
+                        child: Icon(
+                          Feather.image,
+                          color: Colors.grey.shade800,
+                          size: _size.width / 16.0,
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 12.0,
+                  ),
+                  Expanded(
+                    flex: 4,
+                    child: GestureDetector(
+                      onTap: () => _pickImage(ImageSource.camera),
+                      child: Container(
+                        padding: EdgeInsets.symmetric(
+                          vertical: 15.0,
+                        ),
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          color: Colors.blueAccent,
+                          borderRadius: BorderRadius.all(Radius.circular(4.0)),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black26,
+                              spreadRadius: .8,
+                              blurRadius: 2.0,
+                              offset:
+                                  Offset(0, 2.0), // changes position of shadow
+                            ),
+                          ],
+                        ),
+                        child: Icon(
+                          Feather.camera,
+                          color: Colors.white,
+                          size: _size.width / 16.0,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 24.0,
+            ),
+          ],
+        ),
       ),
     );
   }

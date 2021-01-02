@@ -51,7 +51,10 @@ class _HomePageState extends State<HomePage>
         await Geocoder.local.findAddressesFromCoordinates(coordinates);
     var first = addresses.first;
     String result = '${first.addressLine}';
-    print(result);
+    print(
+        ' ${first.locality},${first.addressLine}, ${first.featureName},${first.thoroughfare}, ${first.subThoroughfare}');
+    result = result.replaceAll(first.adminArea, '');
+    result = result.replaceAll(first.countryName, '');
     return result;
   }
 
@@ -172,9 +175,8 @@ class _HomePageState extends State<HomePage>
                               }
 
                               return Text(
-                                snapshot.data.toString().substring(0,
-                                        snapshot.data.toString().length - 22) +
-                                    '...',
+                                snapshot.data.toString().substring(
+                                    0, snapshot.data.toString().length - 2),
                                 style: TextStyle(
                                   color: Colors.grey.shade800,
                                   fontSize: _size.width / 26.0,
@@ -252,16 +254,15 @@ class _HomePageState extends State<HomePage>
                 height: 8.0,
               ),
               Container(
-                height: _size.width * .435,
+                height: _size.width * .418,
                 child: GridView.builder(
                   padding: EdgeInsets.symmetric(
                     horizontal: 8.0,
-                    vertical: 8.0,
                   ),
                   scrollDirection: Axis.horizontal,
                   gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
-                    crossAxisSpacing: 5.0,
+                    crossAxisSpacing: 12.0,
                   ),
                   itemCount: actions.length,
                   itemBuilder: (context, index) {
@@ -273,8 +274,8 @@ class _HomePageState extends State<HomePage>
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Container(
-                            height: 48.0,
-                            width: 48.0,
+                            height: 52.0,
+                            width: 52.0,
                             decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(
@@ -292,18 +293,18 @@ class _HomePageState extends State<HomePage>
                             ),
                             child: Icon(
                               actions[index].icon,
-                              size: _size.width / 20.0,
+                              size: _size.width / 22.0,
                               color: actions[index].color,
                             ),
                           ),
                           SizedBox(
-                            height: 6.0,
+                            height: 4.0,
                           ),
                           Text(
                             actions[index].title,
                             style: TextStyle(
-                              fontSize: _size.width / 32.0,
-                              color: Colors.grey.shade900,
+                              fontSize: _size.width / 32.5,
+                              color: Colors.grey.shade700,
                               fontWeight: FontWeight.w500,
                             ),
                           )
@@ -380,7 +381,7 @@ class _HomePageState extends State<HomePage>
                                 Icon(
                                   Feather.arrow_right,
                                   color: Colors.blueAccent,
-                                  size: _size.width / 20.0,
+                                  size: _size.width / 20.5,
                                 ),
                               ],
                             ),
@@ -459,7 +460,7 @@ class _HomePageState extends State<HomePage>
                                 Icon(
                                   Feather.arrow_right,
                                   color: Colors.blueAccent,
-                                  size: _size.width / 20.0,
+                                  size: _size.width / 20.5,
                                 ),
                               ],
                             ),
@@ -524,7 +525,7 @@ class _HomePageState extends State<HomePage>
                 height: 10.0,
               ),
               Container(
-                height: _size.height * .235,
+                height: _size.width * .46,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   boxShadow: [
@@ -556,8 +557,8 @@ class _HomePageState extends State<HomePage>
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                  height: _size.width * .18,
-                                  width: _size.width * .18,
+                                  height: _size.width * .165,
+                                  width: _size.width * .165,
                                   decoration: BoxDecoration(
                                     shape: BoxShape.circle,
                                     color: Colors.white,
@@ -573,7 +574,7 @@ class _HomePageState extends State<HomePage>
                                   ),
                                   child: Icon(
                                     actions[index].icon,
-                                    size: _size.width / 16.0,
+                                    size: _size.width / 20.5,
                                     color: actions[index].color,
                                   ),
                                 ),
@@ -583,7 +584,7 @@ class _HomePageState extends State<HomePage>
                                 Text(
                                   actions[index].title,
                                   style: TextStyle(
-                                    fontSize: _size.width / 28.0,
+                                    fontSize: _size.width / 30.0,
                                     color: index == 0
                                         ? Colors.blueAccent
                                         : Colors.grey.shade800,

@@ -36,7 +36,7 @@ class _MembersPage extends State<MembersPage> {
           'My Store',
           style: TextStyle(
             color: Colors.grey.shade800,
-            fontSize: _size.width / 20.0,
+            fontSize: _size.width / 20.5,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -48,8 +48,8 @@ class _MembersPage extends State<MembersPage> {
                   'https://www.highlandscoffee.com.vn/vnt_upload/weblink/PDHT-DEC-WEB-FINAL.jpg',
             ),
             icon: Icon(
-              Feather.sliders,
-              size: _size.width / 16.5,
+              Feather.edit,
+              size: _size.width / 16.0,
               color: Colors.grey.shade800,
             ),
           ),
@@ -175,7 +175,7 @@ class _MembersPage extends State<MembersPage> {
                     'Member Active Daily',
                     style: TextStyle(
                       color: Colors.grey.shade700,
-                      fontSize: _size.width / 20.0,
+                      fontSize: _size.width / 20.5,
                       fontWeight: FontWeight.bold,
                       fontFamily: "Raleway-Bold",
                     ),
@@ -280,7 +280,7 @@ class _MembersPage extends State<MembersPage> {
     final _size = MediaQuery.of(context).size;
     return Padding(
       padding: EdgeInsets.only(
-        left: 10.0,
+        left: 16.0,
         right: 8.0,
       ),
       child: Row(
@@ -302,9 +302,9 @@ class _MembersPage extends State<MembersPage> {
                 Text(
                   'See All',
                   style: TextStyle(
-                    fontSize: _size.width / 23.5,
-                    color: Colors.blueAccent,
-                    fontWeight: FontWeight.bold,
+                    fontSize: _size.width / 25.0,
+                    color: Colors.blueAccent.shade700,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
                 SizedBox(
@@ -313,7 +313,7 @@ class _MembersPage extends State<MembersPage> {
                 Icon(
                   Feather.arrow_right,
                   color: Colors.blueAccent,
-                  size: _size.width / 20.0,
+                  size: _size.width / 20.5,
                 ),
               ],
             ),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 
 class AddVoucherPage extends StatefulWidget {
@@ -14,6 +15,21 @@ class _AddVoucherPageState extends State<AddVoucherPage> {
   File _image;
   String _title;
   bool _percent;
+
+  void showImageBottomSheet() {
+    showModalBottomSheet(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(
+          Radius.circular(4.0),
+        ),
+      ),
+      isScrollControlled: true,
+      context: context,
+      builder: (context) {
+        return _chooseImage(context);
+      },
+    );
+  }
 
   @override
   void initState() {
@@ -32,26 +48,41 @@ class _AddVoucherPageState extends State<AddVoucherPage> {
             children: [
               Stack(
                 children: [
-                  _image == null
-                      ? Container(
-                          color: Colors.grey.shade300,
-                          padding: EdgeInsets.only(
-                            top: _size.height / 22.0,
+                  GestureDetector(
+                    onTap: () => showImageBottomSheet(),
+                    child: _image == null
+                        ? Container(
+                            color: Colors.grey.shade300,
+                            padding: EdgeInsets.only(
+                              top: _size.height / 22.0,
+                            ),
+                            height: _size.height * .25,
+                            width: _size.width,
+                            child: Icon(
+                              Feather.image,
+                              color: Colors.grey.shade800,
+                              size: _size.width / 6.0,
+                            ),
+                          )
+                        : Container(
+                            padding: EdgeInsets.only(
+                              top: _size.height / 22.0,
+                            ),
+                            height: _size.height * .25,
+                            width: _size.width,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: FileImage(_image),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
                           ),
-                          height: _size.height * .35,
-                          width: _size.width,
-                          child: Icon(
-                            Feather.image,
-                            color: Colors.grey.shade800,
-                            size: _size.width / 6.0,
-                          ),
-                        )
-                      : Container(),
+                  ),
                   Container(
                     padding: EdgeInsets.only(
                       top: _size.height / 22.0,
                     ),
-                    height: _size.height * .35,
+                    height: _size.height * .25,
                     width: _size.width,
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -261,6 +292,116 @@ class _AddVoucherPageState extends State<AddVoucherPage> {
               ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget _chooseImage(context) {
+    final _size = MediaQuery.of(context).size;
+
+    Future<void> _pickImage(ImageSource source) async {
+      File selected = await ImagePicker.pickImage(source: source);
+      setState(() {
+        _image = selected;
+      });
+      Get.back();
+    }
+
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.grey.shade100,
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(
+            4.0,
+          ),
+        ),
+      ),
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            SizedBox(
+              height: 24.0,
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: 16.0,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  Expanded(
+                    flex: 2,
+                    child: GestureDetector(
+                      onTap: () => _pickImage(ImageSource.gallery),
+                      child: Container(
+                        padding: EdgeInsets.symmetric(
+                          vertical: 15.0,
+                        ),
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(4.0)),
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Color(0xFFABBAD5),
+                              spreadRadius: .8,
+                              blurRadius: 2.0,
+                              offset:
+                                  Offset(0, 2.0), // changes position of shadow
+                            ),
+                          ],
+                        ),
+                        child: Icon(
+                          Feather.image,
+                          color: Colors.grey.shade800,
+                          size: _size.width / 16.0,
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 12.0,
+                  ),
+                  Expanded(
+                    flex: 4,
+                    child: GestureDetector(
+                      onTap: () => _pickImage(ImageSource.camera),
+                      child: Container(
+                        padding: EdgeInsets.symmetric(
+                          vertical: 15.0,
+                        ),
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          color: Colors.blueAccent,
+                          borderRadius: BorderRadius.all(Radius.circular(4.0)),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black26,
+                              spreadRadius: .8,
+                              blurRadius: 2.0,
+                              offset:
+                                  Offset(0, 2.0), // changes position of shadow
+                            ),
+                          ],
+                        ),
+                        child: Icon(
+                          Feather.camera,
+                          color: Colors.white,
+                          size: _size.width / 16.0,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 24.0,
+            ),
+          ],
         ),
       ),
     );

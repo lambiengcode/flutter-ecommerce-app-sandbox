@@ -13,7 +13,7 @@ class ManageOrdersHorizontalCard extends StatefulWidget {
 class _ManageOrdersHorizontalCardState
     extends State<ManageOrdersHorizontalCard> {
   String urlToImage =
-      'https://images.unsplash.com/photo-1462917882517-e150004895fa?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mjd8fGNvZmZlZXxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60';
+      'https://images.unsplash.com/photo-1515437591178-719645b75ccb?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MzYwfHxjb2ZmZWV8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60';
 
   void showDeleteBottomSheet() {
     showModalBottomSheet(
@@ -61,11 +61,11 @@ class _ManageOrdersHorizontalCardState
             Container(
               width: _size.width * .4,
               child: Text(
-                'Hồng Vinh | 7 Items',
+                'Pending | 7 Items',
                 style: TextStyle(
                   fontSize: _size.width / 24.0,
                   color: Colors.grey.shade800,
-                  fontWeight: FontWeight.w600,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),

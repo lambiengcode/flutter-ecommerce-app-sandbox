@@ -25,14 +25,14 @@ class _DetailsOrderPageState extends State<DetailsOrderPage> {
           icon: Icon(
             Feather.arrow_left,
             size: _size.width / 15.0,
-            color: Colors.black,
+            color: Colors.grey.shade800,
           ),
         ),
         title: Text(
           'Details',
           style: TextStyle(
-            fontSize: _size.width / 20.0,
-            color: Colors.black,
+            fontSize: _size.width / 20.5,
+            color: Colors.grey.shade800,
             fontWeight: FontWeight.bold,
           ),
         ),

@@ -30,7 +30,7 @@ class _MyPointsPageState extends State<MyPointsPage> {
         title: Text(
           'My Points',
           style: TextStyle(
-            fontSize: _size.width / 20.0,
+            fontSize: _size.width / 20.5,
             color: Colors.grey.shade800,
             fontWeight: FontWeight.bold,
           ),

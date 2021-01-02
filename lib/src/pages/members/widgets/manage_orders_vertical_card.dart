@@ -56,7 +56,7 @@ class _ManageOrdersVerticalCardState extends State<ManageOrdersVerticalCard> {
             ),
             Expanded(
               child: Container(
-                height: _size.width * .225,
+                height: _size.width * .24,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -66,10 +66,10 @@ class _ManageOrdersVerticalCardState extends State<ManageOrdersVerticalCard> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Text(
-                          'Hồng Vinh | 7 Items',
+                          'Orders | 7 Items',
                           style: TextStyle(
                             color: Colors.grey.shade800,
-                            fontSize: _size.width / 22.5,
+                            fontSize: _size.width / 23.5,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -98,8 +98,8 @@ class _ManageOrdersVerticalCardState extends State<ManageOrdersVerticalCard> {
                                     ? 'DONE'
                                     : 'VIEW DETAILS',
                             style: TextStyle(
-                              fontSize: _size.width / 28.0,
-                              color: Colors.blueAccent.shade400,
+                              fontSize: _size.width / 30.0,
+                              color: Colors.blueAccent.shade700,
                               fontWeight: FontWeight.w600,
                             ),
                           ),

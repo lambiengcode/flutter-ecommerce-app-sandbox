@@ -24,15 +24,15 @@ class _FreeshipListPageState extends State<FreeshipListPage> {
           icon: Icon(
             Feather.arrow_left,
             size: _size.width / 15.0,
-            color: Colors.black,
+            color: Colors.grey.shade800,
           ),
         ),
         title: Text(
           'Freeship',
           style: TextStyle(
-            fontSize: _size.width / 20.0,
+            fontSize: _size.width / 20.5,
             fontWeight: FontWeight.bold,
-            color: Colors.black,
+            color: Colors.grey.shade800,
           ),
         ),
       ),

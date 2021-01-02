@@ -36,7 +36,7 @@ class _StorePageState extends State<StorePage> {
           onPressed: () => Get.back(),
           icon: Icon(
             Feather.arrow_left,
-            color: Colors.black,
+            color: _showAppBar ? Colors.white : Colors.black,
             size: _size.width / 15.0,
           ),
         ),
@@ -45,7 +45,7 @@ class _StorePageState extends State<StorePage> {
             onPressed: () => Get.back(),
             icon: Icon(
               Feather.search,
-              color: Colors.black,
+              color: _showAppBar ? Colors.white : Colors.black,
               size: _size.width / 15.0,
             ),
           ),
@@ -53,7 +53,7 @@ class _StorePageState extends State<StorePage> {
             onPressed: () => Get.back(),
             icon: Icon(
               Feather.heart,
-              color: Colors.black,
+              color: _showAppBar ? Colors.white : Colors.black,
               size: _size.width / 15.0,
             ),
           ),
@@ -61,7 +61,7 @@ class _StorePageState extends State<StorePage> {
             onPressed: () => Get.back(),
             icon: Icon(
               Feather.shopping_cart,
-              color: Colors.black,
+              color: _showAppBar ? Colors.white : Colors.black,
               size: _size.width / 15.0,
             ),
           ),
@@ -102,7 +102,7 @@ class _StorePageState extends State<StorePage> {
                   child: Text(
                     widget.id,
                     style: TextStyle(
-                      fontSize: _size.width / 20.0,
+                      fontSize: _size.width / 20.5,
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
                     ),
@@ -251,7 +251,7 @@ class _StorePageState extends State<StorePage> {
                             Icon(
                               Feather.arrow_right,
                               color: Colors.blueAccent,
-                              size: _size.width / 20.0,
+                              size: _size.width / 20.5,
                             ),
                           ],
                         ),
@@ -336,7 +336,7 @@ class _StorePageState extends State<StorePage> {
                       Icon(
                         Feather.arrow_right,
                         color: Colors.blueAccent,
-                        size: _size.width / 20.0,
+                        size: _size.width / 20.5,
                       ),
                     ],
                   ),
