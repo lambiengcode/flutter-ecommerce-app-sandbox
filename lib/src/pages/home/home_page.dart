@@ -83,10 +83,10 @@ class _HomePageState extends State<HomePage>
         title: Row(
           children: [
             CircleAvatar(
-              radius: 20.0,
+              radius: 18.8,
               backgroundColor: Colors.grey.shade200,
               child: CircleAvatar(
-                radius: 18.0,
+                radius: 16.0,
                 backgroundImage: AssetImage('images/avt.jpg'),
               ),
             ),
@@ -99,7 +99,7 @@ class _HomePageState extends State<HomePage>
                   TextSpan(
                     text: 'Hi, ',
                     style: TextStyle(
-                      fontSize: _size.width / 16.0,
+                      fontSize: _size.width / 16.8,
                       color: Colors.grey.shade800,
                       fontWeight: FontWeight.w400,
                       fontFamily: 'Lobster',
@@ -108,7 +108,7 @@ class _HomePageState extends State<HomePage>
                   TextSpan(
                     text: 'lambiengcode',
                     style: TextStyle(
-                      fontSize: _size.width / 18.8,
+                      fontSize: _size.width / 20.0,
                       color: Colors.blueAccent.shade700,
                       fontWeight: FontWeight.w600,
                     ),
@@ -122,9 +122,9 @@ class _HomePageState extends State<HomePage>
           IconButton(
             onPressed: () => null,
             icon: Icon(
-              Feather.gift,
-              size: _size.width / 15.0,
-              color: Colors.red.shade400,
+              Feather.shopping_cart,
+              size: _size.width / 16.0,
+              color: Colors.blueAccent,
             ),
           ),
         ],
