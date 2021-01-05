@@ -25,6 +25,9 @@ class _HomePageState extends State<HomePage>
   LocationData currentLocation;
   Future<dynamic> _myLocation;
 
+  String currentType = 'Burger';
+  bool showBottomAppBar = false;
+
   getUserLocation() async {
     //call this async method from whereever you need
 
@@ -125,45 +128,49 @@ class _HomePageState extends State<HomePage>
             ),
           ),
         ],
+        bottom: showBottomAppBar ? _buildHomeTab(context) : null,
       ),
       body: Container(
         color: Colors.white,
-        child: SingleChildScrollView(
-          controller: scrollController,
-          child: Column(
-            children: [
-              SizedBox(
-                height: 8.0,
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Icon(
-                      Feather.map_pin,
-                      color: Colors.green.shade600,
-                      size: _size.width / 16.0,
-                    ),
-                    SizedBox(
-                      width: 10.0,
-                    ),
-                    Expanded(
-                      child: FutureBuilder(
-                        future: _myLocation,
-                        builder: (context, snapshot) {
-                          switch (snapshot.connectionState) {
-                            case ConnectionState.waiting:
-                              return Text(
-                                'Thành Phố Hồ Chí Minh, Việt Nam',
-                                style: TextStyle(
-                                  color: Colors.grey.shade800,
-                                  fontSize: _size.width / 26.0,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              );
-                            default:
-                              if (snapshot.hasError) {
+        child: NotificationListener(
+          onNotification: (t) {
+            if (scrollController.position.pixels >
+                (_size.width * 1.578 + _size.height * .15 + 128.0)) {
+              setState(() {
+                showBottomAppBar = true;
+              });
+            } else {
+              setState(() {
+                showBottomAppBar = false;
+              });
+            }
+          },
+          child: SingleChildScrollView(
+            controller: scrollController,
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 8.0,
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Icon(
+                        Feather.map_pin,
+                        color: Colors.green.shade600,
+                        size: _size.width / 16.0,
+                      ),
+                      SizedBox(
+                        width: 10.0,
+                      ),
+                      Expanded(
+                        child: FutureBuilder(
+                          future: _myLocation,
+                          builder: (context, snapshot) {
+                            switch (snapshot.connectionState) {
+                              case ConnectionState.waiting:
                                 return Text(
                                   'Thành Phố Hồ Chí Minh, Việt Nam',
                                   style: TextStyle(
@@ -172,482 +179,394 @@ class _HomePageState extends State<HomePage>
                                     fontWeight: FontWeight.w400,
                                   ),
                                 );
-                              }
+                              default:
+                                if (snapshot.hasError) {
+                                  return Text(
+                                    'Thành Phố Hồ Chí Minh, Việt Nam',
+                                    style: TextStyle(
+                                      color: Colors.grey.shade800,
+                                      fontSize: _size.width / 26.0,
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                                  );
+                                }
 
-                              return Text(
-                                snapshot.data.toString().substring(
-                                    0, snapshot.data.toString().length - 2),
-                                style: TextStyle(
-                                  color: Colors.grey.shade800,
-                                  fontSize: _size.width / 26.0,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              );
-                          }
-                        },
+                                return Text(
+                                  snapshot.data.toString().substring(0,
+                                          snapshot.data.toString().length - 2) +
+                                      '...',
+                                  style: TextStyle(
+                                    color: Colors.grey.shade800,
+                                    fontSize: _size.width / 26.0,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                );
+                            }
+                          },
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-              SizedBox(
-                height: 12.0,
-              ),
-              GestureDetector(
-                onTap: () {},
-                child: Container(
+                SizedBox(
+                  height: 12.0,
+                ),
+                GestureDetector(
+                  onTap: () {},
+                  child: Container(
+                    margin: EdgeInsets.symmetric(
+                      horizontal: 16.0,
+                    ),
+                    height: 46.0,
+                    decoration: BoxDecoration(
+                      color: Colors.grey.shade50,
+                      borderRadius: BorderRadius.circular(
+                        8.0,
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Color(0xFFABBAD5),
+                          spreadRadius: .5,
+                          blurRadius: 1.25,
+                          offset: Offset(0, 1.5), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    padding: EdgeInsets.only(
+                      left: 16.0,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Icon(
+                          Feather.search,
+                          size: _size.width / 22.0,
+                          color: Colors.grey,
+                        ),
+                        SizedBox(
+                          width: 12.0,
+                        ),
+                        Text(
+                          'Search',
+                          style: TextStyle(
+                            color: Colors.grey,
+                            fontSize: _size.width / 25.0,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 12.0,
+                ),
+                Container(
+                  height: _size.height * .15,
                   margin: EdgeInsets.symmetric(
                     horizontal: 16.0,
                   ),
-                  height: 46.0,
-                  decoration: BoxDecoration(
-                    color: Colors.grey.shade50,
-                    borderRadius: BorderRadius.circular(
-                      8.0,
+                  child: CarouselImage(),
+                ),
+                SizedBox(
+                  height: 8.0,
+                ),
+                Container(
+                  height: _size.width * .418,
+                  child: GridView.builder(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 8.0,
                     ),
+                    scrollDirection: Axis.horizontal,
+                    gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 12.0,
+                    ),
+                    itemCount: actions.length,
+                    itemBuilder: (context, index) {
+                      return GestureDetector(
+                        onTap: () =>
+                            Get.toNamed('/categories/${actions[index].title}'),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Container(
+                              height: 52.0,
+                              width: 52.0,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(
+                                  4.0,
+                                ),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Color(0xFFABBAD5),
+                                    spreadRadius: .4,
+                                    blurRadius: 1.0,
+                                    offset: Offset(
+                                        0, 1.0), // changes position of shadow
+                                  ),
+                                ],
+                              ),
+                              child: Icon(
+                                actions[index].icon,
+                                size: _size.width / 22.0,
+                                color: actions[index].color,
+                              ),
+                            ),
+                            SizedBox(
+                              height: 4.0,
+                            ),
+                            Text(
+                              actions[index].title,
+                              style: TextStyle(
+                                fontSize: _size.width / 32.5,
+                                color: Colors.grey.shade700,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            )
+                          ],
+                        ),
+                      );
+                    },
+                  ),
+                ),
+                Container(
+                  height: 10.0,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
                     boxShadow: [
                       BoxShadow(
                         color: Color(0xFFABBAD5),
-                        spreadRadius: .5,
-                        blurRadius: 1.25,
-                        offset: Offset(0, 1.5), // changes position of shadow
+                        spreadRadius: .0,
+                        blurRadius: .5,
+                        offset: Offset(2.0, 2.5), // changes position of shadow
                       ),
                     ],
                   ),
-                  padding: EdgeInsets.only(
-                    left: 16.0,
+                ),
+                SizedBox(
+                  height: 10.0,
+                ),
+                Container(
+                  height: _size.width * .7,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color(0xFFABBAD5),
+                        spreadRadius: .0,
+                        blurRadius: .5,
+                        offset: Offset(2.0, 2.5), // changes position of shadow
+                      ),
+                    ],
                   ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                  child: Column(
                     children: [
-                      Icon(
-                        Feather.search,
-                        size: _size.width / 22.0,
-                        color: Colors.grey,
-                      ),
                       SizedBox(
-                        width: 12.0,
+                        height: 8.0,
                       ),
-                      Text(
-                        'Search',
-                        style: TextStyle(
-                          color: Colors.grey,
-                          fontSize: _size.width / 25.0,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 12.0,
-              ),
-              Container(
-                height: _size.height * .15,
-                margin: EdgeInsets.symmetric(
-                  horizontal: 16.0,
-                ),
-                child: CarouselImage(),
-              ),
-              SizedBox(
-                height: 8.0,
-              ),
-              Container(
-                height: _size.width * .418,
-                child: GridView.builder(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 8.0,
-                  ),
-                  scrollDirection: Axis.horizontal,
-                  gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 12.0,
-                  ),
-                  itemCount: actions.length,
-                  itemBuilder: (context, index) {
-                    return GestureDetector(
-                      onTap: () =>
-                          Get.toNamed('/categories/${actions[index].title}'),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Container(
-                            height: 52.0,
-                            width: 52.0,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(
-                                4.0,
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 12.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'Voucher',
+                              style: TextStyle(
+                                fontSize: _size.width / 22.5,
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
                               ),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Color(0xFFABBAD5),
-                                  spreadRadius: .4,
-                                  blurRadius: 1.0,
-                                  offset: Offset(
-                                      0, 1.0), // changes position of shadow
-                                ),
-                              ],
                             ),
-                            child: Icon(
-                              actions[index].icon,
-                              size: _size.width / 22.0,
-                              color: actions[index].color,
-                            ),
-                          ),
-                          SizedBox(
-                            height: 4.0,
-                          ),
-                          Text(
-                            actions[index].title,
-                            style: TextStyle(
-                              fontSize: _size.width / 32.5,
-                              color: Colors.grey.shade700,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          )
-                        ],
-                      ),
-                    );
-                  },
-                ),
-              ),
-              Container(
-                height: 10.0,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Color(0xFFABBAD5),
-                      spreadRadius: .0,
-                      blurRadius: .5,
-                      offset: Offset(2.0, 2.5), // changes position of shadow
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 10.0,
-              ),
-              Container(
-                height: _size.width * .7,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Color(0xFFABBAD5),
-                      spreadRadius: .0,
-                      blurRadius: .5,
-                      offset: Offset(2.0, 2.5), // changes position of shadow
-                    ),
-                  ],
-                ),
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: 8.0,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 12.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            'Voucher',
-                            style: TextStyle(
-                              fontSize: _size.width / 22.5,
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          GestureDetector(
-                            onTap: () => Get.toNamed('/voucher'),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'See More',
-                                  style: TextStyle(
-                                    fontSize: _size.width / 26.5,
+                            GestureDetector(
+                              onTap: () => Get.toNamed('/voucher'),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'See More',
+                                    style: TextStyle(
+                                      fontSize: _size.width / 26.5,
+                                      color: Colors.blueAccent,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 4.0,
+                                  ),
+                                  Icon(
+                                    Feather.arrow_right,
                                     color: Colors.blueAccent,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 4.0,
-                                ),
-                                Icon(
-                                  Feather.arrow_right,
-                                  color: Colors.blueAccent,
-                                  size: _size.width / 20.5,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Expanded(
-                      child: ListView.builder(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 4.0,
-                          vertical: 12.0,
-                        ),
-                        scrollDirection: Axis.horizontal,
-                        itemCount: vouchers.length,
-                        itemBuilder: (context, index) {
-                          return VoucherCard(
-                            index: index,
-                          );
-                        },
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 10.0,
-              ),
-              Container(
-                height: _size.width * .67,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Color(0xFFABBAD5),
-                      spreadRadius: .0,
-                      blurRadius: .5,
-                      offset: Offset(2.0, 2.5), // changes position of shadow
-                    ),
-                  ],
-                ),
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: 8.0,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 12.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            'Free Ship',
-                            style: TextStyle(
-                              fontSize: _size.width / 22.5,
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          GestureDetector(
-                            onTap: () => Get.toNamed('/freeship'),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'See More',
-                                  style: TextStyle(
-                                    fontSize: _size.width / 26.5,
-                                    color: Colors.blueAccent,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 4.0,
-                                ),
-                                Icon(
-                                  Feather.arrow_right,
-                                  color: Colors.blueAccent,
-                                  size: _size.width / 20.5,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Expanded(
-                        child: ListView.builder(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 4.0,
-                        vertical: 12.0,
-                      ),
-                      scrollDirection: Axis.horizontal,
-                      itemCount: 10,
-                      itemBuilder: (context, index) {
-                        return Container(
-                          margin: EdgeInsets.only(
-                            left: index != 0 ? 10.0 : 6.0,
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                height: _size.width * .4,
-                                width: _size.width * .4,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(
-                                    2.0,
-                                  ),
-                                  image: DecorationImage(
-                                    image: NetworkImage(
-                                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRcMynRQ0TtZ0YwF6jgzgqqiZ4ukK7s5Qjrg&usqp=CAU'),
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                height: 6.0,
-                              ),
-                              Container(
-                                width: _size.width * .4,
-                                child: Text(
-                                  'Free Ship Highland Coffee',
-                                  style: TextStyle(
-                                    fontSize: _size.width / 24.0,
-                                    color: Colors.grey.shade800,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        );
-                      },
-                    )),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 10.0,
-              ),
-              Container(
-                height: _size.width * .46,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Color(0xFFABBAD5),
-                      spreadRadius: 1.15,
-                      blurRadius: 1.25,
-                      offset: Offset(2.0, 4.5), // changes position of shadow
-                    ),
-                  ],
-                ),
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: 12.0,
-                    ),
-                    Container(
-                      padding: EdgeInsets.fromLTRB(2.0, 2.0, 2.0, 4.0),
-                      height: _size.width * .3,
-                      child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: actions.length,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding:
-                                EdgeInsets.only(left: index == 0 ? 8.0 : 16.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Container(
-                                  height: _size.width * .165,
-                                  width: _size.width * .165,
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: Colors.white,
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Color(0xFFABBAD5),
-                                        spreadRadius: 1.15,
-                                        blurRadius: 1.25,
-                                        offset: Offset(.0,
-                                            3.5), // changes position of shadow
-                                      ),
-                                    ],
-                                  ),
-                                  child: Icon(
-                                    actions[index].icon,
                                     size: _size.width / 20.5,
-                                    color: actions[index].color,
                                   ),
-                                ),
-                                SizedBox(
-                                  height: 10.0,
-                                ),
-                                Text(
-                                  actions[index].title,
-                                  style: TextStyle(
-                                    fontSize: _size.width / 30.0,
-                                    color: index == 0
-                                        ? Colors.blueAccent
-                                        : Colors.grey.shade800,
-                                    fontWeight: index == 0
-                                        ? FontWeight.bold
-                                        : FontWeight.w600,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          );
-                        },
-                      ),
-                    ),
-                    Expanded(
-                        child: Container(
-                      alignment: Alignment.bottomCenter,
-                      child: Card(
-                        key: dataKey,
-                        elevation: .0,
-                        child: TabBar(
-                          onTap: (index) =>
-                              Scrollable.ensureVisible(dataKey.currentContext),
-                          controller: _tabController,
-                          labelColor: Colors.blueAccent,
-                          indicatorColor: Colors.blueAccent,
-                          unselectedLabelColor: Colors.grey.shade700,
-                          indicatorSize: TabBarIndicatorSize.label,
-                          indicatorWeight: 2.5,
-                          labelStyle: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: _size.width / 26.0,
-                            fontFamily: 'Raleway-Bold',
-                          ),
-                          unselectedLabelStyle: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: _size.width / 28.0,
-                            fontFamily: 'Raleway-Bold',
-                          ),
-                          tabs: [
-                            Tab(
-                              text: 'Nearby',
-                            ),
-                            Tab(
-                              text: 'Top Sales',
-                            ),
-                            Tab(
-                              text: 'Best Rated',
+                                ],
+                              ),
                             ),
                           ],
                         ),
                       ),
-                    )),
-                  ],
+                      Expanded(
+                        child: ListView.builder(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 4.0,
+                            vertical: 12.0,
+                          ),
+                          scrollDirection: Axis.horizontal,
+                          itemCount: vouchers.length,
+                          itemBuilder: (context, index) {
+                            return VoucherCard(
+                              index: index,
+                            );
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              ...actions.map((item) {
-                return BuildProductCard();
-              }).toList(),
-            ],
+                SizedBox(
+                  height: 10.0,
+                ),
+                Container(
+                  height: _size.width * .46,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color(0xFFABBAD5),
+                        spreadRadius: 1.15,
+                        blurRadius: 1.25,
+                        offset: Offset(2.0, 4.5), // changes position of shadow
+                      ),
+                    ],
+                  ),
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: 12.0,
+                      ),
+                      _buildHorizontalAction(context),
+                      Expanded(
+                          child: Container(
+                        alignment: Alignment.bottomCenter,
+                        child: Card(
+                          key: dataKey,
+                          elevation: .0,
+                          child: _buildHomeTab(context),
+                        ),
+                      )),
+                    ],
+                  ),
+                ),
+                ...actions.map((item) {
+                  return BuildProductCard();
+                }).toList(),
+              ],
+            ),
           ),
         ),
       ),
+    );
+  }
+
+  Widget _buildHorizontalAction(context) {
+    final _size = MediaQuery.of(context).size;
+    return Container(
+      padding: EdgeInsets.fromLTRB(2.0, 2.0, 2.0, 4.0),
+      height: _size.width * .3,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: actions.length,
+        itemBuilder: (context, index) {
+          return GestureDetector(
+            onTap: () {
+              setState(() {
+                currentType = actions[index].title;
+              });
+            },
+            child: Padding(
+              padding: EdgeInsets.only(left: index == 0 ? 8.0 : 16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    height: _size.width * .165,
+                    width: _size.width * .165,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Color(0xFFABBAD5),
+                          spreadRadius: 1.15,
+                          blurRadius: 1.25,
+                          offset: Offset(.0, 3.5), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: Icon(
+                      actions[index].icon,
+                      size: _size.width / 20.5,
+                      color: actions[index].color,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10.0,
+                  ),
+                  Text(
+                    actions[index].title,
+                    style: TextStyle(
+                      fontSize: _size.width / 30.0,
+                      color: currentType == actions[index].title
+                          ? Colors.blueAccent
+                          : Colors.grey.shade800,
+                      fontWeight: currentType == actions[index].title
+                          ? FontWeight.bold
+                          : FontWeight.w600,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+
+  Widget _buildHomeTab(context) {
+    final _size = MediaQuery.of(context).size;
+    return TabBar(
+      onTap: (index) => Scrollable.ensureVisible(dataKey.currentContext),
+      controller: _tabController,
+      labelColor: Colors.blueAccent,
+      indicatorColor: Colors.blueAccent,
+      unselectedLabelColor: Colors.grey.shade700,
+      indicatorSize: TabBarIndicatorSize.label,
+      indicatorWeight: 2.5,
+      labelStyle: TextStyle(
+        fontWeight: FontWeight.bold,
+        fontSize: _size.width / 26.0,
+        fontFamily: 'Raleway-Bold',
+      ),
+      unselectedLabelStyle: TextStyle(
+        fontWeight: FontWeight.bold,
+        fontSize: _size.width / 28.0,
+        fontFamily: 'Raleway-Bold',
+      ),
+      tabs: [
+        Tab(
+          text: 'Nearby',
+        ),
+        Tab(
+          text: 'Top Sales',
+        ),
+        Tab(
+          text: 'Best Rated',
+        ),
+      ],
     );
   }
 }
