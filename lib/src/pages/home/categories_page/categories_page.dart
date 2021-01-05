@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:get/get.dart';
 
-import '../widgets/build_product_card.dart';
+import '../widgets/build_store_card.dart';
 
 class CategoriesPage extends StatefulWidget {
   final String title;
@@ -32,7 +32,7 @@ class _CategoriesPageState extends State<CategoriesPage> {
         title: Text(
           widget.title,
           style: TextStyle(
-            fontSize: _size.width / 20.5,
+            fontSize: _size.width / 21.0,
             fontWeight: FontWeight.bold,
             color: Colors.grey.shade800,
           ),
@@ -42,7 +42,7 @@ class _CategoriesPageState extends State<CategoriesPage> {
         child: ListView.builder(
           itemCount: 10,
           itemBuilder: (context, index) {
-            return BuildProductCard();
+            return BuildVerticalStoreCard();
           },
         ),
       ),

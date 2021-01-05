@@ -3,7 +3,7 @@ import 'package:flutter_icons/flutter_icons.dart';
 import 'package:get/get.dart';
 import 'package:now/src/models/access.dart';
 import 'package:now/src/models/voucher.dart';
-import 'package:now/src/pages/home/widgets/build_product_card.dart';
+import 'package:now/src/pages/home/widgets/build_store_card.dart';
 import 'package:now/src/pages/home/widgets/carousel_widget.dart';
 import 'package:now/src/widgets/voucher_horizontal_card.dart';
 import 'package:location/location.dart';
@@ -135,7 +135,7 @@ class _HomePageState extends State<HomePage>
         child: NotificationListener(
           onNotification: (t) {
             if (scrollController.position.pixels >
-                (_size.width * 1.578 + _size.height * .15 + 128.0)) {
+                (_size.width * 1.6 + _size.height * .15 + 128.0)) {
               setState(() {
                 showBottomAppBar = true;
               });
@@ -144,6 +144,7 @@ class _HomePageState extends State<HomePage>
                 showBottomAppBar = false;
               });
             }
+            return true;
           },
           child: SingleChildScrollView(
             controller: scrollController,
@@ -152,35 +153,27 @@ class _HomePageState extends State<HomePage>
                 SizedBox(
                   height: 8.0,
                 ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Icon(
-                        Feather.map_pin,
-                        color: Colors.green.shade600,
-                        size: _size.width / 16.0,
-                      ),
-                      SizedBox(
-                        width: 10.0,
-                      ),
-                      Expanded(
-                        child: FutureBuilder(
-                          future: _myLocation,
-                          builder: (context, snapshot) {
-                            switch (snapshot.connectionState) {
-                              case ConnectionState.waiting:
-                                return Text(
-                                  'Thành Phố Hồ Chí Minh, Việt Nam',
-                                  style: TextStyle(
-                                    color: Colors.grey.shade800,
-                                    fontSize: _size.width / 26.0,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                );
-                              default:
-                                if (snapshot.hasError) {
+                GestureDetector(
+                  onTap: () => Get.toNamed('/myaddress'),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 16.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Icon(
+                          Feather.map_pin,
+                          color: Colors.green.shade600,
+                          size: _size.width / 16.0,
+                        ),
+                        SizedBox(
+                          width: 10.0,
+                        ),
+                        Expanded(
+                          child: FutureBuilder(
+                            future: _myLocation,
+                            builder: (context, snapshot) {
+                              switch (snapshot.connectionState) {
+                                case ConnectionState.waiting:
                                   return Text(
                                     'Thành Phố Hồ Chí Minh, Việt Nam',
                                     style: TextStyle(
@@ -189,30 +182,43 @@ class _HomePageState extends State<HomePage>
                                       fontWeight: FontWeight.w400,
                                     ),
                                   );
-                                }
+                                default:
+                                  if (snapshot.hasError) {
+                                    return Text(
+                                      'Thành Phố Hồ Chí Minh, Việt Nam',
+                                      style: TextStyle(
+                                        color: Colors.grey.shade800,
+                                        fontSize: _size.width / 26.0,
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    );
+                                  }
 
-                                return Text(
-                                  snapshot.data.toString().substring(0,
-                                          snapshot.data.toString().length - 2) +
-                                      '...',
-                                  style: TextStyle(
-                                    color: Colors.grey.shade800,
-                                    fontSize: _size.width / 26.0,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                );
-                            }
-                          },
+                                  return Text(
+                                    snapshot.data.toString().substring(
+                                            0,
+                                            snapshot.data.toString().length -
+                                                2) +
+                                        '...',
+                                    style: TextStyle(
+                                      color: Colors.grey.shade800,
+                                      fontSize: _size.width / 26.0,
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                                  );
+                              }
+                            },
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
                 SizedBox(
                   height: 12.0,
                 ),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () => Get.toNamed('/searchstore'),
                   child: Container(
                     margin: EdgeInsets.symmetric(
                       horizontal: 16.0,
@@ -399,7 +405,7 @@ class _HomePageState extends State<HomePage>
                                   Icon(
                                     Feather.arrow_right,
                                     color: Colors.blueAccent,
-                                    size: _size.width / 20.5,
+                                    size: _size.width / 21.0,
                                   ),
                                 ],
                               ),
@@ -460,7 +466,7 @@ class _HomePageState extends State<HomePage>
                   ),
                 ),
                 ...actions.map((item) {
-                  return BuildProductCard();
+                  return BuildVerticalStoreCard();
                 }).toList(),
               ],
             ),
@@ -508,7 +514,7 @@ class _HomePageState extends State<HomePage>
                     ),
                     child: Icon(
                       actions[index].icon,
-                      size: _size.width / 20.5,
+                      size: _size.width / 21.0,
                       color: actions[index].color,
                     ),
                   ),

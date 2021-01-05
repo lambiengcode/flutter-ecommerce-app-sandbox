@@ -36,7 +36,7 @@ class _MembersPage extends State<MembersPage> {
           'My Store',
           style: TextStyle(
             color: Colors.grey.shade800,
-            fontSize: _size.width / 20.5,
+            fontSize: _size.width / 21.0,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -52,9 +52,6 @@ class _MembersPage extends State<MembersPage> {
               size: _size.width / 16.0,
               color: Colors.grey.shade800,
             ),
-          ),
-          SizedBox(
-            width: 2.0,
           ),
         ],
       ),
@@ -175,7 +172,7 @@ class _MembersPage extends State<MembersPage> {
                     'Member Active Daily',
                     style: TextStyle(
                       color: Colors.grey.shade700,
-                      fontSize: _size.width / 20.5,
+                      fontSize: _size.width / 21.0,
                       fontWeight: FontWeight.bold,
                       fontFamily: "Raleway-Bold",
                     ),
@@ -313,7 +310,7 @@ class _MembersPage extends State<MembersPage> {
                 Icon(
                   Feather.arrow_right,
                   color: Colors.blueAccent,
-                  size: _size.width / 20.5,
+                  size: _size.width / 21.0,
                 ),
               ],
             ),

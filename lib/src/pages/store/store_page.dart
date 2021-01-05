@@ -42,7 +42,7 @@ class _StorePageState extends State<StorePage> {
         ),
         actions: [
           IconButton(
-            onPressed: () => Get.back(),
+            onPressed: () => Get.toNamed('/searchproduct'),
             icon: Icon(
               Feather.search,
               color: _showAppBar ? Colors.white : Colors.black,
@@ -58,7 +58,7 @@ class _StorePageState extends State<StorePage> {
             ),
           ),
           IconButton(
-            onPressed: () => Get.back(),
+            onPressed: () => Get.toNamed('/payment'),
             icon: Icon(
               Feather.shopping_cart,
               color: _showAppBar ? Colors.white : Colors.black,
@@ -102,7 +102,7 @@ class _StorePageState extends State<StorePage> {
                   child: Text(
                     widget.id,
                     style: TextStyle(
-                      fontSize: _size.width / 20.5,
+                      fontSize: _size.width / 21.0,
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
                     ),
@@ -251,7 +251,7 @@ class _StorePageState extends State<StorePage> {
                             Icon(
                               Feather.arrow_right,
                               color: Colors.blueAccent,
-                              size: _size.width / 20.5,
+                              size: _size.width / 21.0,
                             ),
                           ],
                         ),
@@ -336,7 +336,7 @@ class _StorePageState extends State<StorePage> {
                       Icon(
                         Feather.arrow_right,
                         color: Colors.blueAccent,
-                        size: _size.width / 20.5,
+                        size: _size.width / 21.0,
                       ),
                     ],
                   ),

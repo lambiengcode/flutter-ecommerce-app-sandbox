@@ -29,7 +29,7 @@ class _ManageProductsPageState extends State<ManageProductsPage> {
         title: Text(
           'Products',
           style: TextStyle(
-            fontSize: _size.width / 20.5,
+            fontSize: _size.width / 21.0,
             color: Colors.grey.shade800,
             fontWeight: FontWeight.bold,
           ),

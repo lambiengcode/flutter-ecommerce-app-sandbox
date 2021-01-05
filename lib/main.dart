@@ -14,9 +14,14 @@ import 'package:now/src/pages/members/pages/manage_members_page.dart';
 import 'package:now/src/pages/members/pages/manage_orders_page.dart';
 import 'package:now/src/pages/members/pages/manage_products_page.dart';
 import 'package:now/src/pages/members/pages/manage_vouchers_page.dart';
+import 'package:now/src/pages/profile/pages/my_address_page.dart';
 import 'package:now/src/pages/profile/pages/my_points_page.dart';
+import 'package:now/src/pages/profile/pages/my_profile_page.dart';
 import 'package:now/src/pages/profile/pages/my_voucher_page.dart';
+import 'package:now/src/pages/search/search_product_page.dart';
+import 'package:now/src/pages/search/search_store_page.dart';
 import 'package:now/src/pages/store/pages/list_product_page.dart';
+import 'package:now/src/pages/store/pages/payment_page.dart';
 import 'package:now/src/pages/store/pages/product_page.dart';
 import 'package:now/src/pages/store/store_page.dart';
 import 'src/pages/members/members_page.dart';
@@ -66,6 +71,26 @@ void main() {
           id: Get.parameters['id'],
         ),
         transition: Transition.zoom,
+        transitionDuration: Duration(milliseconds: 400),
+      ),
+      GetPage(
+        name: '/payment',
+        page: () => PaymentPage(),
+        transition: Transition.cupertinoDialog,
+        transitionDuration: Duration(milliseconds: 400),
+      ),
+
+      // Search Page
+      GetPage(
+        name: '/searchstore',
+        page: () => SearchStorePage(),
+        transition: Transition.cupertinoDialog,
+        transitionDuration: Duration(milliseconds: 400),
+      ),
+      GetPage(
+        name: '/searchproduct',
+        page: () => SearchProductPage(),
+        transition: Transition.cupertinoDialog,
         transitionDuration: Duration(milliseconds: 400),
       ),
 
@@ -165,6 +190,12 @@ void main() {
         transitionDuration: Duration(milliseconds: 400),
       ),
       GetPage(
+        name: '/myprofile',
+        page: () => MyProfilePage(),
+        transition: Transition.cupertinoDialog,
+        transitionDuration: Duration(milliseconds: 400),
+      ),
+      GetPage(
         name: '/myvoucher',
         page: () => MyVoucherPage(),
         transition: Transition.cupertinoDialog,
@@ -173,6 +204,12 @@ void main() {
       GetPage(
         name: '/mypoints',
         page: () => MyPointsPage(),
+        transition: Transition.cupertinoDialog,
+        transitionDuration: Duration(milliseconds: 400),
+      ),
+      GetPage(
+        name: '/myaddress',
+        page: () => MyAddressPage(),
         transition: Transition.cupertinoDialog,
         transitionDuration: Duration(milliseconds: 400),
       ),

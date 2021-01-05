@@ -30,7 +30,7 @@ class _MyVoucherPageState extends State<MyVoucherPage> {
         title: Text(
           'My Voucher',
           style: TextStyle(
-            fontSize: _size.width / 20.5,
+            fontSize: _size.width / 21.0,
             color: Colors.grey.shade800,
             fontWeight: FontWeight.bold,
           ),

@@ -13,7 +13,6 @@ class GetSnackBar {
       '',
       colorText: Colors.white,
       backgroundColor: Colors.black45,
-      dismissDirection: SnackDismissDirection.HORIZONTAL,
       duration: Duration(
         milliseconds: 2000,
       ),

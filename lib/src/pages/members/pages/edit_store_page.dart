@@ -352,7 +352,7 @@ class _EditStorePageState extends State<EditStorePage> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             SizedBox(
-              height: 24.0,
+              height: 14.0,
             ),
             Padding(
               padding: EdgeInsets.symmetric(
@@ -367,7 +367,7 @@ class _EditStorePageState extends State<EditStorePage> {
                       onTap: () => _pickImage(ImageSource.gallery),
                       child: Container(
                         padding: EdgeInsets.symmetric(
-                          vertical: 15.0,
+                          vertical: 12.5,
                         ),
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
@@ -400,7 +400,7 @@ class _EditStorePageState extends State<EditStorePage> {
                       onTap: () => _pickImage(ImageSource.camera),
                       child: Container(
                         padding: EdgeInsets.symmetric(
-                          vertical: 15.0,
+                          vertical: 12.5,
                         ),
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
@@ -428,7 +428,7 @@ class _EditStorePageState extends State<EditStorePage> {
               ),
             ),
             SizedBox(
-              height: 24.0,
+              height: 16.0,
             ),
           ],
         ),

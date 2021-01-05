@@ -24,7 +24,7 @@ class _ProfilePageState extends State<ProfilePage> {
         title: Text(
           'Me',
           style: TextStyle(
-            fontSize: _size.width / 20.5,
+            fontSize: _size.width / 21.0,
             fontWeight: FontWeight.bold,
             color: Colors.blueGrey.shade700,
           ),
@@ -39,36 +39,39 @@ class _ProfilePageState extends State<ProfilePage> {
               SizedBox(
                 height: 12.0,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Column(
-                    children: [
-                      Container(
-                        height: _size.width * .33,
-                        width: _size.width * .33,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          image: DecorationImage(
-                            image: AssetImage('images/avt.jpg'),
-                            fit: BoxFit.cover,
+              GestureDetector(
+                onTap: () => Get.toNamed('/myprofile'),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Column(
+                      children: [
+                        Container(
+                          height: _size.width * .3,
+                          width: _size.width * .3,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                              image: AssetImage('images/avt.jpg'),
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
-                      ),
-                      SizedBox(
-                        height: 16.0,
-                      ),
-                      Text(
-                        'lambiengcode',
-                        style: TextStyle(
-                          fontSize: _size.width / 20.5,
-                          color: Colors.blueGrey.shade700,
-                          fontWeight: FontWeight.bold,
+                        SizedBox(
+                          height: 16.0,
                         ),
-                      )
-                    ],
-                  ),
-                ],
+                        Text(
+                          'lambiengcode',
+                          style: TextStyle(
+                            fontSize: _size.width / 22.5,
+                            color: Colors.blueGrey.shade700,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
               ),
               SizedBox(
                 height: 20.0,
@@ -96,7 +99,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     _padding(context),
                     _buildAction(context, 'Payment', Feather.credit_card),
                     _padding(context),
-                    _buildAction(context, 'Addess', Feather.map_pin),
+                    _buildAction(context, 'Address', Feather.map_pin),
                   ],
                 ),
               ),
@@ -200,8 +203,8 @@ class _ProfilePageState extends State<ProfilePage> {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 8.0),
       child: Divider(
-        indent: 28.0,
-        endIndent: 28.0,
+        indent: 22.0,
+        endIndent: 22.0,
         thickness: .25,
         height: .25,
         color: Colors.blueGrey,
@@ -227,6 +230,9 @@ class _ProfilePageState extends State<ProfilePage> {
             break;
           case 'Payment':
             getSnackBar.show();
+            break;
+          case 'Address':
+            Get.toNamed('/myaddress');
             break;
           case 'Term & Policy':
             getSnackBar.show();

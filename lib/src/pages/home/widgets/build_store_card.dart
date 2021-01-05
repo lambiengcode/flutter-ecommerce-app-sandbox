@@ -3,12 +3,12 @@ import 'package:flutter_icons/flutter_icons.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
-class BuildProductCard extends StatefulWidget {
+class BuildVerticalStoreCard extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => _BuildProductCardState();
+  State<StatefulWidget> createState() => _BuildVerticalStoreCardState();
 }
 
-class _BuildProductCardState extends State<BuildProductCard> {
+class _BuildVerticalStoreCardState extends State<BuildVerticalStoreCard> {
   @override
   Widget build(BuildContext context) {
     final _size = MediaQuery.of(context).size;
@@ -102,7 +102,7 @@ class _BuildProductCardState extends State<BuildProductCard> {
                               ],
                             ),
                             Padding(
-                              padding: EdgeInsets.only(right: 4.0),
+                              padding: EdgeInsets.only(right: 6.0),
                               child: Text(
                                 '9.2 km',
                                 style: TextStyle(
@@ -135,7 +135,7 @@ class _BuildProductCardState extends State<BuildProductCard> {
                           Icon(
                             Feather.arrow_right,
                             color: Colors.blueAccent.shade400,
-                            size: _size.width / 20.5,
+                            size: _size.width / 21.0,
                           ),
                         ],
                       ),

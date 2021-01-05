@@ -74,7 +74,7 @@ class _ProductPageState extends State<ProductPage> {
                     Text(
                       'Coffee Sofresh',
                       style: TextStyle(
-                        fontSize: _size.width / 20.5,
+                        fontSize: _size.width / 21.0,
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
                       ),

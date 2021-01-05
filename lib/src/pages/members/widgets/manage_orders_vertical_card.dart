@@ -66,7 +66,7 @@ class _ManageOrdersVerticalCardState extends State<ManageOrdersVerticalCard> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Text(
-                          'Orders | 7 Items',
+                          'Orders - 7 Items',
                           style: TextStyle(
                             color: Colors.grey.shade800,
                             fontSize: _size.width / 23.5,
@@ -74,14 +74,29 @@ class _ManageOrdersVerticalCardState extends State<ManageOrdersVerticalCard> {
                           ),
                         ),
                         SizedBox(
-                          height: 4.0,
+                          height: 6.0,
                         ),
-                        Text(
-                          '02/01/2021',
-                          style: TextStyle(
-                            color: Colors.grey.shade800,
-                            fontSize: _size.width / 28.0,
-                            fontWeight: FontWeight.w400,
+                        RichText(
+                          text: TextSpan(
+                            children: [
+                              TextSpan(
+                                text: 'Date: ',
+                                style: TextStyle(
+                                  fontSize: _size.width / 26.5,
+                                  color: Colors.grey.shade800,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                              TextSpan(
+                                text: '04/01/2021',
+                                style: TextStyle(
+                                  fontSize: _size.width / 28.0,
+                                  color: Colors.blueAccent.shade700,
+                                  fontWeight: FontWeight.w600,
+                                  fontStyle: FontStyle.italic,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ],

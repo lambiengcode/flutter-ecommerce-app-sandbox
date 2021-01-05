@@ -32,7 +32,7 @@ class _BottomDeleteState extends State<BottomDelete> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             SizedBox(
-              height: 24.0,
+              height: 14.0,
             ),
             Padding(
               padding: EdgeInsets.symmetric(
@@ -47,7 +47,7 @@ class _BottomDeleteState extends State<BottomDelete> {
                       onTap: () => Navigator.of(context).pop(context),
                       child: Container(
                         padding: EdgeInsets.symmetric(
-                          vertical: 15.0,
+                          vertical: 12.5,
                         ),
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
@@ -83,7 +83,7 @@ class _BottomDeleteState extends State<BottomDelete> {
                       onTap: () => Navigator.of(context).pop(context),
                       child: Container(
                         padding: EdgeInsets.symmetric(
-                          vertical: 15.0,
+                          vertical: 12.5,
                         ),
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
@@ -114,7 +114,7 @@ class _BottomDeleteState extends State<BottomDelete> {
               ),
             ),
             SizedBox(
-              height: 24.0,
+              height: 16.0,
             ),
           ],
         ),

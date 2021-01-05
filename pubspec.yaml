@@ -48,6 +48,10 @@ dependencies:
 
   location: ^3.2.1
   geocoder: ^0.2.1
+  google_maps_place_picker: ^1.0.1
+  google_maps_flutter: ^1.0.6
+
+  flutter_datetime_picker: ^1.4.0
 
   fl_chart: ^0.9.4
   bubble_tab_indicator: ^0.1.4

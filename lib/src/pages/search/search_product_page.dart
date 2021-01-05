@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:get/get.dart';
 import 'package:now/src/pages/home/widgets/build_store_card.dart';
+import 'package:now/src/widgets/product_vertical_card.dart';
 
-class SearchStorePage extends StatefulWidget {
+class SearchProductPage extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => _SearchStorePageState();
+  State<StatefulWidget> createState() => _SearchProductPageState();
 }
 
-class _SearchStorePageState extends State<SearchStorePage> {
+class _SearchProductPageState extends State<SearchProductPage> {
   @override
   Widget build(BuildContext context) {
     final _size = MediaQuery.of(context).size;
@@ -37,7 +38,7 @@ class _SearchStorePageState extends State<SearchStorePage> {
                 child: Container(
                   height: 44.0,
                   decoration: BoxDecoration(
-                    color: Colors.grey.shade50,
+                    color: Colors.grey.shade100,
                     borderRadius: BorderRadius.circular(
                       30.0,
                     ),
@@ -52,7 +53,6 @@ class _SearchStorePageState extends State<SearchStorePage> {
                   ),
                   alignment: Alignment.center,
                   child: TextFormField(
-                    autofocus: true,
                     keyboardType: TextInputType.text,
                     style: TextStyle(
                       color: Colors.black87,
@@ -99,7 +99,7 @@ class _SearchStorePageState extends State<SearchStorePage> {
         child: ListView.builder(
           itemCount: 10,
           itemBuilder: (context, index) {
-            return BuildVerticalStoreCard();
+            return ProductVerticalCard();
           },
         ),
       ),

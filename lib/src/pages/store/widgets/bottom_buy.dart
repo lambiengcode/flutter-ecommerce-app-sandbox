@@ -152,7 +152,7 @@ class _BottomBuyState extends State<BottomBuy> {
                             Text(
                               'Coffee Sofresh',
                               style: TextStyle(
-                                fontSize: _size.width / 20.5,
+                                fontSize: _size.width / 21.0,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.grey.shade800,
                               ),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:get/get.dart';
 
-import 'build_product_card.dart';
+import 'build_store_card.dart';
 
 class FreeshipListPage extends StatefulWidget {
   @override
@@ -30,7 +30,7 @@ class _FreeshipListPageState extends State<FreeshipListPage> {
         title: Text(
           'Freeship',
           style: TextStyle(
-            fontSize: _size.width / 20.5,
+            fontSize: _size.width / 21.0,
             fontWeight: FontWeight.bold,
             color: Colors.grey.shade800,
           ),
@@ -40,7 +40,7 @@ class _FreeshipListPageState extends State<FreeshipListPage> {
         child: ListView.builder(
           itemCount: 10,
           itemBuilder: (context, index) {
-            return BuildProductCard();
+            return BuildVerticalStoreCard();
           },
         ),
       ),

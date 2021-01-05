@@ -152,7 +152,7 @@ class _SaveCardState extends State<SaveCard> {
                           Icon(
                             Feather.arrow_right,
                             color: Colors.blueAccent.shade400,
-                            size: _size.width / 20.5,
+                            size: _size.width / 21.0,
                           ),
                         ],
                       ),

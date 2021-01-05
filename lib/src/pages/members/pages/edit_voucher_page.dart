@@ -381,7 +381,7 @@ class _EditVoucherPageState extends State<EditVoucherPage> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             SizedBox(
-              height: 24.0,
+              height: 14.0,
             ),
             Padding(
               padding: EdgeInsets.symmetric(
@@ -396,7 +396,7 @@ class _EditVoucherPageState extends State<EditVoucherPage> {
                       onTap: () => _pickImage(ImageSource.gallery),
                       child: Container(
                         padding: EdgeInsets.symmetric(
-                          vertical: 15.0,
+                          vertical: 12.5,
                         ),
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
@@ -429,7 +429,7 @@ class _EditVoucherPageState extends State<EditVoucherPage> {
                       onTap: () => _pickImage(ImageSource.camera),
                       child: Container(
                         padding: EdgeInsets.symmetric(
-                          vertical: 15.0,
+                          vertical: 12.5,
                         ),
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
@@ -457,7 +457,7 @@ class _EditVoucherPageState extends State<EditVoucherPage> {
               ),
             ),
             SizedBox(
-              height: 24.0,
+              height: 16.0,
             ),
           ],
         ),
