@@ -19,7 +19,7 @@ class _ProfilePageState extends State<ProfilePage> {
       appBar: AppBar(
         elevation: .0,
         brightness: Brightness.light,
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.white,
         centerTitle: true,
         title: Text(
           'Me',
@@ -31,6 +31,7 @@ class _ProfilePageState extends State<ProfilePage> {
         ),
       ),
       body: Container(
+        color: Colors.white,
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -47,8 +48,8 @@ class _ProfilePageState extends State<ProfilePage> {
                     Column(
                       children: [
                         Container(
-                          height: _size.width * .3,
-                          width: _size.width * .3,
+                          height: _size.width * .33,
+                          width: _size.width * .33,
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             image: DecorationImage(
@@ -63,7 +64,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         Text(
                           'lambiengcode',
                           style: TextStyle(
-                            fontSize: _size.width / 22.5,
+                            fontSize: _size.width / 20.5,
                             color: Colors.blueGrey.shade700,
                             fontWeight: FontWeight.bold,
                           ),
@@ -203,11 +204,11 @@ class _ProfilePageState extends State<ProfilePage> {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 8.0),
       child: Divider(
-        indent: 22.0,
-        endIndent: 22.0,
+        indent: 25.0,
+        endIndent: 25.0,
         thickness: .25,
         height: .25,
-        color: Colors.blueGrey,
+        color: Colors.grey.shade400,
       ),
     );
   }

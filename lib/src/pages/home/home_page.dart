@@ -127,6 +127,9 @@ class _HomePageState extends State<HomePage>
               color: Colors.blueAccent,
             ),
           ),
+          SizedBox(
+            width: 2.5,
+          )
         ],
         bottom: showBottomAppBar ? _buildHomeTab(context) : null,
       ),
@@ -156,7 +159,7 @@ class _HomePageState extends State<HomePage>
                 GestureDetector(
                   onTap: () => Get.toNamed('/myaddress'),
                   child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16.0),
+                    padding: EdgeInsets.symmetric(horizontal: 14.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -221,7 +224,7 @@ class _HomePageState extends State<HomePage>
                   onTap: () => Get.toNamed('/searchstore'),
                   child: Container(
                     margin: EdgeInsets.symmetric(
-                      horizontal: 16.0,
+                      horizontal: 14.0,
                     ),
                     height: 46.0,
                     decoration: BoxDecoration(
@@ -270,7 +273,7 @@ class _HomePageState extends State<HomePage>
                 Container(
                   height: _size.height * .15,
                   margin: EdgeInsets.symmetric(
-                    horizontal: 16.0,
+                    horizontal: 14.0,
                   ),
                   child: CarouselImage(),
                 ),

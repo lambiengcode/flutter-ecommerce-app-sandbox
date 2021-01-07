@@ -95,7 +95,8 @@ class _MyProfilePageState extends State<MyProfilePage> {
                                 'Change Avatar',
                                 style: TextStyle(
                                   fontSize: _size.width / 28.0,
-                                  color: Colors.blueAccent.shade700,
+                                  color: Colors.blueAccent.shade400,
+                                  fontWeight: FontWeight.w500,
                                 ),
                               ),
                               SizedBox(
@@ -103,7 +104,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
                               ),
                               Icon(
                                 Icons.arrow_forward_ios,
-                                color: Colors.grey.shade700,
+                                color: Colors.blueAccent.shade400,
                                 size: _size.width / 24.0,
                               ),
                             ],
