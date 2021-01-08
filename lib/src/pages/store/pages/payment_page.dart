@@ -141,6 +141,7 @@ class _PaymentPageState extends State<PaymentPage> {
                             height: 12.0,
                           ),
                           _buildProductCard(context),
+                          _buildProductCard(context),
                           SizedBox(height: 8.0),
                           Row(
                             children: [
@@ -203,7 +204,7 @@ class _PaymentPageState extends State<PaymentPage> {
   Widget _buildDeliveryAddress(context) {
     final _size = MediaQuery.of(context).size;
     return Container(
-      height: _size.width * .415,
+      height: _size.width * .42,
       padding: EdgeInsets.fromLTRB(12.0, 12.0, 8.0, 22.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -454,7 +455,7 @@ class _PaymentPageState extends State<PaymentPage> {
     return GestureDetector(
       onTap: () => Get.back(),
       child: Container(
-        height: 145.0,
+        height: _size.height * .2,
         padding: EdgeInsets.symmetric(horizontal: 16.0),
         decoration: BoxDecoration(
           color: Colors.white,
@@ -484,7 +485,7 @@ class _PaymentPageState extends State<PaymentPage> {
               height: 10.0,
             ),
             Container(
-              height: _size.height * .075,
+              height: _size.height * .07,
               alignment: Alignment.center,
               decoration: BoxDecoration(
                 color: Colors.blueAccent.shade400,
@@ -515,7 +516,7 @@ class _PaymentPageState extends State<PaymentPage> {
           });
         },
         child: Container(
-          height: _size.height * .075,
+          height: _size.height * .07,
           alignment: Alignment.center,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(6.0),
@@ -625,6 +626,7 @@ class _PaymentPageState extends State<PaymentPage> {
   Widget _buildProductCard(context) {
     final _size = MediaQuery.of(context).size;
     return Container(
+      margin: EdgeInsets.only(bottom: 6.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -638,7 +640,8 @@ class _PaymentPageState extends State<PaymentPage> {
                 width: _size.width * .16,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('images/logo.png'),
+                    image: NetworkImage(
+                        'https://www.highlandscoffee.com.vn/vnt_upload/weblink/HCO-7548-PHIN-SUA-DA-2019-TALENT-WEB_1.jpg'),
                     fit: BoxFit.cover,
                   ),
                 ),

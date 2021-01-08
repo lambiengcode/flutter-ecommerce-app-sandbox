@@ -51,8 +51,6 @@ class _MyAddressPageState extends State<MyAddressPage> {
     String result = '${first.addressLine}';
     print(
         ' ${first.locality},${first.addressLine}, ${first.featureName},${first.thoroughfare}, ${first.subThoroughfare}');
-    result = result.replaceAll(first.adminArea, '');
-    result = result.replaceAll(first.countryName, '');
     return result;
   }
 

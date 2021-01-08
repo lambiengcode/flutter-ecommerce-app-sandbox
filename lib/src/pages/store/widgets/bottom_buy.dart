@@ -211,7 +211,7 @@ class _BottomBuyState extends State<BottomBuy> {
             Row(
               children: [
                 SizedBox(
-                  width: 16.0,
+                  width: 24.0,
                 ),
                 GestureDetector(
                   onTap: () {
@@ -249,7 +249,7 @@ class _BottomBuyState extends State<BottomBuy> {
                   child: Container(
                     padding: EdgeInsets.only(
                         left: 16.0, right: 12.0, top: 15.0, bottom: 15.0),
-                    margin: EdgeInsets.symmetric(horizontal: 16.0),
+                    margin: EdgeInsets.symmetric(horizontal: 12.0),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(8.0)),
                       color: Colors.white,
@@ -301,7 +301,7 @@ class _BottomBuyState extends State<BottomBuy> {
                   ),
                 ),
                 SizedBox(
-                  width: 16.0,
+                  width: 24.0,
                 ),
               ],
             ),
