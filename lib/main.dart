@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:now/src/app.dart';
+import 'package:now/src/pages/card/pages/add_point.dart';
 import 'package:now/src/pages/home/categories_page/categories_page.dart';
 import 'package:now/src/pages/home/widgets/freeship_list_page.dart';
 import 'package:now/src/pages/home/widgets/voucher_list_page.dart';
@@ -62,7 +63,7 @@ void main() {
         page: () => CategoriesPage(
           title: Get.parameters['title'],
         ),
-        transition: Transition.cupertinoDialog,
+        transition: Transition.rightToLeft,
         transitionDuration: Duration(milliseconds: 400),
       ),
       GetPage(
@@ -70,8 +71,8 @@ void main() {
         page: () => StorePage(
           id: Get.parameters['id'],
         ),
-        transition: Transition.zoom,
-        transitionDuration: Duration(milliseconds: 400),
+        transition: Transition.rightToLeft,
+        transitionDuration: Duration(milliseconds: 200),
       ),
       GetPage(
         name: '/payment',
@@ -213,6 +214,14 @@ void main() {
         transition: Transition.cupertinoDialog,
         transitionDuration: Duration(milliseconds: 400),
       ),
+
+      // My Points
+      GetPage(
+        name: '/addpoint',
+        page: () => AddPointPage(),
+        transition: Transition.rightToLeftWithFade,
+        transitionDuration: Duration(milliseconds: 200),
+      )
     ],
   ));
 }

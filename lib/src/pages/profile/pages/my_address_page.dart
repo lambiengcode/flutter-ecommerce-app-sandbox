@@ -154,10 +154,19 @@ class _MyAddressPageState extends State<MyAddressPage> {
         ),
       ),
       body: Container(
+        color: Colors.grey.shade100,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 6.0),
+            Container(
+              color: Colors.white,
+              padding: EdgeInsets.symmetric(horizontal: _size.width * .32),
+              child: Divider(
+                color: Colors.grey.shade400,
+                thickness: .4,
+                height: .4,
+              ),
+            ),
             _buildCurrentLocation(
               context,
               'Current Location',
@@ -206,15 +215,7 @@ class _MyAddressPageState extends State<MyAddressPage> {
           vertical: 16.0,
         ),
         decoration: BoxDecoration(
-          color: Colors.grey.shade50,
-          boxShadow: [
-            BoxShadow(
-              color: Color(0xFFABBAD5),
-              spreadRadius: .5,
-              blurRadius: 1.25,
-              offset: Offset(0, 1.5), // changes position of shadow
-            ),
-          ],
+          color: Colors.white,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -288,15 +289,7 @@ class _MyAddressPageState extends State<MyAddressPage> {
           vertical: 16.0,
         ),
         decoration: BoxDecoration(
-          color: Colors.grey.shade50,
-          boxShadow: [
-            BoxShadow(
-              color: Color(0xFFABBAD5),
-              spreadRadius: .5,
-              blurRadius: 1.25,
-              offset: Offset(0, 1.5), // changes position of shadow
-            ),
-          ],
+          color: Colors.white,
         ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,

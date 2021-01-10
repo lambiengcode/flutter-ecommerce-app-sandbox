@@ -20,18 +20,13 @@ class _BuildVerticalStoreCardState extends State<BuildVerticalStoreCard> {
         ),
         padding: EdgeInsets.symmetric(
           horizontal: 4.0,
-          vertical: 8.0,
+          vertical: 6.0,
         ),
         decoration: BoxDecoration(
           color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              color: Color(0xFFABBAD5),
-              spreadRadius: 1.15,
-              blurRadius: 1.25,
-              offset: Offset(.0, 2.5), // changes position of shadow
-            ),
-          ],
+          border: Border(
+            bottom: BorderSide(color: Colors.grey.shade400, width: .4),
+          ),
         ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -41,7 +36,6 @@ class _BuildVerticalStoreCardState extends State<BuildVerticalStoreCard> {
               height: _size.width * .25,
               width: _size.width * .25,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(2.0),
                 image: DecorationImage(
                   image: NetworkImage(
                       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRcMynRQ0TtZ0YwF6jgzgqqiZ4ukK7s5Qjrg&usqp=CAU'),

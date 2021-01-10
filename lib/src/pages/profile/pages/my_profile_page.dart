@@ -55,23 +55,22 @@ class _MyProfilePageState extends State<MyProfilePage> {
         ),
       ),
       body: Container(
+        color: Colors.grey.shade100,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
-              height: 4.0,
+            Container(
+              color: Colors.white,
+              padding: EdgeInsets.symmetric(horizontal: _size.width * .32),
+              child: Divider(
+                color: Colors.grey.shade400,
+                thickness: .4,
+                height: .4,
+              ),
             ),
             Container(
               decoration: BoxDecoration(
-                color: Colors.grey.shade50,
-                boxShadow: [
-                  BoxShadow(
-                    color: Color(0xFFABBAD5),
-                    spreadRadius: .0,
-                    blurRadius: 1.25,
-                    offset: Offset(0, 1.5), // changes position of shadow
-                  ),
-                ],
+                color: Colors.white,
               ),
               padding: EdgeInsets.symmetric(vertical: 16.0),
               child: Column(
@@ -84,7 +83,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
                       children: [
                         CircleAvatar(
                           backgroundImage: AssetImage('images/avt.jpg'),
-                          radius: 22.5,
+                          radius: 26.0,
                         ),
                         GestureDetector(
                           onTap: () => showImageBottomSheet(),
@@ -121,19 +120,11 @@ class _MyProfilePageState extends State<MyProfilePage> {
               ),
             ),
             SizedBox(
-              height: 8.0,
+              height: 2.0,
             ),
             Container(
               decoration: BoxDecoration(
-                color: Colors.grey.shade50,
-                boxShadow: [
-                  BoxShadow(
-                    color: Color(0xFFABBAD5),
-                    spreadRadius: .0,
-                    blurRadius: 1.25,
-                    offset: Offset(0, 1.5), // changes position of shadow
-                  ),
-                ],
+                color: Colors.white,
               ),
               padding: EdgeInsets.symmetric(vertical: 16.0),
               child: Column(
@@ -249,7 +240,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
       child: Divider(
         height: .25,
         thickness: .25,
-        color: Colors.grey.shade400,
+        color: Colors.grey.shade300,
         indent: 8.0,
         endIndent: 8.0,
       ),

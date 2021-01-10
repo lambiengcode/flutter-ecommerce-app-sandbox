@@ -33,7 +33,7 @@ class _SaveCardState extends State<SaveCard> {
       onLongPress: () => showDeleteBottomSheet(),
       child: Container(
         margin: EdgeInsets.only(
-          bottom: 4.0,
+          bottom: 2.0,
         ),
         padding: EdgeInsets.symmetric(
           horizontal: 4.0,
@@ -41,14 +41,6 @@ class _SaveCardState extends State<SaveCard> {
         ),
         decoration: BoxDecoration(
           color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              color: Color(0xFFABBAD5),
-              spreadRadius: 1.15,
-              blurRadius: 1.25,
-              offset: Offset(.0, 2.5), // changes position of shadow
-            ),
-          ],
         ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,

@@ -146,9 +146,9 @@ class _EditStorePageState extends State<EditStorePage> {
                   boxShadow: [
                     BoxShadow(
                       color: Color(0xFFABBAD5),
-                      spreadRadius: 1.85,
-                      blurRadius: 1.85,
-                      offset: Offset(2.0, 2.5), // changes position of shadow
+                      spreadRadius: 1.25,
+                      blurRadius: 1.5,
+                      offset: Offset(.0, 2.5), // changes position of shadow
                     ),
                   ],
                 ),

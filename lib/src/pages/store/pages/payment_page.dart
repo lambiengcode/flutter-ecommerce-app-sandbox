@@ -93,7 +93,7 @@ class _PaymentPageState extends State<PaymentPage> {
         ),
       ),
       body: Container(
-        color: Colors.white,
+        color: Colors.grey.shade100,
         child: Column(
           children: [
             Expanded(
@@ -116,15 +116,6 @@ class _PaymentPageState extends State<PaymentPage> {
                       padding: EdgeInsets.fromLTRB(12.0, 12.0, 8.0, 12.0),
                       decoration: BoxDecoration(
                         color: Colors.white,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Color(0xFFABBAD5),
-                            spreadRadius: .0,
-                            blurRadius: 1.25,
-                            offset:
-                                Offset(.0, 1.8), // changes position of shadow
-                          ),
-                        ],
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -205,6 +196,7 @@ class _PaymentPageState extends State<PaymentPage> {
     final _size = MediaQuery.of(context).size;
     return Container(
       height: _size.width * .42,
+      color: Colors.white,
       padding: EdgeInsets.fromLTRB(12.0, 12.0, 8.0, 22.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -344,14 +336,6 @@ class _PaymentPageState extends State<PaymentPage> {
       padding: EdgeInsets.fromLTRB(12.0, 12.0, 8.0, 12.0),
       decoration: BoxDecoration(
         color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Color(0xFFABBAD5),
-            spreadRadius: .0,
-            blurRadius: 1.25,
-            offset: Offset(.0, 1.8), // changes position of shadow
-          ),
-        ],
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -401,14 +385,6 @@ class _PaymentPageState extends State<PaymentPage> {
       padding: EdgeInsets.fromLTRB(12.0, 12.0, 8.0, 16.0),
       decoration: BoxDecoration(
         color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Color(0xFFABBAD5),
-            spreadRadius: .0,
-            blurRadius: 1.25,
-            offset: Offset(.0, 1.8), // changes position of shadow
-          ),
-        ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -428,14 +404,6 @@ class _PaymentPageState extends State<PaymentPage> {
       padding: EdgeInsets.fromLTRB(12.0, 12.0, 8.0, 16.0),
       decoration: BoxDecoration(
         color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Color(0xFFABBAD5),
-            spreadRadius: .0,
-            blurRadius: 1.25,
-            offset: Offset(.0, 1.8), // changes position of shadow
-          ),
-        ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -516,10 +484,10 @@ class _PaymentPageState extends State<PaymentPage> {
           });
         },
         child: Container(
-          height: _size.height * .07,
+          height: _size.height * .065,
           alignment: Alignment.center,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(6.0),
+            borderRadius: BorderRadius.circular(8.0),
             border: Border.all(
               color: title == _payMethod
                   ? Colors.blueAccent.shade200

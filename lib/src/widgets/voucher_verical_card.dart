@@ -40,14 +40,6 @@ class _VoucherVerticalCardState extends State<VoucherVerticalCard> {
         ),
         decoration: BoxDecoration(
           color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              color: Color(0xFFABBAD5),
-              spreadRadius: 1.15,
-              blurRadius: 1.25,
-              offset: Offset(.0, 2.5), // changes position of shadow
-            ),
-          ],
         ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,

@@ -48,8 +48,8 @@ class _ProfilePageState extends State<ProfilePage> {
                     Column(
                       children: [
                         Container(
-                          height: _size.width * .33,
-                          width: _size.width * .33,
+                          height: _size.width * .31,
+                          width: _size.width * .31,
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             image: DecorationImage(
@@ -64,7 +64,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         Text(
                           'lambiengcode',
                           style: TextStyle(
-                            fontSize: _size.width / 20.5,
+                            fontSize: _size.width / 22.5,
                             color: Colors.blueGrey.shade700,
                             fontWeight: FontWeight.bold,
                           ),
@@ -83,14 +83,9 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Color(0xFFABBAD5),
-                      spreadRadius: .0,
-                      blurRadius: .5,
-                      offset: Offset(2.0, 2.5), // changes position of shadow
-                    ),
-                  ],
+                  border: Border(
+                    bottom: BorderSide(color: Colors.grey.shade300, width: .5),
+                  ),
                 ),
                 child: Column(
                   children: [
@@ -113,14 +108,9 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Color(0xFFABBAD5),
-                      spreadRadius: .0,
-                      blurRadius: .5,
-                      offset: Offset(2.0, 2.5), // changes position of shadow
-                    ),
-                  ],
+                  border: Border(
+                    bottom: BorderSide(color: Colors.grey.shade300, width: .4),
+                  ),
                 ),
                 child: Column(
                   children: [
@@ -138,14 +128,9 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Color(0xFFABBAD5),
-                      spreadRadius: .0,
-                      blurRadius: .5,
-                      offset: Offset(2.0, 2.5), // changes position of shadow
-                    ),
-                  ],
+                  border: Border(
+                    bottom: BorderSide(color: Colors.grey.shade300, width: .4),
+                  ),
                 ),
                 child: Column(
                   children: [
@@ -161,10 +146,10 @@ class _ProfilePageState extends State<ProfilePage> {
                 height: 24.0,
               ),
               Container(
-                height: 54.0,
+                height: 52.0,
                 width: _size.width,
                 margin: EdgeInsets.symmetric(
-                  horizontal: 12.0,
+                  horizontal: 16.0,
                 ),
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
@@ -175,9 +160,9 @@ class _ProfilePageState extends State<ProfilePage> {
                   boxShadow: [
                     BoxShadow(
                       color: Color(0xFFABBAD5),
-                      spreadRadius: 1.85,
-                      blurRadius: 1.85,
-                      offset: Offset(2.0, 2.5), // changes position of shadow
+                      spreadRadius: 1.25,
+                      blurRadius: 1.5,
+                      offset: Offset(.0, 2.0), // changes position of shadow
                     ),
                   ],
                 ),
@@ -208,7 +193,7 @@ class _ProfilePageState extends State<ProfilePage> {
         endIndent: 25.0,
         thickness: .25,
         height: .25,
-        color: Colors.grey.shade400,
+        color: Colors.white,
       ),
     );
   }

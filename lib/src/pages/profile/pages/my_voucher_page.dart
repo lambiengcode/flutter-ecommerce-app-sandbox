@@ -37,14 +37,30 @@ class _MyVoucherPageState extends State<MyVoucherPage> {
         ),
       ),
       body: Container(
-        child: ListView.builder(
-          itemCount: vouchers.length,
-          itemBuilder: (context, index) {
-            return MyVoucherCard(
-              title: vouchers[index].title,
-              urlToImage: vouchers[index].urlToImage,
-            ); // Voucher Card Vertical
-          },
+        color: Colors.grey.shade100,
+        child: Column(
+          children: [
+            Container(
+              color: Colors.white,
+              padding: EdgeInsets.symmetric(horizontal: _size.width * .32),
+              child: Divider(
+                color: Colors.grey.shade400,
+                thickness: .4,
+                height: .4,
+              ),
+            ),
+            Expanded(
+              child: ListView.builder(
+                itemCount: vouchers.length,
+                itemBuilder: (context, index) {
+                  return MyVoucherCard(
+                    title: vouchers[index].title,
+                    urlToImage: vouchers[index].urlToImage,
+                  ); // Voucher Card Vertical
+                },
+              ),
+            ),
+          ],
         ),
       ),
     );

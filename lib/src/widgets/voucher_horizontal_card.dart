@@ -40,12 +40,9 @@ class _VoucherCardState extends State<VoucherCard> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Container(
-              height: _size.width * .4,
-              width: _size.width * .4,
+              height: _size.width * .35,
+              width: _size.width * .35,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(
-                  2.0,
-                ),
                 image: DecorationImage(
                   image: NetworkImage(vouchers[widget.index].urlToImage),
                   fit: BoxFit.cover,
@@ -56,7 +53,7 @@ class _VoucherCardState extends State<VoucherCard> {
               height: 6.0,
             ),
             Container(
-              width: _size.width * .4,
+              width: _size.width * .35,
               child: Text(
                 vouchers[widget.index].title,
                 style: TextStyle(

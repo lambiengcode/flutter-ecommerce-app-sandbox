@@ -9,7 +9,7 @@ class SavePage extends StatefulWidget {
 }
 
 class _SavePageState extends State<SavePage> {
-  String type = 'Burger';
+  String type = 'Cocktail';
   List<String> types = [];
   @override
   Widget build(BuildContext context) {
@@ -31,6 +31,7 @@ class _SavePageState extends State<SavePage> {
         ),
       ),
       body: Container(
+        color: Colors.grey.shade100,
         child: Column(
           children: [
             Container(

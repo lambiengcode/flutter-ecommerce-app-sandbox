@@ -11,7 +11,7 @@ class _AppState extends State<App> with WidgetsBindingObserver {
   @override
   void initState() {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
+      statusBarColor: Color(0xFF2C3D50),
     ));
     WidgetsBinding.instance.addObserver(this);
     SystemChrome.setPreferredOrientations([

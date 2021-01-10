@@ -80,7 +80,7 @@ class _ManageProductHorizontalCardState
               child: Text(
                 '39,000đ',
                 style: TextStyle(
-                  fontSize: _size.width / 26.0,
+                  fontSize: _size.width / 28.0,
                   color: Colors.grey.shade900,
                   fontWeight: FontWeight.bold,
                 ),

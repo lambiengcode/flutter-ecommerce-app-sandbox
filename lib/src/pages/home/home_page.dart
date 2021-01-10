@@ -226,11 +226,11 @@ class _HomePageState extends State<HomePage>
                     margin: EdgeInsets.symmetric(
                       horizontal: 14.0,
                     ),
-                    height: 46.0,
+                    height: 45.0,
                     decoration: BoxDecoration(
                       color: Colors.grey.shade50,
                       borderRadius: BorderRadius.circular(
-                        8.0,
+                        30.0,
                       ),
                       boxShadow: [
                         BoxShadow(
@@ -242,14 +242,14 @@ class _HomePageState extends State<HomePage>
                       ],
                     ),
                     padding: EdgeInsets.only(
-                      left: 16.0,
+                      left: 18.0,
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Icon(
                           Feather.search,
-                          size: _size.width / 22.0,
+                          size: _size.width / 24.0,
                           color: Colors.grey,
                         ),
                         SizedBox(
@@ -259,7 +259,7 @@ class _HomePageState extends State<HomePage>
                           'Search',
                           style: TextStyle(
                             color: Colors.grey,
-                            fontSize: _size.width / 25.0,
+                            fontSize: _size.width / 28.0,
                             fontWeight: FontWeight.w400,
                           ),
                         ),
@@ -281,11 +281,9 @@ class _HomePageState extends State<HomePage>
                   height: 8.0,
                 ),
                 Container(
-                  height: _size.width * .418,
+                  height: _size.width * .46,
                   child: GridView.builder(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 8.0,
-                    ),
+                    padding: EdgeInsets.fromLTRB(8.0, .0, 8.0, 12.0),
                     scrollDirection: Axis.horizontal,
                     gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
@@ -301,12 +299,12 @@ class _HomePageState extends State<HomePage>
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Container(
-                              height: 52.0,
-                              width: 52.0,
+                              height: 51.5,
+                              width: 51.5,
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(
-                                  4.0,
+                                  10.0,
                                 ),
                                 boxShadow: [
                                   BoxShadow(
@@ -330,9 +328,9 @@ class _HomePageState extends State<HomePage>
                             Text(
                               actions[index].title,
                               style: TextStyle(
-                                fontSize: _size.width / 32.5,
-                                color: Colors.grey.shade700,
-                                fontWeight: FontWeight.w500,
+                                fontSize: _size.width / 30.5,
+                                color: Colors.grey.shade900,
+                                fontWeight: FontWeight.w400,
                               ),
                             )
                           ],
@@ -342,39 +340,18 @@ class _HomePageState extends State<HomePage>
                   ),
                 ),
                 Container(
-                  height: 10.0,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Color(0xFFABBAD5),
-                        spreadRadius: .0,
-                        blurRadius: .5,
-                        offset: Offset(2.0, 2.5), // changes position of shadow
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  height: 10.0,
+                  height: 8.0,
+                  color: Colors.grey.shade100,
                 ),
                 Container(
                   height: _size.width * .7,
                   decoration: BoxDecoration(
                     color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Color(0xFFABBAD5),
-                        spreadRadius: .0,
-                        blurRadius: .5,
-                        offset: Offset(2.0, 2.5), // changes position of shadow
-                      ),
-                    ],
                   ),
                   child: Column(
                     children: [
                       SizedBox(
-                        height: 8.0,
+                        height: 16.0,
                       ),
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 12.0),
@@ -395,11 +372,11 @@ class _HomePageState extends State<HomePage>
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'See More',
+                                    'View More',
                                     style: TextStyle(
-                                      fontSize: _size.width / 26.5,
+                                      fontSize: _size.width / 28.0,
                                       color: Colors.blueAccent,
-                                      fontWeight: FontWeight.bold,
+                                      fontWeight: FontWeight.w600,
                                     ),
                                   ),
                                   SizedBox(
@@ -434,27 +411,17 @@ class _HomePageState extends State<HomePage>
                     ],
                   ),
                 ),
-                SizedBox(
-                  height: 10.0,
+                Container(
+                  height: 8.0,
+                  color: Colors.grey.shade100,
                 ),
                 Container(
-                  height: _size.width * .46,
+                  height: _size.width * .425,
                   decoration: BoxDecoration(
                     color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Color(0xFFABBAD5),
-                        spreadRadius: 1.15,
-                        blurRadius: 1.25,
-                        offset: Offset(2.0, 4.5), // changes position of shadow
-                      ),
-                    ],
                   ),
                   child: Column(
                     children: [
-                      SizedBox(
-                        height: 12.0,
-                      ),
                       _buildHorizontalAction(context),
                       Expanded(
                           child: Container(
@@ -482,7 +449,7 @@ class _HomePageState extends State<HomePage>
   Widget _buildHorizontalAction(context) {
     final _size = MediaQuery.of(context).size;
     return Container(
-      padding: EdgeInsets.fromLTRB(2.0, 2.0, 2.0, 4.0),
+      padding: EdgeInsets.fromLTRB(2.0, .0, 2.0, 4.0),
       height: _size.width * .3,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
@@ -509,15 +476,15 @@ class _HomePageState extends State<HomePage>
                       boxShadow: [
                         BoxShadow(
                           color: Color(0xFFABBAD5),
-                          spreadRadius: 1.15,
-                          blurRadius: 1.25,
-                          offset: Offset(.0, 3.5), // changes position of shadow
+                          spreadRadius: 1.0,
+                          blurRadius: 2.25,
+                          offset: Offset(.0, 2.0), // changes position of shadow
                         ),
                       ],
                     ),
                     child: Icon(
                       actions[index].icon,
-                      size: _size.width / 21.0,
+                      size: _size.width / 17.2,
                       color: actions[index].color,
                     ),
                   ),
@@ -530,7 +497,7 @@ class _HomePageState extends State<HomePage>
                       fontSize: _size.width / 30.0,
                       color: currentType == actions[index].title
                           ? Colors.blueAccent
-                          : Colors.grey.shade800,
+                          : Colors.grey.shade600,
                       fontWeight: currentType == actions[index].title
                           ? FontWeight.bold
                           : FontWeight.w600,

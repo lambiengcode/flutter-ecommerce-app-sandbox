@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:now/src/pages/members/widgets/bottom_info.dart';
 
 class RankingUserCard extends StatefulWidget {
   final int index;
@@ -28,14 +27,6 @@ class _RankingUserCardState extends State<RankingUserCard> {
         ),
         decoration: BoxDecoration(
           color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              color: Color(0xFFABBAD5),
-              spreadRadius: 1.15,
-              blurRadius: 1.25,
-              offset: Offset(.0, 2.5), // changes position of shadow
-            ),
-          ],
         ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,

@@ -67,7 +67,7 @@ class _CarouselImageState extends State<CarouselImage> {
               builder: (BuildContext context) {
                 return Container(
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8.0),
+                    borderRadius: BorderRadius.circular(6.0),
                     image: DecorationImage(
                       image: NetworkImage(imgList[_current]),
                       fit: BoxFit.cover,

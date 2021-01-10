@@ -63,14 +63,14 @@ class _MembersPage extends State<MembersPage> {
               SizedBox(
                 height: 16.0,
               ),
-              _buildTitle(context, 'Orders'),
+              _buildTitle(context, 'Pending Orders'),
               SizedBox(
                 height: 12.0,
               ),
               Container(
                 alignment: Alignment.bottomCenter,
                 padding: EdgeInsets.fromLTRB(2.0, 2.0, 2.0, 4.0),
-                height: _size.width * .6,
+                height: _size.width * .565,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: 10,
@@ -83,8 +83,8 @@ class _MembersPage extends State<MembersPage> {
                 ),
               ),
               Divider(
-                height: .35,
-                thickness: .35,
+                height: .25,
+                thickness: .25,
                 color: Colors.grey.shade400,
                 indent: 6.0,
                 endIndent: 6.0,
@@ -99,7 +99,7 @@ class _MembersPage extends State<MembersPage> {
               Container(
                 alignment: Alignment.bottomCenter,
                 padding: EdgeInsets.fromLTRB(2.0, 2.0, 2.0, 4.0),
-                height: _size.width * .6,
+                height: _size.width * .565,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: 10,
@@ -111,8 +111,8 @@ class _MembersPage extends State<MembersPage> {
                 ),
               ),
               Divider(
-                height: .35,
-                thickness: .35,
+                height: .25,
+                thickness: .25,
                 color: Colors.grey.shade400,
                 indent: 6.0,
                 endIndent: 6.0,
@@ -127,7 +127,7 @@ class _MembersPage extends State<MembersPage> {
               Container(
                 alignment: Alignment.bottomCenter,
                 padding: EdgeInsets.fromLTRB(2.0, 2.0, 2.0, 4.0),
-                height: _size.width * .6,
+                height: _size.width * .56,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: 3,
@@ -140,11 +140,11 @@ class _MembersPage extends State<MembersPage> {
                 ),
               ),
               Divider(
-                height: .35,
-                thickness: .35,
+                height: .25,
+                thickness: .25,
+                color: Colors.grey.shade400,
                 indent: 6.0,
                 endIndent: 6.0,
-                color: Colors.grey.shade400,
               ),
               SizedBox(
                 height: 20.0,

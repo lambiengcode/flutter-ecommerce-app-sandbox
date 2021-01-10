@@ -37,8 +37,18 @@ class _MyPointsPageState extends State<MyPointsPage> {
         ),
       ),
       body: Container(
+        color: Colors.grey.shade100,
         child: Column(
           children: [
+            Container(
+              color: Colors.white,
+              padding: EdgeInsets.symmetric(horizontal: _size.width * .32),
+              child: Divider(
+                color: Colors.grey.shade400,
+                thickness: .4,
+                height: .4,
+              ),
+            ),
             RankingUserCard(
               username: 'lambiengcode',
               urlToImage: members[0].urlToImage,
@@ -46,15 +56,8 @@ class _MyPointsPageState extends State<MyPointsPage> {
               point: '2200',
               isMe: true,
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(
-                vertical: 18.0,
-              ),
-              child: Divider(
-                height: .25,
-                thickness: .25,
-                color: Colors.grey.shade400,
-              ),
+            SizedBox(
+              height: 8.0,
             ),
             Expanded(
                 child: ListView.builder(
